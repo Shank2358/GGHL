@@ -1,6 +1,6 @@
 # GGHL
-# A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
-# This is the implementation of GGHL
+## A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
+## This is the implementation of GGHL
 
 ## Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10, VS2019)   
