@@ -2,7 +2,8 @@
 ## A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
 ## This is the implementation of GGHL
 
-@article{huang2021general,
+审稿实在太慢了，三个月了快！！！先在arxiv上挂出来了。代码还没传完，最近会陆续修改和上传。如果熟悉我的NPMMR-Det代码的朋友，可以直接把dataloader的那个标签分配的代码放到那边去，稍微改改检测头的层数就可以跑出来了。正式版我争取一个月内更新完。论文里关于NPMMR-Det和LO-Det的实验代码会在那两个仓库里面更新，NPMMRDet的baseline目前已经更新完了，你们可以试试看能不能跑。LO-Det的正在更新中，可以看那边的说明。万一有AE或者审稿人大佬看到这个仓库，跪求千万别忘了审稿啊~求求，只希望顺利毕业
+article{huang2021general,
   title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},
   author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},
   year = {2021},
