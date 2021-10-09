@@ -2,6 +2,16 @@
 ## A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
 ## This is the implementation of GGHL
 
+@article{huang2021general,
+  title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},
+  author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},
+  year = {2021},
+  journal = {arXiv preprint arXiv:2109.12848},
+  eprint = {2109.12848},
+  eprinttype = {arxiv},
+  archiveprefix = {arXiv}
+}
+
 ## Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10, VS2019)   
 CUDA 11.1, Cudnn 8.0.4
