@@ -126,41 +126,30 @@ class Contrast(object):
             img = contrast_aug.augment_image(img)
         return img, bboxes
 
-class RandomVerticalFilp(object):####################
+class RandomVerticalFilp(object):
     def __init__(self, p=0.5):
         self.p = p
     def __call__(self, img, bboxes):
         if random.random() < self.p:
             h_img, _, _ = img.shape
-            img = img[::-1, :, :] #倒序::-1
-            bboxes[:, [1, 3]] = h_img - bboxes[:, [3, 1]] # min,ymin,xmax,ymax
-            #xmin,ymin,xmax,ymax,c,x1,y1,x2,y2,x3,y3,x4,y4,r
+            img = img[::-1, :, :]
+            bboxes[:, [1, 3]] = h_img - bboxes[:, [3, 1]]
             bboxes[:, [6, 8, 10, 12]] = h_img - bboxes[:, [6, 8, 10, 12]]
-            bboxes[:, [5,6,9,10]] = bboxes[:, [9,10,5,6]]
-            '''
-            #########
-            img1 = img.astype(np.uint8)#np.int8(img)#
-            points2 = np.array([[int(bboxes[0][5]),int(bboxes[0][6])], [int(bboxes[0][7]),int(bboxes[0][8])], [int(bboxes[0][9]),int(bboxes[0][10])], [int(bboxes[0][11]),int(bboxes[0][12])]])
-            print(points2)
-            cv2.polylines(img1, [points2], 1, (0,255,0), 2)
-            plt.figure("Image")  # 图像窗口名称
-            plt.imshow(img1)
-            plt.show()
-            '''
+            bboxes[:, [5, 6, 9, 10]] = bboxes[:, [9, 10, 5, 6]]
+            bboxes[:, [-1]] = 90 + bboxes[:, [-1]]
         return img, bboxes
 
-class RandomHorizontalFilp(object):#############################
+class RandomHorizontalFilp(object):
     def __init__(self, p=0.5):
         self.p = p
     def __call__(self, img, bboxes):
         if random.random() < self.p:
             _, w_img, _ = img.shape
-            # img = np.fliplr(img)
             img = img[:, ::-1, :]
-            bboxes[:, [0, 2]] = w_img - bboxes[:, [2, 0]]# min,ymin,xmax,ymax，class
-            ####xmin,ymin,xmax,ymax,c,x1,y1,x2,y2,x3,y3,x4,y4,r
+            bboxes[:, [0, 2]] = w_img - bboxes[:, [2, 0]]
             bboxes[:, [5, 7 , 9, 11]] = w_img - bboxes[:, [5, 7, 9, 11]]
             bboxes[:, [7, 8, 11, 12]] = bboxes[:, [11, 12, 7, 8]]
+            bboxes[:, [-1]] = np.where(bboxes[:, [-1]] <= 0, 90 + bboxes[:, [-1]], 90 - bboxes[:, [-1]])
         return img, bboxes
 
 class RandomCrop(object):
@@ -240,6 +229,36 @@ class Resize(object):
             return image, bboxes
         return image
 
+class Resize_trans(object):
+    def __init__(self, target_shape, final_shape, correct_box=True):
+        self.h_target, self.w_target = target_shape
+        self.final_shape = final_shape
+        self.correct_box = correct_box
+    def __call__(self, img, bboxes):
+        h_org , w_org , _= img.shape
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB).astype(np.float32)
+        resize_ratio = min(1.0 * self.w_target / w_org, 1.0 * self.h_target / h_org)
+        resize_w = int(resize_ratio * w_org)
+        resize_h = int(resize_ratio * h_org)
+        image_resized = cv2.resize(img, (resize_w, resize_h))
+        image_paded = np.full((self.h_target, self.w_target, 3), 128.0)
+        dw = int((self.w_target - resize_w) / 2)
+        dh = int((self.h_target - resize_h) / 2)
+        image_paded[dh:resize_h + dh, dw:resize_w + dw, :] = image_resized
+
+        image_paded2 = np.full((self.final_shape, self.final_shape, 3), 128.0)
+        dw2 = int((self.final_shape - self.w_target) / 2)
+        dh2 = int((self.final_shape - self.h_target) / 2)
+        image_paded2[dh2:self.h_target + dh2, dw2:self.w_target + dw2, :] = image_paded
+        image = image_paded2 / 255.0
+        if self.correct_box:
+            ################################x1-y4 trans
+            bboxes[:, [0, 2, 5, 7, 9, 11]] = bboxes[:, [0, 2, 5, 7, 9, 11]] * resize_ratio + dw + dw2
+            bboxes[:, [1, 3, 6, 8, 10, 12]] = bboxes[:, [1, 3, 6, 8, 10, 12]] * resize_ratio + dh + dh2
+            return image, bboxes
+
+        return image
+
 class Resizetest(object):
 
     def __init__(self, target_shape):
@@ -280,6 +299,11 @@ class Mixup(object):
 
         return img, bboxes
 
+class Mixup_no(object):
+    def __call__(self, img_org, bboxes_org, img_mix, bboxes_mix):
+        img = img_org
+        bboxes = np.concatenate([bboxes_org, np.full((len(bboxes_org), 1), 1.0)], axis=1)
+        return img, bboxes
 
 class LabelSmooth(object):
     def __init__(self, delta=0.01):
