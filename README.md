@@ -22,13 +22,6 @@ CUDA > 11.1, Cudnn > 8.0.4
 conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
 pip install -r requirements.txt  
 
-
-cudatoolkit==11.0.221  
-numpy==1.17.5  
-opencv-python==4.4.0.46  
-pytorch==1.8.1  
-torchvision==0.9.1  
-pycocotools==2.0 (In the ./lib folder)  
 dcnv2==0.1 (In the ./lib folder)  
 ...
 
