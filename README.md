@@ -9,6 +9,9 @@ article{huang2021general,
   eprinttype = {arxiv},
   archiveprefix = {arXiv}
 }  
+
+## 11.7 全部更新完成了，欢迎使用，有任何问题可以issue留言，谢谢。  
+（预训练权重的链接在NPMMR-Det和LO-Det的仓库说明里）
 ## 11.6更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
 
 ## 正文开始前的惯例的碎碎念（可以跳过直接看正文使用说明）
@@ -56,7 +59,7 @@ For the specific format of the train.txt file, see the example in the /dataR fol
 ## Usage Example
 1. train  
 python train_GGHL.py  
-2. For Distributed Training
+2. For Distributed Training  
 sh train_GGHL_dist.sh  
 4. test  
 python test.py  
