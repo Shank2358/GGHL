@@ -10,8 +10,8 @@ article{huang2021general,
   archiveprefix = {arXiv}
 }  
 
-![image](https://github.com/Shank2358/GGHL/blob/master/figs_readme/GGHL.png)  
-![image](https://github.com/Shank2358/GGHL/blob/master/figs_readme/GGHL_results.png)  
+![image](https://github.com/Shank2358/GGHL/blob/master/GGHL.png)  
+![image](https://github.com/Shank2358/GGHL/blob/master/GGHL_results.png)  
 
 ## Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10, VS2019)   
