@@ -13,10 +13,10 @@ article{huang2021general,
   archiveprefix = {arXiv}
 }  
 
-## 11.8 打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线
-## 11.8 we plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December
+## 11.8：打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线
+## 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December
 
-## 11.7 1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
+## 11.7：1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
 ## November 7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
 
 ![image](https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png)  
