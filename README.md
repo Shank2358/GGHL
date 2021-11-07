@@ -1,5 +1,8 @@
 # GGHL: A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
 This is the implementation of GGHL  
+
+If you use it, please give this project a star and consider citing:
+
 article{huang2021general,
   title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},
   author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},
@@ -9,6 +12,9 @@ article{huang2021general,
   eprinttype = {arxiv},
   archiveprefix = {arXiv}
 }  
+
+## 11.8 打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线
+## 11.8 we plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December
 
 ## 11.7 全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。  
 ## November 7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
@@ -36,10 +42,13 @@ cd ./GGHL/lib/cocoapi/PythonAPI/
 sh make.sh  
 
 ## Datasets
-1. [DOTA dataset](https://captain-whu.github.io/DOTA/dataset.html) and its [devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit)
+1. [DOTA dataset](https://captain-whu.github.io/DOTA/dataset.html) and its [devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit)  
 (1) VOC Format  
 You need to write a script to convert them into the train.txt file required by this repository and put them in the ./dataR folder.  
 For the specific format of the train.txt file, see the example in the /dataR folder.  
+(2) COCO Format...
+to be continued
+
 
 ## Usage Example
 1. train  
