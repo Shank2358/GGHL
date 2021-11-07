@@ -10,6 +10,9 @@ article{huang2021general,
   archiveprefix = {arXiv}
 }  
 
+## 11.7 全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。  
+## November 7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
+
 ![image](https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png)  
 
 ## Environments
@@ -59,9 +62,8 @@ python test.py
 ![image](https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png)   
 
 
-## 11.7 全部更新完成了，欢迎使用，有任何问题可以issue留言，谢谢。  
-（预训练权重的链接在NPMMR-Det和LO-Det的仓库说明里）
 ## 11.6更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
+（预训练权重的链接在NPMMR-Det和LO-Det的仓库说明里）
 
 ## 正文开始前的惯例的碎碎念（可以跳过直接看正文使用说明）
 投稿排队实在太慢了，三个月了还在形式审查没分配AE,555~ 先在arxiv上挂出来了。代码还没传完，最近会陆续修改和上传。如果熟悉我的NPMMR-Det代码的朋友，可以直接把dataloader的那个标签分配的代码放到那边去，稍微改改检测头的层数就可以跑出来了。正式版我争取一个月内更新完。方法和代码的任何问题都欢迎大家批评指正，issues或者邮箱都可以联系到我，感谢各位大佬。 
