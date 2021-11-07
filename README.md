@@ -29,18 +29,15 @@ CUDA > 11.1, Cudnn > 8.0.4
 conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
 pip install -r requirements.txt  
 ```
-dcnv2==0.1 (In the ./lib folder)  
-...
 
 ## Installation
 1. git clone this repository    
 2. Install the libraries in the ./lib folder  
 (1) DCNv2  
+```python
 cd ./GGHL/lib/DCNv2/  
 sh make.sh  
-(2) pycocotools  
-cd ./GGHL/lib/cocoapi/PythonAPI/  
-sh make.sh  
+```
 
 ## Datasets
 1. [DOTA dataset](https://captain-whu.github.io/DOTA/dataset.html) and its [devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit)  
@@ -53,11 +50,17 @@ to be continued
 
 ## Usage Example
 1. train  
+'''python
 python train_GGHL.py  
+'''
 2. For Distributed Training  
+'''python
 sh train_GGHL_dist.sh  
-4. test  
+```
+3. test  
+'''python
 python test.py  
+```
 
 
 ## To be continued 
