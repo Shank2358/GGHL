@@ -56,12 +56,14 @@ python train_GGHL.py
 
 2. For Distributed Training  
 
-'''python
+```bash
 sh train_GGHL_dist.sh
+```
 
 3. test  
-'''python
+```python
 python test.py
+```
 
 
 ## To be continued 
