@@ -1,0 +1,15 @@
+Cython==0.29.24
+dropblock==0.3.0
+einops==0.3.2
+imgaug==0.4.0
+matplotlib==3.4.3
+opencv-python==4.5.3.56
+pycocotools==2.0.2
+scikit-image==0.18.3
+scikit-learn==1.0
+scipy==1.7.1
+Shapely==1.7.1
+tensorboardX==2.4
+thop==0.0.31.post2005241907
+timm==0.4.12
+tqdm==4.62.3
