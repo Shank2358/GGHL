@@ -22,25 +22,17 @@ article{huang2021general,
 
 ## Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10, VS2019)   
-CUDA 11.1, Cudnn 8.0.4
+CUDA > 11.1, Cudnn > 8.0.4
 
-1. For RTX20/Titan RTX/V100 GPUs
-cudatoolkit==10.0.130  
-numpy==1.17.3  
-opencv-python==3.4.2  
-pytorch==1.2.0  
-torchvision==0.4.0  
-pycocotools==2.0 (In the ./lib folder)  
-dcnv2==0.1 (In the ./lib folder)  
-...  
-The installation of other libraries can be carried out according to the prompts of pip/conda  
-  
-2. For RTX30 GPUs
+conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
+pip install -r requirements.txt  
+
+
 cudatoolkit==11.0.221  
 numpy==1.17.5  
 opencv-python==4.4.0.46  
-pytorch==1.7.0  
-torchvision==0.8.1  
+pytorch==1.8.1  
+torchvision==0.9.1  
 pycocotools==2.0 (In the ./lib folder)  
 dcnv2==0.1 (In the ./lib folder)  
 ...
@@ -63,8 +55,11 @@ For the specific format of the train.txt file, see the example in the /dataR fol
 
 ## Usage Example
 1. train  
-python train.py  
-2. test  
+python train_GGHL.py  
+2. For Distributed Training
+sh train_GGHL_dist.sh  
+4. test  
 python test.py  
+
 
 ## To be continued 
