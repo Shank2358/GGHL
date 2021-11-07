@@ -35,7 +35,7 @@ if __name__ == '__main__':
     import math
     from modelR.ABGH import ABGH
     import torch.optim as optim
-    import config.cfg_npmmr as cfg
+    import config.config as cfg
 
     net = ABGH()
 

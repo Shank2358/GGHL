@@ -17,7 +17,6 @@ class Construct_Dataset(Dataset):
         self.stride = [8, 16, 32]
         self.IOU_thresh = 0.25
         self.thresh_gh = 0.05
-        self.scales_per_layer = 3
         self.__annotations = self.__load_annotations(anno_file_name)
     def __len__(self):
         return len(self.__annotations)
@@ -144,7 +143,7 @@ class Construct_Dataset(Dataset):
         sub_xmax = min(grid_x + r_w_max + 1, ws - 1)
         sub_ymin = max(grid_y - r_h_max, 0)
         sub_ymax = min(grid_y + r_h_max + 1, hs - 1)
-        gt_tensor_oval_1 = np.zeros([hs, ws, self.scales_per_layer, 1])
+        gt_tensor_oval_1 = np.zeros([hs, ws, 1])
         for i in range(sub_xmin, sub_xmax):
             for j in range(sub_ymin, sub_ymax):
                 ax = np.array([[i - grid_x, j - grid_y]]).transpose()
@@ -199,7 +198,7 @@ class Construct_Dataset(Dataset):
             if angle == -np.pi/2:
                 angle = 0
             length = max(box_w, box_h)
-            if box_w > 8 and box_h > 8:
+            if box_w > 1 and box_h > 1:
                 if length <= layer_thresh[0]:
                     self.generate_label(0, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
                                         ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,
@@ -212,10 +211,9 @@ class Construct_Dataset(Dataset):
                                         gt_label, class_id)
 
                 if length > layer_thresh[1]:
-                    if length <= layer_thresh[1] + (self.img_size - layer_thresh[1]) / 3:
-                        self.generate_label(2, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
-                                            ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,
-                                            gt_label, class_id)
+                    self.generate_label(2, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
+                                        ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,
+                                        gt_label, class_id)
 
         label_sbbox, label_mbbox, label_lbbox = self.gt_tensor
         return label_sbbox, label_mbbox, label_lbbox
@@ -224,7 +222,7 @@ class Construct_Dataset(Dataset):
 if __name__ == '__main__':
     from torch.utils.data import DataLoader
 
-    train_dataset = Construct_Dataset(anno_file_name="train_DOTA_angle", img_size=896)
+    train_dataset = Construct_Dataset(anno_file_name="train_DOTA_angle", img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
     train_dataloader = DataLoader(train_dataset, batch_size=1, num_workers=1, shuffle=False)
     for i, (imgs, label_sbbox, label_mbbox, label_lbbox) in enumerate(train_dataloader):
         continue

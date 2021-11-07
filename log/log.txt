@@ -1,0 +1,2 @@
+[2021-11-07 19:00:20,963]-[train_GGHL.py line:157]: Training start!  Img size:800,  Batchsize:32,  Number of workers:12 
+[2021-11-07 19:00:20,963]-[train_GGHL.py line:159]: Train datasets number is : 63784 

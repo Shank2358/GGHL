@@ -6,7 +6,7 @@ import math
 import numpy as np
 import random
 import torch
-import config.cfg_npmmr as cfg
+import config.config as cfg
 from shapely.geometry import Polygon, MultiPoint  # 多边形
 
 def init_seeds(seed=0):
@@ -450,7 +450,6 @@ def nms_glid(bboxes, score_threshold, iou_threshold, sigma=0.3):
     其中(xmin, ymin, xmax, ymax)的大小都是相对于输入原图的，score = conf * prob，class是bbox所属类别的索引号
     """
     ######[coors(0:4), coors_rota(4:8), scores[:, np.newaxis](12), classes[:, np.newaxis]](13)
-
     classes_in_img = list(set(bboxes[:, 9].astype(np.int32)))
     best_bboxes = []
     scale_factor = cfg.SCALE_FACTOR
@@ -481,7 +480,6 @@ def nms_glid(bboxes, score_threshold, iou_threshold, sigma=0.3):
             x4 = xmin
             y4 = ymax-a4*(ymax-ymin)
             best_bbox_r = np.concatenate((x1,y1,x2,y2,x3,y3,x4,y4),axis=-1)
-
 
             xminl = cls_bboxes[:, 0:1]
             yminl = cls_bboxes[:, 1:2]
