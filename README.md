@@ -10,7 +10,6 @@ article{huang2021general,
   archiveprefix = {arXiv}
 }  
 
-![image](https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png)  
 ![image](https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png)  
 
 ## Environments
@@ -56,6 +55,8 @@ python test.py
 
 
 ## To be continued 
+
+![image](https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png)   
 
 
 ## 11.7 全部更新完成了，欢迎使用，有任何问题可以issue留言，谢谢。  
