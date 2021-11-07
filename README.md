@@ -2,7 +2,7 @@
 This is the implementation of GGHL  
 
 If you use it, please give this project a star and consider citing:
-```
+```bash
 article{huang2021general,
   title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},
   author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},
