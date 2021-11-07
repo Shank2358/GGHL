@@ -12,8 +12,7 @@ article{huang2021general,
   eprint = {2109.12848},
   eprinttype = {arxiv},
   archiveprefix = {arXiv}
-}  
-```
+}  ```
 
 ## 11.8：打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线
 ## 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December
