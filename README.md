@@ -25,10 +25,10 @@ article{huang2021general,
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10, VS2019)   
 CUDA > 11.1, Cudnn > 8.0.4
 
-···python
+```python
 conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
 pip install -r requirements.txt  
-···
+```
 dcnv2==0.1 (In the ./lib folder)  
 ...
 
