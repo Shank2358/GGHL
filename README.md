@@ -52,17 +52,16 @@ to be continued
 1. train  
 
 '''python
-python train_GGHL.py'''
+python train_GGHL.py
 
 2. For Distributed Training  
 
 '''python
-sh train_GGHL_dist.sh```
+sh train_GGHL_dist.sh
 
 3. test  
 '''python
 python test.py
-```
 
 
 ## To be continued 
