@@ -14,7 +14,7 @@ article{huang2021general,
 }
 
 <div algin="center">
-<img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="400"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="450">
+<img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="350"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="400">
 </div>
 
 ## 11.8：打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线  
