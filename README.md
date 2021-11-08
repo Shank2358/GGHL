@@ -19,7 +19,7 @@ article{huang2021general,
 ## 11.7：1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
 ## November 7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
 
-<img src= "https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" img width = "70%" height = "70%" div align=center />
+<img src= "https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" img width = 55% height = 55% div align=center />
 
 ## Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10, VS2019)   
