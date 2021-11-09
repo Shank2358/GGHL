@@ -1,5 +1,5 @@
 # GGHL: A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
-This is the implementation of GGHL  
+## This is the implementation of [GGHL](https://arxiv.org/abs/2109.12848) 
 
 If you use it, please give this project a star and consider citing:
 
