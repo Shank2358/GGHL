@@ -21,13 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evalR/evaluatorGGHL.py" beforeDir="false" afterPath="$PROJECT_DIR$/evalR/evaluatorGGHL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelR/backbones/mobilenetv2.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/backbones/mobilenetv2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelR/head/head_GGHL.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/head/head_GGHL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelR/head/head_GGHL_hbb.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/head/head_GGHL_hbb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelR/head/head_NPMMR.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/head/head_NPMMR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelR/layers/np_attention_blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/layers/np_attention_blocks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelR/loss/loss_jol_hbb.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/loss/loss_jol_hbb.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,5 +68,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1636427351600">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1636427351600" />
   </component>
 </project>
