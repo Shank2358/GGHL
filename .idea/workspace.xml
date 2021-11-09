@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GGHL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GGHL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GGHL.png" beforeDir="false" afterPath="$PROJECT_DIR$/readme_imgs/GGHL.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GGHL_results.png" beforeDir="false" afterPath="$PROJECT_DIR$/readme_imgs/GGHL_results.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
