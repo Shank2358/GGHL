@@ -17,16 +17,13 @@ article{huang2021general,
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="350"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="400">
 </div>
 
-## 11.9: 
-The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
+## 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
 论文结果对应的模型权重可以下载了（终于发工资把网盘续上了~）
 
-## 11.8：
-I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December  
+## 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December  
 打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线  
 
-## November 7: 
-All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
+## 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
 1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
 
 ## Environments
