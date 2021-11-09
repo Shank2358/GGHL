@@ -109,12 +109,3 @@ class GGHL(nn.Module):
                 conv_layer.weight.data.copy_(conv_w)
                 ptr += num_w
                 print("loading weight {}".format(conv_layer))
-
-if __name__ == '__main__':
-    from modelR.get_model_complexity import get_model_complexity_info
-    net = GGHL().cuda()
-    flops, params = get_model_complexity_info(
-        net, (800, 800), as_strings=False, print_per_layer_stat=True
-    )
-    print("GFlops: %.3fG" % (flops / 1e9))
-    print("Params: %.2fM" % (params / 1e6))

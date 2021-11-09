@@ -103,60 +103,25 @@ class Loss(nn.Module):
 
         loss_fg = label_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix * ((gh_mask)+offset0)/2
         loss_bg = label_noobj_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix
-        '''
-        import matplotlib
-        matplotlib.use('TkAgg')
-        import matplotlib.pyplot as plt
-        import matplotlib.ticker as ticker
-        plt.figure("Image4")  # 图像窗口名称
-        aa = offset0#offset0/offset0.max()#offset0
-        aa = aa/aa.max()
-        conf = aa.squeeze(0).squeeze(-1).detach().cpu()
-        plt.imshow(conf, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-        plt.figure("Image5")  # 图像窗口名称
-        bb = gh_mask
-        conf = bb.squeeze(0).squeeze(-1).detach().cpu()
-        plt.imshow(conf, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-        plt.figure("Image6")  # 图像窗口名称
-        aa = offset0+gh_mask#offset0/offset0.max()#offset0
-        aa = aa/aa.max()
-        conf = aa.squeeze(0).squeeze(-1).detach().cpu()
-        plt.imshow(conf, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-        plt.show()'''
 
         loss_pos = (label_cls != 0).float() * label_mask * BCE(input=scores_cls_loc, target=label_cls_smooth) * label_mix  * area_weight #-torch.log(scores_cls_loc + 1e-16)
         loss_neg = (1 - (label_cls != 0).float()) * label_mask * BCE(input=p_cls, target=label_cls_smooth) * label_mix * area_weight
-        #torch.log(1 - torch.sigmoid(p_cls))
         N = (torch.sum(label_mask.view(batch_size, -1), dim=-1) + 1e-16)
         N = torch.max(N, torch.ones(N.size(), device=N.device)).view(batch_size, 1, 1, 1)
-        loss_fg = 10 * (torch.sum(loss_fg / N)) / batch_size * 2
-        loss_bg = 10 * (torch.sum(loss_bg / N)) / batch_size * 2
-        loss_pos = 10 * (torch.sum(loss_pos / N)) / batch_size
-        loss_neg = 10 * (torch.sum(loss_neg / N)) / batch_size
+        loss_fg = (torch.sum(loss_fg / N)) / batch_size * 2
+        loss_bg = (torch.sum(loss_bg / N)) / batch_size * 2
+        loss_pos = (torch.sum(loss_pos / N)) / batch_size
+        loss_neg = (torch.sum(loss_neg / N)) / batch_size
 
-        ################################################################################################
         weight_cls = torch.sum((label_cls != 0).float() * torch.sigmoid(p_cls), dim=-1, keepdim=True)
         loss_iou = label_mask * scores_iou * label_mix * area_weight * (weight_cls + (gh_mask)) / 2
         SmoothL1 = nn.SmoothL1Loss(reduction='none')
         loss_l = label_mask * bbox_loss_scale * SmoothL1(p_d_l / stride, label_l1234 / stride) * label_mix * area_weight * (weight_cls + (gh_mask)) / 2
         loss_cls = label_mask * BCE(input=p_cls, target=label_cls_smooth) * label_mix * area_weight
 
-        loss_iou = 10 * (torch.sum(loss_iou / N)) / batch_size
-        loss_cls = 10 * (torch.sum(loss_cls / N)) / batch_size
-        loss_l = 2 * (torch.sum(loss_l / N)) / batch_size #10 * (torch.sum(loss_obbs / N)) / batch_size +
-        ############################################################################################################
+        loss_iou = (torch.sum(loss_iou / N)) / batch_size
+        loss_cls = (torch.sum(loss_cls / N)) / batch_size
+        loss_l = 0.2 * (torch.sum(loss_l / N)) / batch_size
 
         loss = loss_fg + loss_bg + loss_pos + loss_neg + loss_cls + loss_iou + loss_l #+ loss_conf1
         return loss, loss_fg, loss_bg, loss_pos, loss_neg, loss_iou, loss_cls, loss_l

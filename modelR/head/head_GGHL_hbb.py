@@ -9,7 +9,7 @@ class Head(nn.Module):
 
     def forward(self, p):
         bs, nG = p.shape[0], p.shape[-1]
-        p = p.view(bs, 4 + self.__nC + 1, nG, nG).permute(0, 2, 3, 1)##############xywhc+a1-a4+r+class
+        p = p.view(bs, 4 + self.__nC + 1, nG, nG).permute(0, 2, 3, 1)
         p_de = self.__decode(p.clone())
         return (p, p_de)
 

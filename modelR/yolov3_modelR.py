@@ -115,30 +115,3 @@ class Yolov3R(nn.Module):
                 conv_layer.weight.data.copy_(conv_w)
                 ptr += num_w
                 print("loading weight {}".format(conv_layer))
-
-if __name__ == '__main__':
-    from modelR.get_model_complexity import get_model_complexity_info
-    from torchstat import stat
-    net = Yolov3R().cuda()
-    #print(net)
-
-    #for m in net.modules():
-            #modules():
-        #if 'Convolutional' in m:
-            #print("aa",module_list[idx])
-
-        #if isinstance(m, nn.BatchNorm2d):
-            #print("aa",m)
-    flops, params = get_model_complexity_info(
-        net, (800, 800), as_strings=False, print_per_layer_stat=True
-    )
-    print("GFlops: %.3fG" % (flops / 1e9))
-    print("Params: %.2fM" % (params / 1e6))
-
-    #stat(net.cuda(), (3, 800,800))
-    #
-    #in_img = torch.randn(1, 3, 544, 544).cuda()
-    #p, p_d = net(in_img)
-    #print("Output Size of Each Head (Num_Classes: %d)" % cfg.DATA["NUM"])
-    #for i in range(3):
-        #print(p[i].shape)

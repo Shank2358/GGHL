@@ -29,10 +29,7 @@ class Evaluator(object):
         self.model = model
         self.device = next(model.parameters()).device
         self.inference_time = 0.
-        self.showheatmap = cfg.SHOW_HEATMAP
         self.iouthresh_test = cfg.TEST["IOU_THRESHOLD"]
-        self.topk = 300
-        self.use_nms = False
 
         self.multi_test = cfg.TEST["MULTI_SCALE_TEST"]
         self.flip_test = cfg.TEST["FLIP_TEST"]
@@ -68,27 +65,9 @@ class Evaluator(object):
 
     def APs_voc_Single(self, img_ind):
         img_path = os.path.join(self.val_data_path, 'JPEGImages', img_ind + '.png')  # 路径+JPEG+文件名############png
-        # 目标： 直接改成读txt的文件名，每一行读取
-        # print(img_path)
         img = cv2.imread(img_path)
-        # print(img_path)
         bboxes_prd = self.get_bbox(img, self.multi_test, self.flip_test)
 
-        '''
-        if bboxes_prd.shape[0] != 0 and self.__visiual and self.__visual_imgs < 100:
-            boxes = bboxes_prd[..., :4]
-            boxes_rota = bboxes_prd[..., 4:8]
-
-            scores = bboxes_prd[..., 8]
-
-            class_inds = bboxes_prd[..., 9].astype(np.int32)
-
-            visualize_boxes(image=img, boxes=boxes, labels=class_inds, probs=scores, class_labels=self.classes)
-            path = os.path.join(cfg.PROJECT_PATH, "data/results/{}.jpg".format(self.__visual_imgs))
-            cv2.imwrite(path, img)
-
-            self.__visual_imgs += 1
-        '''
         ''''''
         for bbox in bboxes_prd:
             coor = np.array(bbox[:4], dtype=np.int32)
@@ -108,62 +87,6 @@ class Evaluator(object):
             s = ' '.join([img_ind, score, str(int(x1)), str(int(y1)), str(int(x2)), str(int(y2)),
                           str(int(x3)), str(int(y3)), str(int(x4)), str(int(y4))]) + '\n'
             self.final_result[class_name].append(s)
-
-            color = np.zeros(3)
-            points = np.array(
-                [[int(x1), int(y1)], [int(x2), int(y2)], [int(x3), int(y3)], [int(x4), int(y4)]])
-
-            if int(class_ind) == 0:
-                # 25 black
-                color = (0, 0, 0)
-            elif int(class_ind) == 1:
-                # 1359 blue
-                color = (255, 0, 0)
-            elif int(class_ind) == 2:
-                # 639 Yellow
-                color = (0, 255, 255)
-            elif int(class_ind) == 3:
-                # 4371 red
-                color = (0, 0, 255)
-            elif int(class_ind) == 4:
-                # 3025 green
-                color = (0, 255, 0)
-            elif int(class_ind) == 5:
-                # 1359 blue
-                color = (255, 0, 0)
-            elif int(class_ind) == 6:
-                # 639 Yellow
-                color = (0, 128, 255)
-            elif int(class_ind) == 7:
-                # 4371 red
-                color = (0, 0, 128)
-            elif int(class_ind) == 8:
-                # 3025 green
-                color = (0, 128, 0)
-            elif int(class_ind) == 9:
-                # 1359 blue
-                color = (128, 0, 0)
-            elif int(class_ind) == 10:
-                # 639 Yellow
-                color = (128, 128, 0)
-            elif int(class_ind) == 11:
-                # 4371 red
-                color = (0, 128, 128)
-            elif int(class_ind) == 12:
-                # 3025 green
-                color = (128, 128, 0)
-            elif int(class_ind) == 13:
-                # 1359 blue
-                color = (0, 255, 128)
-            elif int(class_ind) == 14:
-                # 639 Yellow
-                color = (255, 128, 255)
-            cv2.polylines(img, [points], 1, color, 2)
-            font = cv2.FONT_HERSHEY_SIMPLEX  # 定义字体
-            img = cv2.putText(img, class_name + ' ' + score[:4], (int(float(x1)), int(float(y1))), font, 0.3,
-                              (255, 255, 255), 1)
-        store_path = os.path.join(self.pred_result_path, 'imgs', img_ind + '.jpg')
-        cv2.imwrite(store_path, img, [int(cv2.IMWRITE_JPEG_QUALITY), 70])
 
     def get_bbox(self, img, multi_test=False, flip_test=False):
         # start_time = current_milli_time()
@@ -186,51 +109,6 @@ class Evaluator(object):
         # self.inference_time += (current_milli_time() - start_time)
         return bboxes
 
-    def _gather_feat(self, feat, ind, mask=None):
-        dim = feat.size(2)
-        ind = ind.unsqueeze(2).expand(ind.size(0), ind.size(1), dim)
-        feat = feat.gather(1, ind)
-        if mask is not None:
-            mask = mask.unsqueeze(2).expand_as(feat)
-            feat = feat[mask]
-            feat = feat.view(-1, dim)
-        return feat
-
-    def _topk(self, scores):
-        B, C, H, W = scores.size()
-        topk_scores, topk_inds = torch.topk(scores.view(B, C, -1), self.topk)
-        topk_inds = topk_inds % (H * W)
-        topk_score, topk_ind = torch.topk(topk_scores.view(B, -1), self.topk)
-        topk_clses = (topk_ind / self.topk).int()
-        topk_inds = self._gather_feat(topk_inds.view(B, -1, 1), topk_ind).view(B, self.topk)
-        return topk_score, topk_inds, topk_clses
-
-    def nms(self, dets, scores):
-        """"Pure Python NMS baseline."""
-        x1 = dets[:, 0]  # xmin
-        y1 = dets[:, 1]  # ymin
-        x2 = dets[:, 2]  # xmax
-        y2 = dets[:, 3]  # ymax
-        areas = (x2 - x1) * (y2 - y1)  # the size of bbox
-        order = scores.argsort()[::-1]  # sort bounding boxes by decreasing order
-        keep = []  # store the final bounding boxes
-        while order.size > 0:
-            i = order[0]  # the index of the bbox with highest confidence
-            keep.append(i)  # save it to keep
-            xx1 = np.maximum(x1[i], x1[order[1:]])
-            yy1 = np.maximum(y1[i], y1[order[1:]])
-            xx2 = np.minimum(x2[i], x2[order[1:]])
-            yy2 = np.minimum(y2[i], y2[order[1:]])
-            w = np.maximum(1e-28, xx2 - xx1)
-            h = np.maximum(1e-28, yy2 - yy1)
-            inter = w * h
-            # Cross Area / (bbox + particular area - Cross Area)
-            ovr = inter / (areas[i] + areas[order[1:]] - inter + 1e-14)
-            # reserve all the boundingbox whose ovr less than thresh
-            inds = np.where(ovr <= self.nms_thresh)[0]
-            order = order[inds + 1]
-        return keep
-
     def __predict(self, img, test_shape, valid_scale):
         org_img = np.copy(img)
         org_h, org_w, _ = org_img.shape
@@ -251,13 +129,9 @@ class Evaluator(object):
         return torch.from_numpy(img[np.newaxis, ...]).float()
 
     def __convert_pred(self, pred_bbox, test_input_size, org_img_shape, valid_scale):
-        # label: xywh(没有scale, 0 - 4), a1 - a4(4 - 8), r(8), conf(9), one_hot_smooth(10...)
         pred_coor = xywh2xyxy(pred_bbox[:, :4])  # xywh2xyxy
-
         pred_conf = pred_bbox[:, 13]
         pred_prob = pred_bbox[:, 14:]
-
-        # pred_xywh, pred_a, pred_r, pred_l1234, pred_conf, pred_prob
         org_h, org_w = org_img_shape
         resize_ratio = min(1.0 * test_input_size / org_w, 1.0 * test_input_size / org_h)
         dw = (test_input_size - resize_ratio * org_w) / 2
@@ -267,14 +141,13 @@ class Evaluator(object):
         pred_rotaxy = pred_bbox[:, 4:8]
         pred_r = pred_bbox[:, 8:9]
         zero = np.zeros_like(pred_rotaxy)
-        pred_rotaxy = np.where(pred_r > 0.85, zero, pred_rotaxy)  # 0.8
-
+        pred_rotaxy = np.where(pred_r > 0.85, zero, pred_rotaxy)
         # (2)将预测的bbox中超出原图的部分裁掉
         pred_coor = np.concatenate(
             [np.maximum(pred_coor[:, :2], [0, 0]), np.minimum(pred_coor[:, 2:], [org_w - 1, org_h - 1])], axis=-1)
         invalid_mask = np.logical_or((pred_coor[:, 0] > pred_coor[:, 2]), (pred_coor[:, 1] > pred_coor[:, 3]))
         pred_coor[invalid_mask] = 0
-        pred_rotaxy[invalid_mask] = 0  ############################
+        pred_rotaxy[invalid_mask] = 0
         # (4)去掉不在有效范围内的bbox
         bboxes_scale = np.sqrt(np.multiply.reduce(pred_coor[:, 2:4] - pred_coor[:, 0:2], axis=-1))
         scale_mask = np.logical_and((valid_scale[0] < bboxes_scale), (bboxes_scale < valid_scale[1]))
@@ -287,18 +160,11 @@ class Evaluator(object):
         coors_rota = pred_rotaxy[mask]
         scores = scores[mask]
         classes = classes[mask]
-        # pred_prob = pred_prob[mask]
         bboxes = np.concatenate([coors, coors_rota, scores[:, np.newaxis], classes[:, np.newaxis]],
-                                axis=-1)  #######################
+                                axis=-1)
         return bboxes
 
     def __calc_APs(self, iou_thresh=0.5, use_07_metric=False):
-        """
-        计算每个类别的ap值
-        :param iou_thresh:
-        :param use_07_metric:
-        :return:dict{cls:ap}
-        """
         filename = os.path.join(self.pred_result_path, 'voc/{:s}.txt')
         cachedir = os.path.join(self.pred_result_path, 'voc', 'cache')
         annopath = os.path.join(self.val_data_path, 'Annotations/{:s}.txt')

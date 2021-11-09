@@ -10,7 +10,7 @@ class Head(nn.Module):
 
     def forward(self, p):
         bs, nG = p.shape[0], p.shape[-1]
-        p = p.view(bs, 4 + 5 + self.__nC + 1, nG, nG).permute(0, 2, 3, 1)##############xywhc+a1-a4+r+class
+        p = p.view(bs, 4 + 5 + self.__nC + 1, nG, nG).permute(0, 2, 3, 1)
         p_de = self.__decode(p.clone())
         return (p, p_de)
 
@@ -44,7 +44,7 @@ class Head(nn.Module):
         maskr = pred_r
         zero = torch.zeros_like(maskr)
         one = torch.ones_like(maskr)
-        maskr = torch.where(maskr > 0.85, zero, one) #0.8
+        maskr = torch.where(maskr > 0.85, zero, one)
         pred_s[:, :, :, 0:1] = pred_s[:, :, :, 0:1] * maskr
         pred_s[:, :, :, 1:2] = pred_s[:, :, :, 1:2] * maskr
         pred_s[:, :, :, 2:3] = pred_s[:, :, :, 2:3] * maskr

@@ -118,33 +118,3 @@ class ABGH_NPMMRDet(nn.Module):
                 conv_layer.weight.data.copy_(conv_w)
                 ptr += num_w
                 print("loading weight {}".format(conv_layer))
-
-if __name__ == '__main__':
-    from modelR.get_model_complexity import get_model_complexity_info
-    #from torchstat import stat
-    net = ABGH_NPMMRDet().cuda()
-    #print(net)
-
-    #for m in net.modules():
-            #modules():
-        #if 'Convolutional' in m:
-            #print("aa",module_list[idx])
-
-        #if isinstance(m, nn.BatchNorm2d):
-            #print("aa",m)
-
-    #flops, params = get_model_complexity_info(net,(3, 800, 800), as_strings=False, print_per_layer_stat=True)
-    #print('GFlops: %.3fG' % (flops / 1e9))
-    #print('Params: %.2fM' % (params / 1e6))
-
-
-    #in_img = torch.randn(1, 3, 800, 800)
-    #p, p_d = net(in_img)
-    flops, params = get_model_complexity_info(
-        net, (800, 800), as_strings=False, print_per_layer_stat=True
-    )
-    print("GFlops: %.3fG" % (flops / 1e9))
-    print("Params: %.2fM" % (params / 1e6))
-    #for i in range(3):
-        #print(p[i].shape)
-        #print(p_d[i].shape)
