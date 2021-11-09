@@ -108,8 +108,8 @@ class Loss(nn.Module):
         loss_fg = label_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix * ((gh_mask)+offset0)/2
         loss_bg = label_noobj_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix
 
-        loss_pos = (label_cls != 0).float() * label_mask * BCE(input=scores_cls_loc, target=label_cls_smooth) * label_mix  * area_weight
-        loss_neg = (1 - (label_cls != 0).float()) * label_mask * BCE(input=p_cls, target=label_cls_smooth) * label_mix  * area_weight
+        loss_pos = (label_cls != 0).float() * label_mask * BCE(input=scores_cls_loc, target=label_cls_smooth) * label_mix * area_weight
+        loss_neg = (1 - (label_cls != 0).float()) * label_mask * BCE(input=p_cls, target=label_cls_smooth) * label_mix * area_weight
 
         N = (torch.sum(label_mask.view(batch_size, -1), dim=-1) + 1e-16)
         N = torch.max(N, torch.ones(N.size(), device=N.device)).view(batch_size, 1, 1, 1)
@@ -133,5 +133,5 @@ class Loss(nn.Module):
         loss_r = 16 * (torch.sum(loss_r / N)) / batch_size
         loss_l = 0.2 * (torch.sum(loss_l / N)) / batch_size
 
-        loss = loss_fg + loss_bg + loss_pos + loss_neg + loss_cls + loss_iou + (loss_s + loss_r) + loss_l
+        loss = loss_fg + loss_bg + loss_pos + loss_neg + loss_iou + (loss_s + loss_r) + loss_l #+ loss_cls
         return loss, loss_fg, loss_bg, loss_pos, loss_neg, loss_iou, loss_cls, loss_s, loss_r, loss_l

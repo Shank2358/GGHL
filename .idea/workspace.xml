@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="" />
+    <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelR/loss/loss_jol.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/loss/loss_jol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelR/loss/loss_jol_hbb.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/loss/loss_jol_hbb.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
