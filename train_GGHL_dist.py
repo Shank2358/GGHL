@@ -138,9 +138,6 @@ class Trainer(object):
 
         self.criterion = Loss()
 
-        # if resume:
-        # self.__save_model_weights(0,0)
-        # self.__load_model_weights_Resnet(weight_path, resume)#self.__save_model_weights_best(160)
         self.scheduler = cosine_lr_scheduler.CosineDecayLR(self.optimizer,
                                                            T_max=self.epochs * len(self.train_dataloader),
                                                            lr_init=cfg.TRAIN["LR_INIT"],
@@ -312,7 +309,7 @@ class Trainer(object):
             if RANK in [-1, 0]:
                 self.__save_model_weights(epoch, mAP)
 
-            if epoch >= 200 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
+            if epoch >= 70 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
                 logger.info("===== Validate =====".format(epoch, self.epochs))
                 with torch.no_grad():
                     APs, inference_time = Evaluator(self.model).APs_voc()
