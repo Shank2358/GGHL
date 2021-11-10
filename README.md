@@ -60,7 +60,7 @@ to be continued
 
 
 ## 4.Usage Example
-#### (1) train  
+#### (1) Training  
 ```python
 python train_GGHL.py
 ```
@@ -71,7 +71,7 @@ python train_GGHL.py
 sh train_GGHL_dist.sh
 ```
 
-#### (3) test  
+#### (3) Testing  
 ```python
 python test.py
 ```
@@ -81,10 +81,10 @@ The pre-trained weights and trained models are available from [Google Drive](htt
 Put them in. /weight folder
 
 ## 6.Reference
-https://github.com/Peterisfar/YOLOV3
-https://github.com/argusswift/YOLOv4-pytorch
-https://github.com/ultralytics/yolov5
-https://github.com/jinfagang/DCNv2_latest
+https://github.com/Peterisfar/YOLOV3  
+https://github.com/argusswift/YOLOv4-pytorch  
+https://github.com/ultralytics/yolov5  
+https://github.com/jinfagang/DCNv2_latest  
 
 ## To be continued 
 
