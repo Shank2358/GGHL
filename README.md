@@ -1,6 +1,6 @@
 # GGHL: A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
 ## This is the implementation of GGHL 
-[Arxiv](https://arxiv.org/abs/2109.12848) 
+[[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)]
 
 If you use it, please give this project a star and consider citing:
 
