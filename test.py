@@ -25,16 +25,7 @@ class Tester(object):
         self.__eval = eval
         self.__model = GGHL().eval().to(self.__device)  # Single GPU
 
-        '''
-        net_model = ABGH()
-        if torch.cuda.device_count() >1: ## Multi GPUs
-            print("Let's use", torch.cuda.device_count(), "GPUs!")
-            net_model = torch.nn.DataParallel(net_model) ## Multi GPUs
-            self.__model = net_model.to(self.__device)
-        elif torch.cuda.device_count() ==1:
-            self.__model = net_model.to(self.__device)
-        '''
-        self.__load_model_weights_e2(weight_path)
+        self.__load_model_weights(weight_path)
 
     def __load_model_weights(self, weight_path):
         print("loading weight file from : {}".format(weight_path))
@@ -87,7 +78,7 @@ if __name__ == "__main__":
     parser.add_argument('--log_path', type=str, default='log/', help='log path')
     opt = parser.parse_args()
     writer = SummaryWriter(logdir=opt.log_path + '/event')
-    logger = Logger(log_file_name=opt.log_val_path + '/log_coco_test.txt', log_level=logging.DEBUG,
-                    logger_name='GGHL_FG').get_log()
+    logger = Logger(log_file_name=opt.log_val_path + '/log_test.txt', log_level=logging.DEBUG,
+                    logger_name='GGHL').get_log()
 
     Tester(weight_path=opt.weight_path, gpu_id=opt.gpu_id, eval=opt.eval, visiual=opt.visiual).test()
