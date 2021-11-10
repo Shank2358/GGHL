@@ -83,22 +83,6 @@ class Trainer(object):
 
 
         self.scaler = amp.GradScaler(enabled=self.cuda)
-    def __load_model_weights_e2(self, weight_path,resume):
-        if resume:
-            last_weight = os.path.join(os.path.split(weight_path)[0], "last.pt")
-            chkpt = torch.load(last_weight, map_location=self.device)
-            model_dict = self.model.state_dict()
-            print(len(chkpt.keys()))
-            chkpt['model'] = {k: v for k, v in chkpt['model'].items() if k in model_dict}
-            print(len(chkpt['model'].keys()))
-            model_dict.update(chkpt['model'])
-            self.model.load_state_dict(model_dict)
-            self.start_epoch = chkpt['epoch'] + 1
-            if chkpt['optimizer'] is not None:
-                self.optimizer.load_state_dict(chkpt['optimizer'])
-                self.best_mAP = chkpt['best_mAP']
-            del chkpt
-
 
     def __load_model_weights_Resnet(self, weight_path, resume):
         if resume:
@@ -218,7 +202,7 @@ class Trainer(object):
                         cfg.TRAIN["MULTI_TRAIN_RANGE"][0], cfg.TRAIN["MULTI_TRAIN_RANGE"][1],
                         cfg.TRAIN["MULTI_TRAIN_RANGE"][2])) * 32
             self.__save_model_weights(epoch, mAP)
-            if epoch >= 270 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
+            if epoch >= 70 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
                 logger.info("===== Validate =====".format(epoch, self.epochs))
                 with torch.no_grad():
                     APs, inference_time = Evaluator(self.model).APs_voc()
@@ -247,7 +231,7 @@ if __name__ == "__main__":
     parser.add_argument('--log_path', type=str, default='log/', help='log path')
     opt = parser.parse_args()
     writer = SummaryWriter(logdir=opt.log_path + '/event')
-    logger = Logger(log_file_name=opt.log_path + '/log.txt', log_level=logging.DEBUG, logger_name='ABGH').get_log()
+    logger = Logger(log_file_name=opt.log_path + '/log.txt', log_level=logging.DEBUG, logger_name='GGHL').get_log()
     Trainer(weight_path=opt.weight_path, resume=opt.resume, gpu_id=opt.gpu_id).train()
 
     #tensorboard --logdir=log
