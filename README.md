@@ -2,8 +2,8 @@
 ## This is the implementation of GGHL 
 [[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)]
 
-If you use it, please give this project a star and consider citing:
-
+#### If you use it, please give this project a star and consider citing:
+```arxiv
 article{huang2021general,
   title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},  
   author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},  
@@ -13,30 +13,35 @@ article{huang2021general,
   eprinttype = {arxiv},  
   archiveprefix = {arXiv}  
 }
+```
 
-<div algin="center">
-<img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="350"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="400">
-</div>
+<p algin="center">
+<img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
+</p>
 
-### 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
+#### 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
 论文结果对应的模型权重可以下载了（终于发工资把网盘续上了~）
 
-### 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December  
+#### 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December  
 打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线  
 
-### 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
+#### 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
 1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
+  
 
-## Environments
-Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10, VS2019)   
+## 1.Environments
+Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10)   
 CUDA > 11.1, Cudnn > 8.0.4
+
+First, install CUDA, Cudnn, and Pytorch.
+Second, install the dependent libraries in [requirements.txt](https://github.com/Shank2358/GGHL/blob/main/requirements.txt). 
 
 ```python
 conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
 pip install -r requirements.txt  
 ```
 
-## Installation
+## 2.Installation
 1. git clone this repository    
 2. Install the libraries in the ./lib folder  
 (1) DCNv2  
@@ -45,7 +50,7 @@ cd ./GGHL/lib/DCNv2/
 sh make.sh  
 ```
 
-## Datasets
+## 3.Datasets
 1. [DOTA dataset](https://captain-whu.github.io/DOTA/dataset.html) and its [devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit)  
 (1) VOC Format  
 You need to write a script to convert them into the train.txt file required by this repository and put them in the ./dataR folder.  
@@ -54,26 +59,32 @@ For the specific format of the train.txt file, see the example in the /dataR fol
 to be continued
 
 
-## Usage Example
-### 1. train  
+## 4.Usage Example
+#### (1) train  
 ```python
 python train_GGHL.py
 ```
 
-### 2. For Distributed Training  
+#### (2) For Distributed Training  
 
 ```bash
 sh train_GGHL_dist.sh
 ```
 
-### 3. test  
+#### (3) test  
 ```python
 python test.py
 ```
 
-## Weights
+## 5.Weights
 The pre-trained weights and trained models are available from [Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)  
 Put them in. /weight folder
+
+## 6.Reference
+https://github.com/Peterisfar/YOLOV3
+https://github.com/argusswift/YOLOv4-pytorch
+https://github.com/ultralytics/yolov5
+https://github.com/jinfagang/DCNv2_latest
 
 ## To be continued 
 
