@@ -18,6 +18,8 @@ article{huang2021general,
 <p algin="center">
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
+
+  
 #### 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 
 增加了DCNv2的混合精度训练和onnx转换 (推理阶段要记得把offsets改成FP16)
 
