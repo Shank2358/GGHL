@@ -33,69 +33,6 @@ class Construct_Dataset(Dataset):
         del img_org, bboxes_org, img_mix, bboxes_mix
         label_sbbox, label_mbbox, label_lbbox = self.__creat_label(bboxes)
 
-        '''
-        import matplotlib.pyplot as plt
-        import matplotlib.ticker as ticker
-        img = np.uint8(np.transpose(img, (1, 2, 0)) * 255)
-        plt.figure("img")  # 图像窗口名称
-        plt.imshow(img)
-
-        mask_s = np.max(label_sbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_s")  # 图像窗口名称
-        plt.imshow(mask_s, cmap='jet')
-        mask_s1 = np.max(label_sbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_s1")  # 图像窗口名称
-        plt.imshow(mask_s1, cmap='jet')
-        imgs = cv2.resize(img, dsize=None, fx=1/8, fy=1/8, interpolation=cv2.INTER_NEAREST)
-        mask_s = mask_s * 255
-        mask_s = np.uint8(np.concatenate((mask_s, mask_s, mask_s), axis=2))
-        mask_s = cv2.applyColorMap(mask_s, cv2.COLORMAP_RAINBOW)
-        add_img = cv2.addWeighted(imgs, 0.5, mask_s, 0.5, 0)
-        plt.figure("ImageS")  # 图像窗口名称
-        plt.imshow(add_img / 255, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-
-        mask_m = np.max(label_mbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_m")  # 图像窗口名称
-        plt.imshow(mask_m, cmap='jet')
-        mask_m1 = np.max(label_mbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_m1")  # 图像窗口名称
-        plt.imshow(mask_m1, cmap='jet')
-        imgm = cv2.resize(img, dsize=None, fx=1 / 16, fy=1 / 16, interpolation=cv2.INTER_NEAREST)
-        mask_m = mask_m * 255
-        mask_m = np.uint8(np.concatenate((mask_m, mask_m, mask_m), axis=2))
-        mask_m = cv2.applyColorMap(mask_m, cv2.COLORMAP_RAINBOW)
-        add_img = cv2.addWeighted(imgm, 0.5, mask_m, 0.5, 0)
-        plt.figure("ImageM")  # 图像窗口名称
-        plt.imshow(add_img / 255, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-
-        mask_l = np.max(label_lbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_l")  # 图像窗口名称
-        plt.imshow(mask_l, cmap='jet')
-        mask_l1 = np.max(label_lbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_l1")  # 图像窗口名称
-        plt.imshow(mask_l1, cmap='jet')
-        imgl = cv2.resize(img, dsize=None, fx=1 / 32, fy=1 / 32, interpolation=cv2.INTER_NEAREST)
-        mask_l = mask_l * 255
-        mask_l = np.uint8(np.concatenate((mask_l, mask_l, mask_l), axis=2))
-        mask_l = cv2.applyColorMap(mask_l, cv2.COLORMAP_RAINBOW)
-        add_img = cv2.addWeighted(imgl, 0.5, mask_l, 0.5, 0)
-        plt.figure("ImageL")  # 图像窗口名称
-        plt.imshow(add_img / 255, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-
-        plt.show()'''
-
         img = torch.from_numpy(img).float()
         label_sbbox = torch.from_numpy(label_sbbox).float()
         label_mbbox = torch.from_numpy(label_mbbox).float()
@@ -137,18 +74,18 @@ class Construct_Dataset(Dataset):
         grid_y = int(c_y_r // self.stride[k])
         r_w = len_w / self.stride[k] * 0.5 + 1e-16
         r_h = len_h / self.stride[k] * 0.5 + 1e-16
-        r_w_max = int(np.clip(np.power(box_w / self.stride[k] / 2, 1), 1, np.inf))
-        r_h_max = int(np.clip(np.power(box_h / self.stride[k] / 2, 1), 1, np.inf))
+        r_w_max = int(np.clip(np.power(box_w / self.stride[k] / 2, 1), 1, 4-k))
+        r_h_max = int(np.clip(np.power(box_h / self.stride[k] / 2, 1), 1, 4-k))
         sub_xmin = max(grid_x - r_w_max, 0)
         sub_xmax = min(grid_x + r_w_max + 1, ws - 1)
         sub_ymin = max(grid_y - r_h_max, 0)
         sub_ymax = min(grid_y + r_h_max + 1, hs - 1)
         gt_tensor_oval_1 = np.zeros([hs, ws, 1])
+        R = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+        Eig = np.array([[2 / np.power(r_w, 1-self.IOU_thresh), 0], [0, 2 / np.power(r_h, 1-self.IOU_thresh)]])
         for i in range(sub_xmin, sub_xmax):
             for j in range(sub_ymin, sub_ymax):
                 ax = np.array([[i - grid_x, j - grid_y]]).transpose()
-                R = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
-                Eig = np.array([[2 / np.power(r_w, 1-self.IOU_thresh), 0], [0, 2 / np.power(r_h, 1-self.IOU_thresh)]])
                 axnew = np.dot(np.dot(Eig, R), ax)
                 v = np.exp(- (axnew[0, 0] ** 2 + axnew[1, 0] ** 2) / 2)  # / (2 * np.pi)
                 pre_v_oval = gt_tensor_oval_1[j, i, 0:1]
@@ -180,13 +117,10 @@ class Construct_Dataset(Dataset):
             box_h = (ymax - ymin)
             c_x = (xmax + xmin) / 2
             c_y = (ymax + ymin) / 2
-            if gt_label[13] > 0.85:
-                a1 = a2 = a3 = a4 = 0
-            else:
-                a1 = (bbox_obb[0] - bbox_xyxy[0]) / box_w
-                a2 = (bbox_obb[3] - bbox_xyxy[1]) / box_h
-                a3 = (bbox_xyxy[2] - bbox_obb[4]) / box_w
-                a4 = (bbox_xyxy[3] - bbox_obb[7]) / box_h
+            a1 = (bbox_obb[0] - bbox_xyxy[0]) / box_w
+            a2 = (bbox_obb[3] - bbox_xyxy[1]) / box_h
+            a3 = (bbox_xyxy[2] - bbox_obb[4]) / box_w
+            a4 = (bbox_xyxy[3] - bbox_obb[7]) / box_h
             class_id = int(gt_label[4])
             len_w = (np.sqrt((bbox_obb[5] - bbox_obb[3]) ** 2 + (bbox_obb[2] - bbox_obb[4]) ** 2)
                      + np.sqrt((bbox_obb[7] - bbox_obb[1]) ** 2 + (bbox_obb[0] - bbox_obb[6]) ** 2)) / 2
@@ -198,7 +132,7 @@ class Construct_Dataset(Dataset):
             if angle == -np.pi/2:
                 angle = 0
             length = max(box_w, box_h)
-            if box_w > 1 and box_h > 1:
+            if box_w > 8 and box_h > 8:
                 if length <= layer_thresh[0]:
                     self.generate_label(0, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
                                         ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,
