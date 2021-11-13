@@ -132,7 +132,7 @@ class Construct_Dataset(Dataset):
             if angle == -np.pi/2:
                 angle = 0
             length = max(box_w, box_h)
-            if box_w > 8 and box_h > 8:
+            if max(box_w, box_h) > 10 or (box_w*box_w) > 80:
                 if length <= layer_thresh[0]:
                     self.generate_label(0, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
                                         ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,
