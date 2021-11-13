@@ -33,89 +33,6 @@ class Construct_Dataset(Dataset):
         del img_org, bboxes_org, img_mix, bboxes_mix
         label_xsbbox, label_sbbox, label_mbbox, label_lbbox = self.__creat_label(bboxes)
 
-        '''
-        import matplotlib.pyplot as plt
-        import matplotlib.ticker as ticker
-        img = np.uint8(np.transpose(img, (1, 2, 0)) * 255)
-        plt.figure("img")  # 图像窗口名称
-        plt.imshow(img)
-
-        # (label_sbbox[:, :, 2:3] > 0)
-        mask_xs = np.max(label_xsbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_xs")  # 图像窗口名称
-        plt.imshow(mask_xs, cmap='jet')
-        mask_xs1 = np.max(label_xsbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_xs1")  # 图像窗口名称
-        plt.imshow(mask_xs1, cmap='jet')
-        imgs = cv2.resize(img, dsize=None, fx=1/4, fy=1/4, interpolation=cv2.INTER_NEAREST)
-        mask_xs = mask_xs * 255
-        mask_xs = np.uint8(np.concatenate((mask_xs, mask_xs, mask_xs), axis=2))
-        mask_xs = cv2.applyColorMap(mask_xs, cv2.COLORMAP_RAINBOW)
-        add_img = cv2.addWeighted(imgs, 0.5, mask_xs, 0.5, 0)
-        plt.figure("ImagexS")  # 图像窗口名称
-        plt.imshow(add_img / 255, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-
-        mask_s = np.max(label_sbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_s")  # 图像窗口名称
-        plt.imshow(mask_s, cmap='jet')
-        mask_s1 = np.max(label_sbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_s1")  # 图像窗口名称
-        plt.imshow(mask_s1, cmap='jet')
-        imgs = cv2.resize(img, dsize=None, fx=1/8, fy=1/8, interpolation=cv2.INTER_NEAREST)
-        mask_s = mask_s * 255
-        mask_s = np.uint8(np.concatenate((mask_s, mask_s, mask_s), axis=2))
-        mask_s = cv2.applyColorMap(mask_s, cv2.COLORMAP_RAINBOW)
-        add_img = cv2.addWeighted(imgs, 0.5, mask_s, 0.5, 0)
-        plt.figure("ImageS")  # 图像窗口名称
-        plt.imshow(add_img / 255, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-
-        mask_m = np.max(label_mbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_m")  # 图像窗口名称
-        plt.imshow(mask_m, cmap='jet')
-        mask_m1 = np.max(label_mbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_m1")  # 图像窗口名称
-        plt.imshow(mask_m1, cmap='jet')
-        imgm = cv2.resize(img, dsize=None, fx=1 / 16, fy=1 / 16, interpolation=cv2.INTER_NEAREST)
-        mask_m = mask_m * 255
-        mask_m = np.uint8(np.concatenate((mask_m, mask_m, mask_m), axis=2))
-        mask_m = cv2.applyColorMap(mask_m, cv2.COLORMAP_RAINBOW)
-        add_img = cv2.addWeighted(imgm, 0.5, mask_m, 0.5, 0)
-        plt.figure("ImageM")  # 图像窗口名称
-        plt.imshow(add_img / 255, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-
-
-        mask_l = np.max(label_lbbox[:, :, 16:], -1, keepdims=True)
-        plt.figure("mask_l")  # 图像窗口名称
-        plt.imshow(mask_l, cmap='jet')
-        mask_l1 = np.max(label_lbbox[:, :, 13:14], -1, keepdims=True)
-        plt.figure("mask3")  # 图像窗口名称
-        plt.imshow(mask_l1, cmap='jet')
-        imgl = cv2.resize(img, dsize=None, fx=1 / 32, fy=1 / 32, interpolation=cv2.INTER_NEAREST)
-        mask_l = mask_l * 255
-        mask_l = np.uint8(np.concatenate((mask_l, mask_l, mask_l), axis=2))
-        mask_l = cv2.applyColorMap(mask_l, cv2.COLORMAP_RAINBOW)
-        add_img = cv2.addWeighted(imgl, 0.5, mask_l, 0.5, 0)
-        plt.figure("ImageL")  # 图像窗口名称
-        plt.imshow(add_img / 255, cmap='jet')
-        cb = plt.colorbar()
-        tick_locator = ticker.MaxNLocator(nbins=5)
-        cb.locator = tick_locator
-        cb.update_ticks()
-
-        plt.show()'''
-
         img = torch.from_numpy(img).float()
         label_xsbbox = torch.from_numpy(label_xsbbox).float()
         label_sbbox = torch.from_numpy(label_sbbox).float()
@@ -218,7 +135,7 @@ class Construct_Dataset(Dataset):
             if angle == -np.pi/2:
                 angle = 0
             length = max(box_w, box_h)
-            if box_w > 1 and box_h > 1:
+            if max(box_w, box_h) > 10 or (box_w*box_w) > 80:
                 if length <= layer_thresh[0]:
                     self.generate_label(0, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
                                         ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,
