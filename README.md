@@ -19,7 +19,10 @@ article{huang2021general,
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
 
-  
+#### 11.14 更新预告
+即将更新更多的backbone和模型，以及mosaic数据增强,一周内更完。下周会更新第一版的代码注释和教程，即dataloadR/datasets_obb.py文件，主要是GGHL中最重要的标签分配策略。
+另外GGHLv2.0正在准备和实验中，立个flag今年更新完。
+
 #### 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 
 增加了DCNv2的混合精度训练和onnx转换 (推理阶段要记得把offsets改成FP16)
 
