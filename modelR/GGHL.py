@@ -1,7 +1,6 @@
 import sys
 sys.path.append("..")
 import torch.nn as nn
-import e2cnn.nn as enn
 from modelR.backbones.darknet53 import Darknet53
 from modelR.necks.neck_GGHL import Neck
 from modelR.head.head_GGHL import Head
@@ -52,11 +51,6 @@ class GGHL(nn.Module):
                 print("initing {}".format(m))
             elif isinstance(m, nn.Linear):
                 m.weight.data.normal_(0,0.01)
-                if m.bias is not None:
-                    m.bias.data.zero_()
-                print("initing {}".format(m))
-            elif isinstance(m, enn.R2Conv):
-                torch.nn.init.normal_(m.weights.data, 0.0, 0.01)
                 if m.bias is not None:
                     m.bias.data.zero_()
                 print("initing {}".format(m))
