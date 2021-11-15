@@ -90,6 +90,25 @@ image_path xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle
 #### (2) Testing Format
 The same as the Pascal VOC Format
 
+#### (3) DataSets Files Structure
+  ```
+  cfg.DATA_PATH = "/opt/datasets/DOTA/"
+  ├── ...
+  ├── JPEGImages
+  |   ├── 000001.png
+  |   ├── 000002.png
+  |   └── ...
+  ├── Annotations (DOTA Dataset Format)
+  |   ├── 000001.txt (class_idx x1 y1 x2 y2 x3 y3 x4 y4)
+  |   ├── 000002.txt
+  |   └── ...
+  ├── ImageSets
+      ├── test.txt (testing filename)
+          ├── 000001
+          ├── 000002
+          └── ...
+  ```
+
 
 ## 🌠🌠🌠 4.Usage Example
 #### (1) Training  
