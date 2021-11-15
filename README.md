@@ -86,6 +86,7 @@ For the specific format of the train.txt file, see the example in the /dataR fol
 ```txt
 image_path xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle[0,-90) xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle[0,-90)...
 ```  
+The calculation method of angle is explained in [Issues #1](https://github.com/Shank2358/GGHL/issues/1) and our paper.
 
 #### (2) Testing Format
 The same as the Pascal VOC Format
