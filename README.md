@@ -19,23 +19,23 @@ article{huang2021general,
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
 
-#### 11.15 The models for the SKU dataset are available 👾
+#### 👾 11.15 The models for the SKU dataset are available 
 其他数据的权重近期会陆续上传和更新
 
-#### 11.14 更新预告 🤖
+#### 🤖 11.14 更新预告 
 即将更新更多的backbone和模型，以及mosaic数据增强,一周内更完。下周会更新第一版的代码注释和教程，即dataloadR/datasets_obb.py文件，主要是GGHL中最重要的标签分配策略。
 另外GGHLv2.0正在准备和实验中，立个flag今年更新完。
 
-#### 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 🎅
+#### 🎅 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 
 增加了DCNv2的混合精度训练和onnx转换 (推理阶段要记得把offsets改成FP16)
 
-#### 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  🐣 🐤 🐥
+#### 🐣 🐤 🐥 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
 论文结果对应的模型权重可以下载了（终于发工资把网盘续上了~）
 
-#### 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December 🐞  
+#### 🐞 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December   
 打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线  
 
-#### 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you. 🦄
+#### 🦄 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
 1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
   
 
@@ -65,7 +65,11 @@ sh make.sh
 
 (1) VOC Format  
 You need to write a script to convert them into the train.txt file required by this repository and put them in the ./dataR folder.  
-For the specific format of the train.txt file, see the example in the /dataR folder.    
+For the specific format of the train.txt file, see the example in the /dataR folder.   
+
+```txt
+image_path xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle[0,-90) xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle[0,-90)...
+```  
 
 (2) COCO Format...
 to be continued
