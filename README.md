@@ -2,7 +2,7 @@
 ## This is the implementation of GGHL 👋👋👋
 [[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)]
 
-#### Give a ⭐️ if this project helped you. If you use it, please consider citing:
+### Give a ⭐️ if this project helped you. If you use it, please consider citing:
 ```arxiv
 article{huang2021general,
   title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},  
@@ -15,14 +15,15 @@ article{huang2021general,
 }
 ```
 
-#### 👹 Abstract of the paper
-Recently, many arbitrary-oriented object detection (AOOD) methods have been proposed and attracted widespread attention in many fields. However, most of them are based
-on anchor-boxes or standard Gaussian heatmaps. Such label assignment strategy may not only fail to reflect the shape and direction characteristics of arbitrary-oriented objects, but also have high parameter-tuning efforts. In this paper, a novel AOOD method called General Gaussian Heatmap Labeling (GGHL) is proposed. Specifically, an anchor-free object-adaptation label assignment (OLA) strategy is presented to define the positive candidates based on two-dimensional (2-D) oriented Gaussian heatmaps, which reflect the shape and direction features of arbitrary-oriented objects. Based on OLA, an oriented-boundingbox (OBB) representation component (ORC) is developed to indicate OBBs and adjust the Gaussian center prior weights to fit the characteristics of different objects adaptively through neural network learning. Moreover, a joint-optimization loss (JOL) with area normalization and dynamic confidence weighting is designed to refine the misalign optimal results of different subtasks. Extensive experiments on public datasets demonstrate
-that the proposed GGHL improves the AOOD performance with low parameter-tuning and time costs. Furthermore, it is generally applicable to most AOOD methods to improve their performance including lightweight models on embedded platforms.
+### 👹 Abstract of the paper
+
+  Recently, many arbitrary-oriented object detection (AOOD) methods have been proposed and attracted widespread attention in many fields. However, most of them are based on anchor-boxes or standard Gaussian heatmaps. Such label assignment strategy may not only fail to reflect the shape and direction characteristics of arbitrary-oriented objects, but also have high parameter-tuning efforts. In this paper, a novel AOOD method called General Gaussian Heatmap Labeling (GGHL) is proposed. Specifically, an anchor-free object adaptation label assignment (OLA) strategy is presented to define the positive candidates based on two-dimensional (2-D) oriented Gaussian heatmaps, which reflect the shape and direction features of arbitrary-oriented objects. Based on OLA, an oriented-boundingbox (OBB) representation component (ORC) is developed to indicate OBBs and adjust the Gaussian center prior weights to fit the characteristics of different objects adaptively through neural network learning. Moreover, a joint-optimization loss (JOL) with area normalization and dynamic confidence weighting is designed to refine the misalign optimal results of different subtasks. Extensive experiments on public datasets demonstrate that the proposed GGHL improves the AOOD performance with low parameter-tuning and time costs. Furthermore, it is generally applicable to most AOOD methods to improve their performance including lightweight models on embedded platforms.  
 
 <p algin="center">
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
+
+## 🦞 🦀 🦑 News
 
 #### 👾 11.15 The models for the SKU dataset are available 
 其他数据的权重近期会陆续上传和更新
