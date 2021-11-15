@@ -114,10 +114,8 @@ https://github.com/argusswift/YOLOv4-pytorch
 https://github.com/ultralytics/yolov5  
 https://github.com/jinfagang/DCNv2_latest  
   
-  
  
 ## 🤐 To be continued 
-  
   
   
 #### 💣 11.6 更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
