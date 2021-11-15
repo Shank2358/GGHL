@@ -79,7 +79,7 @@ sh make.sh
 ## 🎃 3.Datasets
 1. [DOTA dataset](https://captain-whu.github.io/DOTA/dataset.html) and its [devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit)  
 
-#### (1) VOC Format  
+#### (1) Training Format  
 You need to write a script to convert them into the train.txt file required by this repository and put them in the ./dataR folder.  
 For the specific format of the train.txt file, see the example in the /dataR folder.   
 
@@ -87,8 +87,8 @@ For the specific format of the train.txt file, see the example in the /dataR fol
 image_path xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle[0,-90) xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle[0,-90)...
 ```  
 
-(2) COCO Format...
-to be continued
+#### (2) Testing Format
+The same as the Pascal VOC Format
 
 
 ## 🌠🌠🌠 4.Usage Example
