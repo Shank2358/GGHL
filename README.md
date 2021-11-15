@@ -124,7 +124,7 @@ https://github.com/jinfagang/DCNv2_latest
 
   
 ## 📝 License  
-Copyright © 2021 Shank2358(https://github.com/Shank2358).<br />
+Copyright © 2021 [Shank2358](https://github.com/Shank2358).<br />
 This project is [GNU General Public License v3.0](https://github.com/Shank2358/GGHL/blob/main/LICENSE) licensed.
  
 ## 🤐 To be continued 
