@@ -1,4 +1,12 @@
 # GGHL: A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
+
+  <a href="https://github.com/Shank2358/GGHL/">
+    <img alt="Version" src="https://img.shields.io/badge/Version-1.0.0-blue" />
+  </a>
+    <a href="https://github.com/Shank2358/GGHL/blob/main/LICENSE">
+    <img alt="GPLv3.0 License" src="https://img.shields.io/badge/Version-1.0.0-blue" />
+  </a>
+
 ## This is the implementation of GGHL 👋👋👋
 [[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)]
 
@@ -113,14 +121,16 @@ https://github.com/Peterisfar/YOLOV3
 https://github.com/argusswift/YOLOv4-pytorch  
 https://github.com/ultralytics/yolov5  
 https://github.com/jinfagang/DCNv2_latest  
+
   
+## 📝 License  
+Copyright © 2021 Shank2358(https://github.com/Shank2358).<br />
+This project is [GNU General Public License v3.0](https://github.com/Shank2358/GGHL/blob/main/LICENSE) licensed.
  
 ## 🤐 To be continued 
-  
-  
+
 #### 💣 11.6 更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
 （预训练权重的链接在NPMMR-Det和LO-Det的仓库说明里）
-  
   
 #### 🙈 正文开始前的惯例的碎碎念（可以跳过直接看正文使用说明）
 投稿排队实在太慢了，三个月了还在形式审查没分配AE,555~ 先在arxiv上挂出来了。代码还没传完，最近会陆续修改和上传。如果熟悉我的NPMMR-Det代码的朋友，可以直接把dataloader的那个标签分配的代码放到那边去，稍微改改检测头的层数就可以跑出来了。正式版我争取一个月内更新完。方法和代码的任何问题都欢迎大家批评指正，issues或者邮箱都可以联系到我，感谢各位大佬。 
