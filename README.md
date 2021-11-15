@@ -2,20 +2,20 @@
 ## This is the implementation of GGHL 👋👋👋
 [[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)]
 
-### Give a ⭐️ if this project helped you. If you use it, please consider citing:
-```arxiv
-article{huang2021general,
-  title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},  
-  author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},  
-  year = {2021},  
-  journal = {arXiv preprint arXiv:2109.12848},  
-  eprint = {2109.12848},  
-  eprinttype = {arxiv},  
-  archiveprefix = {arXiv}  
-}
-```
+  ### Give a ⭐️ if this project helped you. If you use it, please consider citing:
+  ```arxiv
+  article{huang2021general,
+    title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},  
+    author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},  
+    year = {2021},  
+    journal = {arXiv preprint arXiv:2109.12848},  
+    eprint = {2109.12848},  
+    eprinttype = {arxiv},  
+    archiveprefix = {arXiv}  
+  }
+  ```
 
-### 👹 Abstract of the paper
+  ### 👹 Abstract of the paper
 
   Recently, many arbitrary-oriented object detection (AOOD) methods have been proposed and attracted widespread attention in many fields. However, most of them are based on anchor-boxes or standard Gaussian heatmaps. Such label assignment strategy may not only fail to reflect the shape and direction characteristics of arbitrary-oriented objects, but also have high parameter-tuning efforts. In this paper, a novel AOOD method called General Gaussian Heatmap Labeling (GGHL) is proposed. Specifically, an anchor-free object adaptation label assignment (OLA) strategy is presented to define the positive candidates based on two-dimensional (2-D) oriented Gaussian heatmaps, which reflect the shape and direction features of arbitrary-oriented objects. Based on OLA, an oriented-boundingbox (OBB) representation component (ORC) is developed to indicate OBBs and adjust the Gaussian center prior weights to fit the characteristics of different objects adaptively through neural network learning. Moreover, a joint-optimization loss (JOL) with area normalization and dynamic confidence weighting is designed to refine the misalign optimal results of different subtasks. Extensive experiments on public datasets demonstrate that the proposed GGHL improves the AOOD performance with low parameter-tuning and time costs. Furthermore, it is generally applicable to most AOOD methods to improve their performance including lightweight models on embedded platforms.  
 
@@ -23,25 +23,25 @@ article{huang2021general,
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
 
-## 🦞 🦀 🦑 News
+## 0.News 🦞 🦀 🦑 
 
-#### 👾 11.15 The models for the SKU dataset are available 
+* #### 👾 11.15 The models for the SKU dataset are available 
 其他数据的权重近期会陆续上传和更新
 
-#### 🤖 11.14 更新预告 
+* #### 🤖 11.14 更新预告 
 即将更新更多的backbone和模型，以及mosaic数据增强,一周内更完。下周会更新第一版的代码注释和教程，即dataloadR/datasets_obb.py文件，主要是GGHL中最重要的标签分配策略。
 另外GGHLv2.0正在准备和实验中，立个flag今年更新完。
 
-#### 🎅 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 
+* #### 🎅 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 
 增加了DCNv2的混合精度训练和onnx转换 (推理阶段要记得把offsets改成FP16)
 
-#### 🐣 🐤 🐥 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
+* #### 🐣 🐤 🐥 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
 论文结果对应的模型权重可以下载了（终于发工资把网盘续上了~）
 
-#### 🐞 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December   
+* #### 🐞 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December   
 打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线  
 
-#### 🦄 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
+* #### 🦄 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
 1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
   
 
@@ -56,7 +56,8 @@ Second, install the dependent libraries in [requirements.txt](https://github.com
 conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
 pip install -r requirements.txt  
 ```
-
+  
+  
 ## 🌟 2.Installation
 1. git clone this repository    
 2. Install the libraries in the ./lib folder  
@@ -65,11 +66,12 @@ pip install -r requirements.txt
 cd ./GGHL/lib/DCNv2/  
 sh make.sh  
 ```
-
+  
+  
 ## 🎃 3.Datasets
 1. [DOTA dataset](https://captain-whu.github.io/DOTA/dataset.html) and its [devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit)  
 
-(1) VOC Format  
+#### (1) VOC Format  
 You need to write a script to convert them into the train.txt file required by this repository and put them in the ./dataR folder.  
 For the specific format of the train.txt file, see the example in the /dataR folder.   
 
@@ -97,7 +99,8 @@ sh train_GGHL_dist.sh
 ```python
 python test.py
 ```
-
+  
+  
 ## ☃️❄️ 5.Weights
 The pre-trained weights and trained models are available from [Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)  
 Put them in. /weight folder
@@ -110,12 +113,17 @@ https://github.com/Peterisfar/YOLOV3
 https://github.com/argusswift/YOLOv4-pytorch  
 https://github.com/ultralytics/yolov5  
 https://github.com/jinfagang/DCNv2_latest  
-
+  
+  
+ 
 ## 🤐 To be continued 
-
+  
+  
+  
 #### 💣 11.6 更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
 （预训练权重的链接在NPMMR-Det和LO-Det的仓库说明里）
-
+  
+  
 #### 🙈 正文开始前的惯例的碎碎念（可以跳过直接看正文使用说明）
 投稿排队实在太慢了，三个月了还在形式审查没分配AE,555~ 先在arxiv上挂出来了。代码还没传完，最近会陆续修改和上传。如果熟悉我的NPMMR-Det代码的朋友，可以直接把dataloader的那个标签分配的代码放到那边去，稍微改改检测头的层数就可以跑出来了。正式版我争取一个月内更新完。方法和代码的任何问题都欢迎大家批评指正，issues或者邮箱都可以联系到我，感谢各位大佬。 
 等正式版出来以后，我会尽最大努力帮助大家跑通代码和复现出接近论文报道结果的实验，因为我自己也被坑多了，好多遥感领域的论文不开源代码或者根本复现不出来，或者就是模型复杂到眼花缭乱换个数据/参数就失灵，实在是太难了。论文里关于NPMMR-Det和LO-Det的实验代码会在那两个仓库里面更新，NPMMRDet的baseline目前已经更新完了，你们可以试试看能不能跑。LO-Det的正在更新中，可以看那边的说明(11.1也更新了)。 
