@@ -59,9 +59,11 @@ sh make.sh
 
 ## 3.Datasets
 1. [DOTA dataset](https://captain-whu.github.io/DOTA/dataset.html) and its [devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit)  
+
 (1) VOC Format  
 You need to write a script to convert them into the train.txt file required by this repository and put them in the ./dataR folder.  
-For the specific format of the train.txt file, see the example in the /dataR folder.  
+For the specific format of the train.txt file, see the example in the /dataR folder.    
+
 (2) COCO Format...
 to be continued
 
