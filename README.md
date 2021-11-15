@@ -15,6 +15,11 @@ article{huang2021general,
 }
 ```
 
+#### 👹 Abstract of the paper
+Recently, many arbitrary-oriented object detection (AOOD) methods have been proposed and attracted widespread attention in many fields. However, most of them are based
+on anchor-boxes or standard Gaussian heatmaps. Such label assignment strategy may not only fail to reflect the shape and direction characteristics of arbitrary-oriented objects, but also have high parameter-tuning efforts. In this paper, a novel AOOD method called General Gaussian Heatmap Labeling (GGHL) is proposed. Specifically, an anchor-free object-adaptation label assignment (OLA) strategy is presented to define the positive candidates based on two-dimensional (2-D) oriented Gaussian heatmaps, which reflect the shape and direction features of arbitrary-oriented objects. Based on OLA, an oriented-boundingbox (OBB) representation component (ORC) is developed to indicate OBBs and adjust the Gaussian center prior weights to fit the characteristics of different objects adaptively through neural network learning. Moreover, a joint-optimization loss (JOL) with area normalization and dynamic confidence weighting is designed to refine the misalign optimal results of different subtasks. Extensive experiments on public datasets demonstrate
+that the proposed GGHL improves the AOOD performance with low parameter-tuning and time costs. Furthermore, it is generally applicable to most AOOD methods to improve their performance including lightweight models on embedded platforms.
+
 <p algin="center">
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
@@ -107,7 +112,7 @@ https://github.com/jinfagang/DCNv2_latest
 
 ## 🤐 To be continued 
 
-#### 11.6更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
+#### 💣 11.6 更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
 （预训练权重的链接在NPMMR-Det和LO-Det的仓库说明里）
 
 #### 🙈 正文开始前的惯例的碎碎念（可以跳过直接看正文使用说明）
