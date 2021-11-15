@@ -4,7 +4,7 @@
     <img alt="Version" src="https://img.shields.io/badge/Version-1.0.0-blue" />
   </a>
     <a href="https://github.com/Shank2358/GGHL/blob/main/LICENSE">
-    <img alt="GPLv3.0 License" src="https://img.shields.io/badge/Version-1.0.0-blue" />
+    <img alt="GPLv3.0 License" src="https://img.shields.io/badge/License-GPLv3.0-blue" />
   </a>
 
 ## This is the implementation of GGHL 👋👋👋
