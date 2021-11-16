@@ -32,6 +32,8 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑 
+* #### 🐟 🐡 11.16 The script for generating datasets in the format required by GGHL is added in ./datasets_tools/DOTA2Train.py
+更新了用于生成GGHL所需格式数据集的工具(./datasets_tools/DOTA2Train.py)
 
 * #### 👾 11.15 The models for the SKU dataset are available 
 其他数据的权重近期会陆续上传和更新
@@ -108,8 +110,9 @@ The same as the Pascal VOC Format
           ├── 000001
           ├── 000002
           └── ...
-  ```
-
+  ```  
+There is a DOTA2Train.py file in the datasets_tools folder that can be used to generate training and test format labels.
+First, you need to use [DOTA_devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit) , the official tools of the DOTA dataset, for image and label splitting. Then, run DOTA2Train.py to convert them to the format required by GGHL. For the use of DOTA_devkit, please refer to the tutorial in the official repository.
 
 ## 🌠🌠🌠 4.Usage Example
 #### (1) Training  
