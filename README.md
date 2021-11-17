@@ -146,7 +146,9 @@ python test.py
   
   
 ## ☃️❄️ 5.Weights
-The pre-trained weights and trained models are available from [Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)  
+The pre-trained weights of Darknet53 on ImageNet are available from [Google_Drive](https://drive.google.com/file/d/1vfUDVeI12cBCgSgKMBz39gxkD1Z7kmFd/view?usp=sharing) or [Baidu_Disk](https://pan.baidu.com/s/1DZhooaEClu6rOnC7lE0Aiw)(password:0blv)
+
+The trained models are available from [Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)  
 Put them in. /weight folder
 
 The models for the SKU dataset are available from [Google Drive](https://drive.google.com/file/d/1l3FzZCUWpWL9adKIovQXi1EaHHzaOdAW/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1i8821aD0B-YNBkKXo-_CJg )(password: c3jv) 
