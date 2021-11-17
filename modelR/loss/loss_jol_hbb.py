@@ -97,7 +97,7 @@ class Loss(nn.Module):
         scores_iou = bbox_loss_scale * (1.0 - torch.clamp(xiou,0,1))
         scores_loc = torch.exp(-1 * (scores_iou))
         scores_cls_loc = torch.sigmoid(p_cls) * scores_loc
-
+        scores_cls_loc = -torch.log((1-scores_cls_loc)/scores_cls_loc+1e-16)
         offset0 = scores_loc.detach()
         offset0 = torch.max(offset0, dim=-1, keepdim=True)[0]
 
