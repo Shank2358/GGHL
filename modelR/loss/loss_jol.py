@@ -102,7 +102,7 @@ class Loss(nn.Module):
         scores_area = MSE(p_d_r, label_r)
         scores_loc = torch.exp(-1 * (scores_iou+scores_obb+scores_area))
         scores_cls_loc = torch.sigmoid(p_cls) * scores_loc
-        scores_cls_loc = -torch.log((1-scores_cls_loc)/scores_cls_loc+1e-16)
+        scores_cls_loc = -torch.log((1-scores_cls_loc)/(scores_cls_loc+1e-16)+1e-16)
         offset0 = scores_loc.detach()
         offset0 = torch.max(offset0, dim=-1, keepdim=True)[0]
         loss_fg = label_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix * ((gh_mask)+offset0)/2
