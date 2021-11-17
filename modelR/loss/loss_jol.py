@@ -133,5 +133,5 @@ class Loss(nn.Module):
         loss_r = 16 * (torch.sum(loss_r / N)) / batch_size
         loss_l = 0.2 * (torch.sum(loss_l / N)) / batch_size
 
-        loss = loss_fg + loss_bg + loss_pos + loss_neg + loss_iou + (loss_s + loss_r) + loss_l #+ loss_cls
+        loss = loss_fg + loss_bg + loss_pos + loss_neg + loss_iou + (loss_s + loss_r) + loss_l + loss_cls
         return loss, loss_fg, loss_bg, loss_pos, loss_neg, loss_iou, loss_cls, loss_s, loss_r, loss_l
