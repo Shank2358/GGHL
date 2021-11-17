@@ -101,7 +101,7 @@ class Loss(nn.Module):
         scores_obb = torch.sum(MSE(p_d_a, label_a), dim=-1, keepdim=True)
         scores_area = MSE(p_d_r, label_r)
         scores_loc = torch.exp(-1 * (scores_iou+scores_obb+scores_area))
-        scores_cls_loc = p_cls * scores_loc.detach()
+        scores_cls_loc = p_cls * scores_loc
 
         offset0 = scores_loc.detach()
         offset0 = torch.max(offset0, dim=-1, keepdim=True)[0]
