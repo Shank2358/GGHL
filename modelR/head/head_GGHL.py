@@ -44,7 +44,7 @@ class Head(nn.Module):
         maskr = pred_r
         zero = torch.zeros_like(maskr)
         one = torch.ones_like(maskr)
-        maskr = torch.where(maskr > 0.85, zero, one)
+        maskr = torch.where(maskr > 0.9, zero, one)
         pred_s[:, :, :, 0:1] = pred_s[:, :, :, 0:1] * maskr
         pred_s[:, :, :, 1:2] = pred_s[:, :, :, 1:2] * maskr
         pred_s[:, :, :, 2:3] = pred_s[:, :, :, 2:3] * maskr
