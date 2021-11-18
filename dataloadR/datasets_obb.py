@@ -117,10 +117,13 @@ class Construct_Dataset(Dataset):
             box_h = (ymax - ymin)
             c_x = (xmax + xmin) / 2
             c_y = (ymax + ymin) / 2
-            a1 = (bbox_obb[0] - bbox_xyxy[0]) / box_w
-            a2 = (bbox_obb[3] - bbox_xyxy[1]) / box_h
-            a3 = (bbox_xyxy[2] - bbox_obb[4]) / box_w
-            a4 = (bbox_xyxy[3] - bbox_obb[7]) / box_h
+            if gt_label[13] > 0.9:
+                a1 = a2 = a3 = a4 = 0
+            else:
+                a1 = (bbox_obb[0] - bbox_xyxy[0]) / box_w
+                a2 = (bbox_obb[3] - bbox_xyxy[1]) / box_h
+                a3 = (bbox_xyxy[2] - bbox_obb[4]) / box_w
+                a4 = (bbox_xyxy[3] - bbox_obb[7]) / box_h
             class_id = int(gt_label[4])
             len_w = (np.sqrt((bbox_obb[5] - bbox_obb[3]) ** 2 + (bbox_obb[2] - bbox_obb[4]) ** 2)
                      + np.sqrt((bbox_obb[7] - bbox_obb[1]) ** 2 + (bbox_obb[0] - bbox_obb[6]) ** 2)) / 2
