@@ -128,7 +128,7 @@ class Construct_Dataset(Dataset):
                      np.sqrt((bbox_obb[4] - bbox_obb[6]) ** 2 + (bbox_obb[5] - bbox_obb[7]) ** 2)) / 2
             c_x_r = (bbox_obb[0] + bbox_obb[2] + bbox_obb[4] + bbox_obb[6]) / 4
             c_y_r = (bbox_obb[1] + bbox_obb[3] + bbox_obb[5] + bbox_obb[7]) / 4
-            angle = np.abs(gt_label[14]*np.pi/180)
+            angle = -gt_label[14]*np.pi/180
             if angle == -np.pi/2:
                 angle = 0
             length = max(box_w, box_h)
