@@ -33,7 +33,9 @@
 
 ## 0.News 🦞 🦀 🦑 
 
-* #### 🙏🙏🙏 Release Notes
+* #### 11.18 😺 Fixed some bugs, please update the codes
+
+* #### 🙏🙏🙏 11.17 Release Notes
 There are still some uncompleted content that is being continuously updated. Thank you for your feedback and suggestions. 
 
 * #### 🐟 🐡 11.16 The script for generating datasets in the format required by GGHL is added in ./datasets_tools/DOTA2Train.py
