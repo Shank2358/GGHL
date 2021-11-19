@@ -68,7 +68,7 @@ class Evaluator(object):
         img = cv2.imread(img_path)
         bboxes_prd = self.get_bbox(img, self.multi_test, self.flip_test)
 
-        ''''''
+
         for bbox in bboxes_prd:
             coor = np.array(bbox[:4], dtype=np.int32)
             a_rota = np.array(bbox[4:8], dtype=np.float64)
@@ -87,6 +87,66 @@ class Evaluator(object):
             s = ' '.join([img_ind, score, str(int(x1)), str(int(y1)), str(int(x2)), str(int(y2)),
                           str(int(x3)), str(int(y3)), str(int(x4)), str(int(y4))]) + '\n'
             self.final_result[class_name].append(s)
+            '''
+            color = np.zeros(3)
+            points = np.array(
+                [[int(x1), int(y1)], [int(x2), int(y2)], [int(x3), int(y3)], [int(x4), int(y4)]])
+
+            if int(class_ind) == 0:
+                # 25 black
+                color = (64, 0, 0)
+            elif int(class_ind) == 1:
+                # 1359 blue
+                color = (255, 0, 0)
+            elif int(class_ind) == 2:
+                # 639 Yellow
+                color = (0, 255, 255)
+            elif int(class_ind) == 3:
+                # 4371 red
+                color = (0, 0, 255)
+            elif int(class_ind) == 4:
+                # 3025 green
+                color = (0, 255, 0)
+            elif int(class_ind) == 5:
+                # 1359 blue
+                color = (255, 0, 0)
+            elif int(class_ind) == 6:
+                # 639 Yellow
+                color = (0, 128, 255)
+            elif int(class_ind) == 7:
+                # 4371 red
+                color = (0, 0, 128)
+            elif int(class_ind) == 8:
+                # 3025 green
+                color = (0, 128, 0)
+            elif int(class_ind) == 9:
+                # 1359 blue
+                color = (128, 0, 0)
+            elif int(class_ind) == 10:
+                # 639 Yellow
+                color = (128, 128, 0)
+            elif int(class_ind) == 11:
+                # 4371 red
+                color = (0, 128, 128)
+            elif int(class_ind) == 12:
+                # 3025 green
+                color = (128, 128, 0)
+            elif int(class_ind) == 13:
+                # 1359 blue
+                color = (0, 255, 128)
+            elif int(class_ind) == 14:
+                # 639 Yellow
+                color = (255, 128, 255)
+            cv2.polylines(img, [points], 1, color, 2)
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            img = cv2.putText(img, class_name + ' ' + score[:4], (int(float(x1)), int(float(y1))), font, 0.3,
+                              (255, 255, 255), 1)
+        store_path = os.path.join(self.pred_result_path, 'imgs', img_ind + '.jpg')
+        cv2.imwrite(store_path, img, [int(cv2.IMWRITE_JPEG_QUALITY), 70])'''
+
+        store_path = os.path.join(cfg.PROJECT_PATH, 'predictionR/imgs/', img_ind + '.png')  ########
+        # print(store_path)
+        cv2.imwrite(store_path, img, [int(cv2.IMWRITE_JPEG_QUALITY), 100])  #################
 
     def get_bbox(self, img, multi_test=False, flip_test=False):
         # start_time = current_milli_time()

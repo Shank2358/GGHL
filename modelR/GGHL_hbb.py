@@ -1,7 +1,7 @@
 import sys
 sys.path.append("..")
 import torch.nn as nn
-from modelR.backbones.darknet53_4 import Darknet53
+from modelR.backbones.darknet53 import Darknet53
 from modelR.necks.neck_GGHL_hbb import Neck
 from modelR.head.head_GGHL_hbb import Head
 from modelR.layers.convolutions import Convolutional
