@@ -33,7 +33,7 @@
 
 ## 0.News 🦞 🦀 🦑 
 
-* #### 11.19 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
+* #### 11.19 😶 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
 <p algin="center">
 <img src="https://user-images.githubusercontent.com/33946139/142638611-39a20148-ce04-49fc-be19-2b6ffff0f9fa.png" width="320">
 </p>
@@ -64,7 +64,7 @@ There are still some uncompleted content that is being continuously updated. Tha
 
 * #### 🦄 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
 1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
-  
+
 
 ## 🌈 1.Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10)   
@@ -171,7 +171,8 @@ https://github.com/jinfagang/DCNv2_latest
 ## 📝 License  
 Copyright © 2021 [Shank2358](https://github.com/Shank2358).<br />
 This project is [GNU General Public License v3.0](https://github.com/Shank2358/GGHL/blob/main/LICENSE) licensed.
- 
+
+
 ## 🤐 To be continued 
 
 #### 💣 11.6 更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
