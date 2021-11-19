@@ -34,6 +34,8 @@
 ## 0.News 🦞 🦀 🦑 
 
 * #### 11.19 😶 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
+11.19-11.20 更新修复了标签转换脚本的一些bug (对于custom data的顶点顺序可能与DOTA不一致的问题)
+
 <p algin="center">
 <img src="https://user-images.githubusercontent.com/33946139/142638611-39a20148-ce04-49fc-be19-2b6ffff0f9fa.png" width="320">
 </p>
