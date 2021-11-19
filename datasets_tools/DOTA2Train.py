@@ -62,6 +62,98 @@ for label in label_list:
             corners_y_min = corners[np.argmin(corners[:, 1])][1]
             corners_fixed = corners_sorted
 
+            if corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed = corners_fixed[[1, 2, 3, 0]]
+
+
+            elif corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed[0, 1] = corners_y_min
+                corners_fixed[2, 1] = corners_y_max
+
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[0, 1]:
+
+                corners_fixed[1, 0] = corners_x_max
+                corners_fixed[3, 0] = corners_x_min
+
+            elif corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[0, 1]:
+
+                corners_fixed[2, 1] = corners_y_max
+
+            elif corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed[0, 1] = corners_y_min
+
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[0, 1]:
+
+                corners_fixed[1, 1] = corners_y_min
+
+                corners_fixed = corners_fixed[[1, 2, 3, 0]]
+
+
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed[3, 1] = corners_y_max
+
+                corners_fixed = corners_fixed[[1, 2, 3, 0]]
+
+            elif corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[0, 1]:
+
+                corners_fixed[3, 0] = corners_x_min
+
+            elif corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed[0, 1] = corners_y_min
+                corners_fixed[3, 0] = corners_x_min
+
+            elif corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[0, 1]:
+
+                corners_fixed[2, 1] = corners_y_max
+                corners_fixed[3, 0] = corners_x_min
+
+            elif corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                0, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed[2, 0] = corners_x_max
+
+                corners_fixed = corners_fixed[[1, 2, 3, 0]]
+
+            # X_max Xmin Y_max Y_min => X3 X4 X3 X1 @ 13
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[0, 1]:
+
+                corners_fixed[1, 0] = corners_x_max
+
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed[0, 1] = corners_y_min
+                corners_fixed[1, 0] = corners_x_max
+
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[0, 1]:
+
+                corners_fixed[1, 0] = corners_x_max
+                corners_fixed[2, 1] = corners_y_max
+
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[1, 1]:
+
+                corners_fixed[0, 0] = corners_x_min
+
+                corners_fixed = corners_fixed[[1, 2, 3, 0]]
+                
             basic_info = [corners_x_min, corners_y_min,
                           corners_x_max, corners_y_max, classes.index(box[8])]
             corners_info = [x for corner in corners_fixed.tolist()

@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dataloadR/datasets_show.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evalR/evaluatorGGHL.py" beforeDir="false" afterPath="$PROJECT_DIR$/evalR/evaluatorGGHL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/event/events.out.tfevents.1636282541.Shank" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/event/events.out.tfevents.1636282695.Shank" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/event/events.out.tfevents.1636282715.Shank" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/event/events.out.tfevents.1636282813.Shank" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelR/GGHL_hbb.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelR/GGHL_hbb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets_tools/DOTA2Train.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets_tools/DOTA2Train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +46,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -128,8 +120,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.datasets_show" />
+      <item itemvalue="Python.test" />
       <item itemvalue="Python.train_GGHL" />
     </list>
     <recent_temporary>
