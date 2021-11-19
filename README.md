@@ -33,6 +33,10 @@
 
 ## 0.News 🦞 🦀 🦑 
 
+* #### 11.19 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
+![image](https://user-images.githubusercontent.com/33946139/142638611-39a20148-ce04-49fc-be19-2b6ffff0f9fa.png)
+
+
 * #### 11.18 😺 Fixed some bugs, please update the codes
 
 * #### 🙏🙏🙏 11.17 Release Notes
