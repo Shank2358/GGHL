@@ -32,8 +32,13 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑 
+* #### 11.21 Thanks @trungpham2606 for the suggestions and feedback. 
+
+* #### 11.20 修复了一些bug，谢谢大家的建议。大家有啥问题可以在issues里面详细描述，我会及时回复，你的问题也可能帮助到其他人。
 
 * #### 11.19 😶 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
+11.19-11.20 更新修复了标签转换脚本的一些bug (对于custom data的顶点顺序可能与DOTA不一致的问题)
+
 <p algin="center">
 <img src="https://user-images.githubusercontent.com/33946139/142638611-39a20148-ce04-49fc-be19-2b6ffff0f9fa.png" width="320">
 </p>
@@ -88,7 +93,7 @@ cd ./GGHL/lib/DCNv2/
 sh make.sh  
 ```
 
-3. Polygen NMS
+3. Polygen NMS  
 The poly_nms in this version is implemented using shapely and numpy libraries to ensure that it can work in different systems and environments without other dependencies. But doing so will slow down the detection speed in dense object scenes. If you want faster speed, you can compile and use the poly_iou library (C++ implementation version) in datasets_tools/DOTA_devkit. The compilation method is described in detail in [DOTA_devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit) .
 
 ```bash
@@ -187,3 +192,4 @@ This project is [GNU General Public License v3.0](https://github.com/Shank2358/G
 🐛 论文里报道的训练超参数都没有精调，就选的对比方法一样的默认参数，也没有选最好的epoch的结果，直接固定了最大epoch，选择最后五个epoch的平均结果。精调学习率、训练策略合最好轮次还会涨点，最近有空闲的机器我试了一下。但是我觉得像很多论文那样为了state-of-the-art（SOTA）而SOTA没有必要，所以最后没那样做，后续如果审稿意见有这个建议我可能会再修改，如果没有我会把更多的实验结果在github和arxiv上展示出来。反思自己最近的工作，确实比不上各位大佬前辈的创新想法，这点还要继续努力。由于我也是自己一路磕磕绊绊摸索着进入科研领域的，也踩过很多坑，也被各种卷王卷的透不过气，所以我想追求的是想做一些踏实的、简单实用的工作，设计一个皮实、经得起折腾的模型，而不想去卷什么SOTA（😭😭😭 实话是我也卷不过。。。。）。   
 🐰🐰 说一个我对目标检测的理解，请大家批评指正。在我看来，目标检测只是一个更庞大的视觉系统的入口任务而不是最终结果。我觉得大多数检测任务的目标是快速、粗略地在图像/视频中定位到目标候选区域，为后续更精细的比如分割、跟踪等其他任务服务，简化它们的输入。从这个视角来看，检测平均精度差距那么一两个点真的没论文里吹的那么重要，反而检测效率（速度）、模型的复杂度与鲁棒性、易用性（无论是对工程人员还是新入门的研究人员而言）的提升对于社区的贡献会更实际一些。最近几个月我也一直在反思自己，目标检测的初心是什么，目标检测完了然后呢，原来我写论文以为的终点很多时候只是我以为的，原来我想错了。深度学习火了这么些年，很多任务或许也是这样的吧，毕竟论文实验里的SOTA是有标准答案的考试，而它们的开花结果是一个开放性问题。这是接下来的努力方向，我相信哪怕道阻且长，行则将至，而且行而不辍，未来一定可期。
 
+另外，请不要做伸手党，如果你们想训练自己的数据集，以下已经详细描述了GGHL的数据格式和使用说明，在tools文件夹中提供了转换脚本。我也在许多论文以外的数据集和大家提供的数据集上进行了实验，都可以正常工作，请花些时间阅读说明和issues #1中的一些解释，如果还有疑问可以在issues中留言给我，都会得到回复。我没有义务直接帮你们改代码和训练你们的数据。
