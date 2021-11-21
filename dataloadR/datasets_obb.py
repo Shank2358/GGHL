@@ -159,7 +159,7 @@ class Construct_Dataset(Dataset):
 if __name__ == '__main__':
     from torch.utils.data import DataLoader
 
-    train_dataset = Construct_Dataset(anno_file_name="train_DOTA_angle", img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
+    train_dataset = Construct_Dataset(anno_file_name="train_DOTA", img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
     train_dataloader = DataLoader(train_dataset, batch_size=1, num_workers=1, shuffle=False)
     for i, (imgs, label_sbbox, label_mbbox, label_lbbox) in enumerate(train_dataloader):
         continue

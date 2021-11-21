@@ -202,7 +202,7 @@ class Trainer(object):
                         cfg.TRAIN["MULTI_TRAIN_RANGE"][0], cfg.TRAIN["MULTI_TRAIN_RANGE"][1],
                         cfg.TRAIN["MULTI_TRAIN_RANGE"][2])) * 32
             self.__save_model_weights(epoch, mAP)
-            if epoch >= 70 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
+            if epoch >= 50 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
                 logger.info("===== Validate =====".format(epoch, self.epochs))
                 with torch.no_grad():
                     APs, inference_time = Evaluator(self.model).APs_voc()
