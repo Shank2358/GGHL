@@ -93,7 +93,7 @@ cd ./GGHL/lib/DCNv2/
 sh make.sh  
 ```
 
-3. Polygen NMS
+3. Polygen NMS  
 The poly_nms in this version is implemented using shapely and numpy libraries to ensure that it can work in different systems and environments without other dependencies. But doing so will slow down the detection speed in dense object scenes. If you want faster speed, you can compile and use the poly_iou library (C++ implementation version) in datasets_tools/DOTA_devkit. The compilation method is described in detail in [DOTA_devkit](https://github.com/CAPTAIN-WHU/DOTA_devkit) .
 
 ```bash
