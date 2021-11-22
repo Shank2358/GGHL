@@ -32,6 +32,8 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑 
+* #### 11.22 Notice. Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.
+
 * #### 11.21 Thanks @trungpham2606 for the suggestions and feedback. 
 
 * #### 11.20 修复了一些bug，谢谢大家的建议。大家有啥问题可以在issues里面详细描述，我会及时回复，你的问题也可能帮助到其他人。
