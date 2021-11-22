@@ -14,6 +14,34 @@ classes = ['plane', 'baseball-diamond', 'bridge', 'ground-track-field', 'small-v
 
 label_list = os.listdir(label_path)
 
+def minAreaRect2longSideFormat(rectangle_inf):
+    width = rectangle_inf[1][0]
+    height = rectangle_inf[1][1]
+    theta = rectangle_inf[-1]
+    longSide = max(width, height)
+    shortSide = min(width, height)
+    if theta == 90:
+        if longSide == width:
+            pass
+        else:
+            theta = 0
+        if np.around(longSide, 2) == np.around(shortSide, 2):
+            theta = 0
+    else:
+        if np.around(longSide, 2) == np.around(shortSide, 2):
+            pass
+        else:
+            if longSide == width:
+                pass
+            else:
+                theta += 90
+
+    if 179 < theta <= 180:
+        theta = 179
+
+    return (rectangle_inf[0], (longSide, shortSide), theta)
+
+
 for label in label_list:
     boxes = []
     label_info_path = label_path + label
@@ -169,12 +197,10 @@ for label in label_list:
                                 [int(corners_fixed[2][0]), int(corners_fixed[2][1])],
                                 [int(corners_fixed[3][0]), int(corners_fixed[3][1])]])
                 rect = cv2.minAreaRect(cnt)
-                angle = rect[2]
-                if angle == -90.0:
-                    angle = 0.0
+                longSide_inf = minAreaRect2longSideFormat(rect)
+                angle = longSide_inf[-1]
 
                 all_info.append(angle)
-                #print(all_info)
 
                 new_boxes.append(",".join([str(x) for x in all_info]))
 

@@ -13,10 +13,10 @@ class HSV(object):
         self.p = p
     def __call__(self, img, bboxes):
         if random.random() < self.p:
-            x = np.random.uniform(-1, 1, 3) * [self.hgain, self.sgain, self.vgain] + 1  # random gains
+            x = np.random.uniform(-1, 1, 3) * [self.hgain, self.sgain, self.vgain] + 1
             img_hsv = (cv2.cvtColor(img, cv2.COLOR_BGR2HSV) * x).clip(None, 255).astype(np.uint8)
-            np.clip(img_hsv[:, :, 0], None, 179, out=img_hsv[:, :, 0])  # inplace hue clip (0 - 179 deg)
-            img = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR, dst=img)  # no return needed
+            np.clip(img_hsv[:, :, 0], None, 179, out=img_hsv[:, :, 0])
+            img = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR, dst=img)
         return img, bboxes
 
 class Blur(object):
@@ -94,7 +94,7 @@ class RandomVerticalFilp(object):
             bboxes[:, [1, 3]] = h_img - bboxes[:, [3, 1]]
             bboxes[:, [6, 8, 10, 12]] = h_img - bboxes[:, [6, 8, 10, 12]]
             bboxes[:, [5, 6, 9, 10]] = bboxes[:, [9, 10, 5, 6]]
-            bboxes[:, [-1]] = -(90 + bboxes[:, [-1]])
+            bboxes[:, [-1]] = 180 - bboxes[:, [-1]]
         return img, bboxes
 
 class RandomHorizontalFilp(object):
@@ -107,7 +107,7 @@ class RandomHorizontalFilp(object):
             bboxes[:, [0, 2]] = w_img - bboxes[:, [2, 0]]
             bboxes[:, [5, 7, 9, 11]] = w_img - bboxes[:, [5, 7, 9, 11]]
             bboxes[:, [7, 8, 11, 12]] = bboxes[:, [11, 12, 7, 8]]
-            bboxes[:, [-1]] = -np.where(bboxes[:, [-1]] <= 0, 90 + bboxes[:, [-1]], 90 - bboxes[:, [-1]])
+            bboxes[:, [-1]] = 180 - bboxes[:, [-1]]
         return img, bboxes
 
 class RandomCrop(object):
@@ -117,25 +117,21 @@ class RandomCrop(object):
     def __call__(self, img, bboxes):
         if random.random() < self.p:
             h_img, w_img, _ = img.shape
-
             max_bbox = np.concatenate([np.min(bboxes[:, 0:2], axis=0), np.max(bboxes[:, 2:4], axis=0)], axis=-1)
             max_l_trans = max_bbox[0]
             max_u_trans = max_bbox[1]
             max_r_trans = w_img - max_bbox[2]
             max_d_trans = h_img - max_bbox[3]
-
             crop_xmin = max(0, int(max_bbox[0] - random.uniform(0, max_l_trans)))
             crop_ymin = max(0, int(max_bbox[1] - random.uniform(0, max_u_trans)))
             crop_xmax = min(w_img, int(max_bbox[2] + random.uniform(0, max_r_trans)))#
             crop_ymax = min(h_img, int(max_bbox[3] + random.uniform(0, max_d_trans)))#
-
             img = img[crop_ymin : crop_ymax, crop_xmin : crop_xmax]
-            ####xmin,ymin,xmax,ymax,c,x1,y1,x2,y2,x3,y3,x4,y4,r
             bboxes[:, [0, 2, 5, 7, 9, 11]] = bboxes[:, [0, 2, 5, 7, 9, 11]] - crop_xmin
             bboxes[:, [1, 3, 6, 8, 10, 12]] = bboxes[:, [1, 3, 6, 8, 10, 12]] - crop_ymin
         return img, bboxes
-####xmin,ymin,xmax,ymax,c,x1,y1,x2,y2,x3,y3,x4,y4,r
-class RandomAffine(object):##############################
+
+class RandomAffine(object):
     def __init__(self, p=0.3):
         self.p = p
 

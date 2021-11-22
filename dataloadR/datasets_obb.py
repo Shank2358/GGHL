@@ -29,7 +29,7 @@ class Construct_Dataset(Dataset):
         img_mix, bboxes_mix = self.__parse_annotation(self.__annotations[item_mix])
         img_mix = img_mix.transpose(2, 0, 1)
 
-        img, bboxes = DataAug.Mixup_no()(img_org, bboxes_org, img_mix, bboxes_mix)
+        img, bboxes = DataAug.Mixup()(img_org, bboxes_org, img_mix, bboxes_mix)
         del img_org, bboxes_org, img_mix, bboxes_mix
         label_sbbox, label_mbbox, label_lbbox = self.__creat_label(bboxes)
 
@@ -81,7 +81,7 @@ class Construct_Dataset(Dataset):
         sub_ymin = max(grid_y - r_h_max, 0)
         sub_ymax = min(grid_y + r_h_max + 1, hs - 1)
         gt_tensor_oval_1 = np.zeros([hs, ws, 1])
-        R = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+        R = np.array([[np.cos(angle), np.sin(angle)], [-np.sin(angle), np.cos(angle)]])
         Eig = np.array([[2 / np.power(r_w, 1-self.IOU_thresh), 0], [0, 2 / np.power(r_h, 1-self.IOU_thresh)]])
         for i in range(sub_xmin, sub_xmax):
             for j in range(sub_ymin, sub_ymax):
@@ -117,10 +117,8 @@ class Construct_Dataset(Dataset):
             box_h = (ymax - ymin)
             c_x = (xmax + xmin) / 2
             c_y = (ymax + ymin) / 2
-            angle = -gt_label[14] * np.pi / 180
             if gt_label[13] > 0.9:
                 a1 = a2 = a3 = a4 = 0
-                angle = 0
             else:
                 a1 = (bbox_obb[0] - bbox_xyxy[0]) / box_w
                 a2 = (bbox_obb[3] - bbox_xyxy[1]) / box_h
@@ -133,8 +131,9 @@ class Construct_Dataset(Dataset):
                      np.sqrt((bbox_obb[4] - bbox_obb[6]) ** 2 + (bbox_obb[5] - bbox_obb[7]) ** 2)) / 2
             c_x_r = (bbox_obb[0] + bbox_obb[2] + bbox_obb[4] + bbox_obb[6]) / 4
             c_y_r = (bbox_obb[1] + bbox_obb[3] + bbox_obb[5] + bbox_obb[7]) / 4
-            if angle == -np.pi/2:
-                angle = 0
+            angle = gt_label[14] * np.pi / 180
+            if len_w < len_h:
+                len_w, len_h = len_h, len_w
             length = max(box_w, box_h)
             if max(box_w, box_h) > 10 or (box_w*box_w) > 80:
                 if length <= layer_thresh[0]:
@@ -160,7 +159,7 @@ class Construct_Dataset(Dataset):
 if __name__ == '__main__':
     from torch.utils.data import DataLoader
 
-    train_dataset = Construct_Dataset(anno_file_name="train_HRSC2016_angle", img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
+    train_dataset = Construct_Dataset(anno_file_name="ssdd", img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
     train_dataloader = DataLoader(train_dataset, batch_size=1, num_workers=1, shuffle=False)
     for i, (imgs, label_sbbox, label_mbbox, label_lbbox) in enumerate(train_dataloader):
         continue

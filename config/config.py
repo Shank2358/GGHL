@@ -1,6 +1,6 @@
 # coding=utf-8
 DATA_PATH = "/opt/datasets/DOTA/"
-PROJECT_PATH = "./"
+PROJECT_PATH = "./GGHL/"
 
 DATA = {"CLASSES": ['plane',
                     'baseball-diamond',
@@ -52,9 +52,9 @@ TEST = {
     "CONF_THRESH": 0.1,
     "NMS_THRESH": 0.45,
     "IOU_THRESHOLD": 0.5,
-    "NMS_METHODS": 'NMS',  # ['NMS', 'SOFT_NMS', 'NMS_DIOU', #'NMS_DIOU_SCALE']
+    "NMS_METHODS": 'NMS',
     "MULTI_SCALE_TEST": False,
-    "MULTI_TEST_RANGE": [736, 864, 96],#[704, 960, 96], #
+    "MULTI_TEST_RANGE": [736, 864, 96],
     "FLIP_TEST": False
 }
 
