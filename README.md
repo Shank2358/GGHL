@@ -32,13 +32,13 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑 
-* #### 11.22 Attention to the update. 
-Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.
+* #### 11.22 👺 Attention to the update. 
+Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
 不同版本opencv的cv2.minAreaRect()函数不一致且存在一些角度转换的bug，我更新了上述几个文件，请大家及时更新，opencv版本也请更新到4.5.3及以上。谢谢。
 
-* #### 11.21 Thanks @trungpham2606 for the suggestions and feedback. 
+* #### 11.21 😸😸 Thanks @trungpham2606 for the suggestions and feedback. 
 
-* #### 11.20 修复了一些bug，谢谢大家的建议。大家有啥问题可以在issues里面详细描述，我会及时回复，你的问题也可能帮助到其他人。
+* #### 11.20 ❤️ 修复了一些bug，谢谢大家的建议。大家有啥问题可以在issues里面详细描述，我会及时回复，你的问题也可能帮助到其他人。
 
 * #### 11.19 😶 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
 11.19-11.20 更新修复了标签转换脚本的一些bug (对于custom data的顶点顺序可能与DOTA不一致的问题)
