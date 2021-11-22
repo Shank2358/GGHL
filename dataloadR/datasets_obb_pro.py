@@ -9,7 +9,6 @@ import config.config as cfg
 import dataloadR.augmentations as DataAug
 
 
-
 class Construct_Dataset(Dataset):
     def __init__(self, anno_file_name, img_size=int(cfg.TRAIN["TRAIN_IMG_SIZE"])):
         self.img_size = img_size
