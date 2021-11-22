@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="" />
+    <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloadR/datasets_obb.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataloadR/datasets_obb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataloadR/datasets_show.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +56,7 @@
       <recent name="D:\Github\GGHL" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.datasets_obb">
     <configuration name="convert_coco_gghl" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GGHL" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,6 +91,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataloadR/datasets_obb.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="datasets_obb_pro" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GGHL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataloadR" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataloadR/datasets_obb_pro.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,11 +189,13 @@
       <item itemvalue="Python.train_GGHL" />
       <item itemvalue="Python.datasets_obb" />
       <item itemvalue="Python.convert_coco_gghl" />
+      <item itemvalue="Python.datasets_obb_pro" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train_GGHL" />
         <item itemvalue="Python.datasets_obb" />
+        <item itemvalue="Python.datasets_obb_pro" />
+        <item itemvalue="Python.train_GGHL" />
         <item itemvalue="Python.convert_coco_gghl" />
         <item itemvalue="Python.datasets_show" />
       </list>
@@ -210,22 +237,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1637330567460" />
-    <state width="1899" height="241" key="GridCell.Tab.0.bottom" timestamp="1637518885476">
+    <state width="1899" height="241" key="GridCell.Tab.0.bottom" timestamp="1637552501274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1637518885476" />
-    <state width="1899" height="241" key="GridCell.Tab.0.center" timestamp="1637518885476">
+    <state width="1899" height="241" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1637552501274" />
+    <state width="1899" height="241" key="GridCell.Tab.0.center" timestamp="1637552501274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1637518885476" />
-    <state width="1899" height="241" key="GridCell.Tab.0.left" timestamp="1637518885476">
+    <state width="1899" height="241" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1637552501274" />
+    <state width="1899" height="241" key="GridCell.Tab.0.left" timestamp="1637552501274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1637518885476" />
-    <state width="1899" height="241" key="GridCell.Tab.0.right" timestamp="1637518885476">
+    <state width="1899" height="241" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1637552501274" />
+    <state width="1899" height="241" key="GridCell.Tab.0.right" timestamp="1637552501274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1637518885476" />
+    <state width="1899" height="241" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1637552501274" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1637328731387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
