@@ -87,7 +87,7 @@ class Construct_Dataset(Dataset):
             for j in range(sub_ymin, sub_ymax):
                 ax = np.array([[i - grid_x, j - grid_y]]).transpose()
                 axnew = np.dot(np.dot(Eig, R), ax)
-                v = np.exp(- (axnew[0, 0] ** 2 + axnew[1, 0] ** 2) / 2)  # / (2 * np.pi)
+                v = np.exp(- (axnew[0, 0] ** 2 + axnew[1, 0] ** 2) / 2)
                 pre_v_oval = gt_tensor_oval_1[j, i, 0:1]
                 maxv = max(v, pre_v_oval)
                 l1 = (j * self.stride[k] + self.stride[k] / 2) - ymin
