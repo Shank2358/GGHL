@@ -8,7 +8,7 @@
   </a>
 
 ## This is the implementation of GGHL 👋👋👋
-[[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA) (password: yn04)]  
+[[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA) (password: yn04)]  
 
 
   ### Give a ⭐️ if this project helped you. If you use it, please consider citing:
@@ -168,7 +168,7 @@ Put them in. /weight folder
 
 2）The trained model for SKU dataset is available from [Google Drive](https://drive.google.com/file/d/1l3FzZCUWpWL9adKIovQXi1EaHHzaOdAW/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1i8821aD0B-YNBkKXo-_CJg)(password: c3jv)   
 
-3）The trained model for SKU dataset is available from [Baidu Disk](https://pan.baidu.com/s/1n7siqE0w49rkOqtTvkZaIA)(password: vdf5)  
+3）The trained model for SKU dataset is available from [Google Drive](https://drive.google.com/file/d/19-dlqNaXJyKboJ5bH-UUiXEVJqrdNyAt/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1n7siqE0w49rkOqtTvkZaIA)(password: vdf5)  
 
 4）The pre-trained weights of Darknet53 on ImageNet are available from [Google_Drive](https://drive.google.com/file/d/1vfUDVeI12cBCgSgKMBz39gxkD1Z7kmFd/view?usp=sharing) or [Baidu_Disk](https://pan.baidu.com/s/1DZhooaEClu6rOnC7lE0Aiw)(password:0blv)   
 
