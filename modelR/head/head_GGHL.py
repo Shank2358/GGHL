@@ -28,7 +28,7 @@ class Head(nn.Module):
         grid_xy = torch.stack([x, y], dim=-1)
         grid_xy = grid_xy.unsqueeze(0).repeat(batch_size, 1, 1, 1).float().to(device)
 
-        pred_l1234 = torch.exp(conv_raw_l1234) * stride
+        pred_l1234 = torch.exp(conv_raw_l1234) * stride  ##l1-l4, 上-右-下-左
         pred_xmin = grid_xy[:, :, :, 0:1] * stride + (stride) / 2 - pred_l1234[:, :, :, 3:4]
         pred_ymin = grid_xy[:, :, :, 1:2] * stride + (stride) / 2 - pred_l1234[:, :, :, 0:1]
         pred_xmax = grid_xy[:, :, :, 0:1] * stride + (stride) / 2 + pred_l1234[:, :, :, 1:2]
