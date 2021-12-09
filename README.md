@@ -44,7 +44,7 @@
 
 ## 0.News 🦞 🦀 🦑 
 
-* #### 12.9 终于收到一审的审稿意见了，半年。。。。黄花菜都凉了，各种类似的方法出来了不少，我会在修改版都引上然后简要做一下分析，谢谢审稿人的意见。更多原来论文没说的技术细节也会在版面允许的情况下详细解释一下。等这轮修改提交后，我会把所有审稿意见和回复在arxiv和这里公开，全部，也希望能给有兴趣看或者正在写该领域论文的朋友们一些参考。
+* #### 12.9 终于收到一审的审稿意见了，半年。。。。
 
 * #### 11.22 👺 Notice. 
 Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
