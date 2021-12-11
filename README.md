@@ -48,8 +48,6 @@
 
 * #### 12.9 DOTAv2的结果，没调参，没多尺度测试，等审稿返修提交后会把权重和训练日志开源
 ![image](https://user-images.githubusercontent.com/33946139/145379013-0b49ebb8-2b6d-40bb-96af-841c5d5a272c.png)
-以下是官方的benchmark
-![image](https://user-images.githubusercontent.com/33946139/145379117-2ef151fc-0aa0-4100-9a34-59792c968734.png)
 
 后续有空会再精调和加tricks，应该还会涨点。
 
