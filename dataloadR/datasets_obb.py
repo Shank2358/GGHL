@@ -76,15 +76,15 @@ class Construct_Dataset(Dataset):
         r_h = len_h / self.stride[k] * 0.5 + 1e-16
         r_w_max = int(np.clip(np.power(box_w / self.stride[k] / 2, 1), 1, 4-k))
         r_h_max = int(np.clip(np.power(box_h / self.stride[k] / 2, 1), 1, 4-k))
-        sub_xmin = max(grid_x - r_w_max, 0)
+        sub_xmin = max(grid_x - r_w_max - 1, 0)
         sub_xmax = min(grid_x + r_w_max + 1, ws - 1)
-        sub_ymin = max(grid_y - r_h_max, 0)
+        sub_ymin = max(grid_y - r_h_max - 1, 0)
         sub_ymax = min(grid_y + r_h_max + 1, hs - 1)
         gt_tensor_oval_1 = np.zeros([hs, ws, 1])
         R = np.array([[np.cos(angle), np.sin(angle)], [-np.sin(angle), np.cos(angle)]])
         Eig = np.array([[2 / np.power(r_w, 1-self.IOU_thresh), 0], [0, 2 / np.power(r_h, 1-self.IOU_thresh)]])
-        for i in range(sub_xmin, sub_xmax):
-            for j in range(sub_ymin, sub_ymax):
+        for i in range(sub_xmin, sub_xmax + 1):
+            for j in range(sub_ymin, sub_ymax + 1):
                 ax = np.array([[i - grid_x, j - grid_y]]).transpose()
                 axnew = np.dot(np.dot(Eig, R), ax)
                 v = np.exp(- (axnew[0, 0] ** 2 + axnew[1, 0] ** 2) / 2)
