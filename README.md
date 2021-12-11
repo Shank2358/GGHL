@@ -51,7 +51,7 @@
 
 后续有空会再精调和加tricks，应该还会涨点。
 
-* #### 12.9 终于收到一审的审稿意见了，半年。。。。
+* #### 12.9 终于收到一审的审稿意见了，半年。。。。黄花菜都凉了。。。这期刊真是不干脆，拖拖拉拉的
 
 * #### 11.22 👺 Notice. 
 Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
