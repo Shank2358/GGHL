@@ -44,7 +44,7 @@
 
 ## 0.News 🦞 🦀 🦑 
 
-* #### 12.11 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。
+* #### 12.11 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。
 
 * #### 12.9 DOTAv2的结果，没调参，没多尺度测试，等审稿返修提交后会把权重和训练日志开源
 ![image](https://user-images.githubusercontent.com/33946139/145379013-0b49ebb8-2b6d-40bb-96af-841c5d5a272c.png)
