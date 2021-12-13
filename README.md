@@ -43,6 +43,7 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑 
+* #### 12.13 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~555~我可以选择剖腹产吗...
 
 * #### 12.11 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。
 
@@ -51,7 +52,8 @@
 
 后续有空会再精调和加tricks，应该还会涨点。
 
-* #### 12.9 终于收到一审的审稿意见了，半年。。。。黄花菜都凉了。。。这期刊真是不干脆，拖拖拉拉的
+* #### 12.9 终于收到一审的审稿意见了，感谢审稿人大大。
+整整半年。。。。真的是黄花菜都凉了。。。这期刊真是不干脆，拖拖拉拉的。
 
 * #### 11.22 👺 Notice. 
 Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
