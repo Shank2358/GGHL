@@ -6,7 +6,7 @@ import imgaug.augmenters as iaa
 
 
 class HSV(object):
-    def __init__(self, hgain=0.3, sgain=0.5, vgain=0.5, p=0.5):
+    def __init__(self, hgain=0.015, sgain=0.7, vgain=0.4, p=0.75):
         self.hgain = hgain
         self.sgain = sgain
         self.vgain = vgain
