@@ -43,16 +43,12 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑
-* #### 12.15 5) The trained models for [DOTAv1.5](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv2.0](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.   
+* #### 12.15 The trained models for [DOTAv1.5](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv2.0](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.  
+DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
  
 * #### 12.13 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
 
 * #### 12.11 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。
-
-* #### 12.9 DOTAv2的结果，没调参，没多尺度测试，等审稿返修提交后会把权重和训练日志开源
-![image](https://user-images.githubusercontent.com/33946139/145379013-0b49ebb8-2b6d-40bb-96af-841c5d5a272c.png)
-
-后续有空会再精调和加tricks，应该还会涨点。
 
 * #### 12.9 终于收到一审的审稿意见了，感谢审稿人大大。
 整整半年。。。。真的是黄花菜都凉了。。。这期刊真是不干脆，拖拖拉拉的。
