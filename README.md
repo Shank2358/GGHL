@@ -43,7 +43,7 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑
-* #### 12.15 5) The trained models for [DOTAv2.0](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv1.5](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.   
+* #### 12.15 5) The trained models for [DOTAv1.5](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv2.0](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.   
  
 * #### 12.13 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
 
@@ -196,9 +196,9 @@ Put them in. /weight folder
 
 4）The pre-trained weights of Darknet53 on ImageNet are available from [Google_Drive](https://drive.google.com/file/d/1vfUDVeI12cBCgSgKMBz39gxkD1Z7kmFd/view?usp=sharing) or [Baidu_Disk](https://pan.baidu.com/s/1DZhooaEClu6rOnC7lE0Aiw)(password:0blv)   
 
-5) The trained model for DOTAv2.0 dataset is available from [Baidu Disk](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj)  
+5) The trained model for DOTAv1.5 dataset is available from [Baidu Disk](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj)  
 
-6) The trained model for DOTAv1.5 dataset is available from [Baidu Disk](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7)  
+6) The trained model for DOTAv2.0 dataset is available from [Baidu Disk](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7)  
 
 
 ## 💖💖💖 6.Reference
