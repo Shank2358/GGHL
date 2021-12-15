@@ -46,6 +46,7 @@
 ## 0.News 🦞 🦀 🦑
 * #### 12.15 🤪 The trained models for [DOTAv1.5](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv2.0](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.  
 🐾 🐾 🐾 DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
+其实每天事儿挺多的，做科研都是见缝插针，github这边就更顾不上了，使用教程和代码注释更新慢还请见谅，过年期间会加油更新。另外，有问题可以在issues里面留言，为什么都喜欢发邮件啊，邮件经常会莫名其妙的跑到垃圾邮件里，因此可能会有延迟，实在抱歉，我打捞出来就会立即回复的。😝😝😝  
  
 * #### 12.13 😭 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
 
