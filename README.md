@@ -42,7 +42,9 @@
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
 
-## 0.News 🦞 🦀 🦑 
+## 0.News 🦞 🦀 🦑
+* #### 12.15 5) The trained models for [DOTAv2.0](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv1.5](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.   
+ 
 * #### 12.13 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
 
 * #### 12.11 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。
@@ -193,6 +195,11 @@ Put them in. /weight folder
 3）The trained model for SKU dataset is available from [Google Drive](https://drive.google.com/file/d/19-dlqNaXJyKboJ5bH-UUiXEVJqrdNyAt/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1n7siqE0w49rkOqtTvkZaIA)(password: vdf5)  
 
 4）The pre-trained weights of Darknet53 on ImageNet are available from [Google_Drive](https://drive.google.com/file/d/1vfUDVeI12cBCgSgKMBz39gxkD1Z7kmFd/view?usp=sharing) or [Baidu_Disk](https://pan.baidu.com/s/1DZhooaEClu6rOnC7lE0Aiw)(password:0blv)   
+
+5) The trained model for DOTAv2.0 dataset is available from [Baidu Disk](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj)  
+
+6) The trained model for DOTAv1.5 dataset is available from [Baidu Disk](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7)  
+
 
 ## 💖💖💖 6.Reference
 https://github.com/Peterisfar/YOLOV3  
