@@ -20,7 +20,6 @@
 ## This is the implementation of GGHL 👋👋👋
 [[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA) (password: yn04)]  
 
-
   ### Give a ⭐️ if this project helped you. If you use it, please consider citing:
   ```arxiv
   article{huang2021general,
@@ -34,6 +33,8 @@
   }
   ```
 
+### Clone不Star,都是耍流氓 🤡🤡🤡
+
   ### 👹 Abstract of the paper
 
   Recently, many arbitrary-oriented object detection (AOOD) methods have been proposed and attracted widespread attention in many fields. However, most of them are based on anchor-boxes or standard Gaussian heatmaps. Such label assignment strategy may not only fail to reflect the shape and direction characteristics of arbitrary-oriented objects, but also have high parameter-tuning efforts. In this paper, a novel AOOD method called General Gaussian Heatmap Labeling (GGHL) is proposed. Specifically, an anchor-free object adaptation label assignment (OLA) strategy is presented to define the positive candidates based on two-dimensional (2-D) oriented Gaussian heatmaps, which reflect the shape and direction features of arbitrary-oriented objects. Based on OLA, an oriented-boundingbox (OBB) representation component (ORC) is developed to indicate OBBs and adjust the Gaussian center prior weights to fit the characteristics of different objects adaptively through neural network learning. Moreover, a joint-optimization loss (JOL) with area normalization and dynamic confidence weighting is designed to refine the misalign optimal results of different subtasks. Extensive experiments on public datasets demonstrate that the proposed GGHL improves the AOOD performance with low parameter-tuning and time costs. Furthermore, it is generally applicable to most AOOD methods to improve their performance including lightweight models on embedded platforms.  
@@ -43,18 +44,17 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑
-* #### 12.15 The trained models for [DOTAv1.5](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv2.0](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.  
-DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
+* #### 12.15 🤪 The trained models for [DOTAv1.5](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv2.0](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.  
+🐾 🐾 🐾 DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
  
-* #### 12.13 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
+* #### 12.13 😭 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
 
-* #### 12.11 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。
+* #### 12.11 😁 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。
 
 * #### 12.9 终于收到一审的审稿意见了，感谢审稿人大大。
 整整半年。。。。真的是黄花菜都凉了。。。这期刊真是不干脆，拖拖拉拉的。
 
-* #### 11.22 👺 Notice. 
-Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
+* #### 11.22 👺 Notice. Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
 不同版本opencv的cv2.minAreaRect()函数不一致且存在一些角度转换的bug (我用的低版本角度是(0,-90]，新版的是[0,90]，所以可能有一些bug，我全部更新统一到新版了现在。还有就是cv2.minAreaRect()函数本身的一些bug，有很多博客介绍过了我就不重复了，由于我的原版为了解决这些bug做的判断函数和新版cv2.minAreaRect()的输出不太一样，这里也有一些问题，我也修改了)，我更新了datasets_obb.py, datasets_obb_pro.py, augmentations.py, DOTA2Train.py文件，全部按长边表示法计算（角度范围是[0,180)），请大家及时更新，opencv版本也请更新到4.5.3及以上。谢谢。
 
 * #### 11.21 😸😸 Thanks @trungpham2606 for the suggestions and feedback. 
