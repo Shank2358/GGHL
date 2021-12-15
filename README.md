@@ -44,7 +44,7 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑
-* #### 12.15 🤪 The trained models for [DOTAv1.5](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj) and [DOTAv2.0](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7) dataset are available.  
+* #### 12.15 🤪 The trained models for DOTAv1.5 and DOTAv2.0 dataset are available. [Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA)(password: yn04)  
 🐾 🐾 🐾 DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
 其实每天事儿挺多的，做科研都是见缝插针，github这边就更顾不上了，使用教程和代码注释更新慢还请见谅，过年期间会加油更新。另外，有问题可以在issues里面留言，为什么都喜欢发邮件啊，邮件经常会莫名其妙的跑到垃圾邮件里，因此可能会有延迟，实在抱歉，我打捞出来就会立即回复的。😝😝😝  
  
@@ -193,9 +193,9 @@ Put them in. /weight folder
 
 4）The pre-trained weights of Darknet53 on ImageNet are available from [Google_Drive](https://drive.google.com/file/d/1vfUDVeI12cBCgSgKMBz39gxkD1Z7kmFd/view?usp=sharing) or [Baidu_Disk](https://pan.baidu.com/s/1DZhooaEClu6rOnC7lE0Aiw)(password:0blv)   
 
-5) The trained model for DOTAv1.5 dataset is available from [Baidu Disk](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj)  
+5) The trained model for DOTAv1.5 dataset is available from [Google Drive](https://drive.google.com/file/d/1PdRfWPbdT4mY6DYBOkhBGF6dMq4IB8PC/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj)  
 
-6) The trained model for DOTAv2.0 dataset is available from [Baidu Disk](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7)  
+6) The trained model for DOTAv2.0 dataset is available from [Google Drive](https://drive.google.com/file/d/1Gq0bKYg4DA9RpIE0XxAtMfxnetpb4dV8/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7)  
 
 
 ## 💖💖💖 6.Reference
