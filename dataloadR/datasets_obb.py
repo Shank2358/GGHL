@@ -15,7 +15,7 @@ class Construct_Dataset(Dataset):
         self.img_size = img_size
         self.num_classes = len(cfg.DATA["CLASSES"])
         self.stride = [8, 16, 32]
-        self.IOU_thresh = 0.25
+        self.IOU_thresh = 0.3
         self.thresh_gh = 0.05
         self.__annotations = self.__load_annotations(anno_file_name)
     def __len__(self):
@@ -101,7 +101,7 @@ class Construct_Dataset(Dataset):
                     gt_tensor[k][j, i, 12] = gt_label[13]
                     gt_tensor[k][j, i, 13] = 1.0
                     gt_tensor[k][j, i, 16 + class_id:16 + class_id + 1] = maxv
-                    gt_tensor[k][j, i, 15] = 2 * np.log(2) / np.log(np.sqrt(r_w_max * r_h_max) + 1)
+                    gt_tensor[k][j, i, 15] = np.log(2) / np.log(np.sqrt(r_w_max * r_h_max) + 1)
             gt_tensor[k][:, :, 14] = gt_label[15]
 
     def __creat_label(self, label_lists=[]):
