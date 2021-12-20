@@ -14,8 +14,6 @@ class GGHL(nn.Module):
         self.__nC = cfg.DATA["NUM"]
         self.__out_channel = self.__nC + 4 + 5 + 1
         self.__backnone = Darknet53()
-        #self.__backnone = PVT2(weight_path=weight_path)
-        #self.__fpn = Neck(fileters_in=[512, 320, 128, 64], fileters_out=self.__out_channel)
         self.__fpn = Neck(fileters_in=[1024, 512, 256, 128], fileters_out=self.__out_channel)
         self.__head_s = Head(nC=self.__nC, stride=self.__strides[0])
         self.__head_m = Head(nC=self.__nC, stride=self.__strides[1])
