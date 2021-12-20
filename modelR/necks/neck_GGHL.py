@@ -70,7 +70,6 @@ class Neck(nn.Module):
             Convolutional(filters_in=fi_1, filters_out=fi_0, kernel_size=3, stride=1, pad=1, norm="bn", activate="leaky"),
             nn.Conv2d(in_channels=fi_0, out_channels=(fileters_out - 10), kernel_size=1, stride=1, padding=0),
         )
-###################################################################################################
         self.__loc1 = nn.Sequential(
             Convolutional(filters_in=fi_2, filters_out=fi_1, kernel_size=3, stride=1, pad=1, norm="bn", activate="leaky"),
             nn.Conv2d(in_channels=fi_1, out_channels=10, kernel_size=1, stride=1, padding=0),
@@ -79,7 +78,6 @@ class Neck(nn.Module):
             Convolutional(filters_in=fi_2, filters_out=fi_1, kernel_size=3, stride=1, pad=1, norm="bn", activate="leaky"),
             nn.Conv2d(in_channels=fi_1, out_channels=(fileters_out-10), kernel_size=1, stride=1, padding=0),
         )
-##################################################################################################
         self.__loc2 = nn.Sequential(
             Convolutional(filters_in=fi_3, filters_out=fi_2, kernel_size=3, stride=1, pad=1, norm="bn", activate="leaky"),
             nn.Conv2d(in_channels=fi_2, out_channels=10, kernel_size=1, stride=1, padding=0),
@@ -88,7 +86,6 @@ class Neck(nn.Module):
             Convolutional(filters_in=fi_3, filters_out=fi_2, kernel_size=3, stride=1, pad=1, norm="bn", activate="leaky"),
             nn.Conv2d(in_channels=fi_2, out_channels=(fileters_out-10), kernel_size=1, stride=1, padding=0),
         )
-
 
     def forward(self, x0, x1, x2):
         conv_set_0 = self.__conv_set_0(x0)
