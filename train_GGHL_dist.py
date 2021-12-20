@@ -29,20 +29,12 @@ LOCAL_RANK = int(os.getenv('LOCAL_RANK', -1))  # https://pytorch.org/docs/stable
 RANK = int(os.getenv('RANK', -1))
 WORLD_SIZE = int(os.getenv('WORLD_SIZE', 1))
 
-
 class DataLoaderX(DataLoader):
-
     def __iter__(self):
         return BackgroundGenerator(super().__iter__())
 
-
 # dist.init_process_group('gloo', init_method='file:///temp/somefile', rank=0, world_size=1)
 class InfiniteDataLoader(DataLoaderX):
-    """ Dataloader that reuses workers
-
-    Uses same syntax as vanilla DataLoader
-    """
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         object.__setattr__(self, 'batch_sampler', _RepeatSampler(self.batch_sampler))
@@ -55,21 +47,13 @@ class InfiniteDataLoader(DataLoaderX):
         for i in range(len(self)):
             yield next(self.iterator)
 
-
 class _RepeatSampler(object):
-    """ Sampler that repeats forever
-
-    Args:
-        sampler (Sampler)
-    """
-
     def __init__(self, sampler):
         self.sampler = sampler
 
     def __iter__(self):
         while True:
             yield from iter(self.sampler)
-
 
 class Trainer(object):
     def __init__(self, weight_path, resume, gpu_id):
@@ -95,7 +79,6 @@ class Trainer(object):
         else:
             print('train img size is {}'.format(cfg.TRAIN["TRAIN_IMG_SIZE"]))
 
-        #####################################
         self.batch_size = cfg.TRAIN["BATCH_SIZE"] // WORLD_SIZE  # 这一步是因为我传入的参数里batch_size代表所有GPU的batch之和, 所以要除以GPU的数量
         with gpu.torch_distributed_zero_first(LOCAL_RANK):
             self.train_dataset = data.Construct_Dataset(anno_file_name=cfg.DATASET_NAME,
@@ -106,25 +89,9 @@ class Trainer(object):
         self.train_dataloader = InfiniteDataLoader(self.train_dataset, batch_size=self.batch_size,
                                                    sampler=sampler, num_workers=cfg.TRAIN["NUMBER_WORKERS"],
                                                    pin_memory=True, drop_last=True)
-        '''
-        self.train_dataloader = DataLoader(self.train_dataset,
-                                           batch_size=cfg.TRAIN["BATCH_SIZE"],
-                                           num_workers=cfg.TRAIN["NUMBER_WORKERS"],
-                                           shuffle=True,
-                                           pin_memory=True)
-        '''
-        self.model = GGHL(weight_path=self.weight_path)
-        # self.__load_model_weights_Resnet(weight_path, resume)
 
-        '''      
-        if torch.cuda.device_count() >1: ## multi GPUs
-            print("Let's use", torch.cuda.device_count(), "GPUs!")
-            net_model = torch.nn.DataParallel(net_model)
-            self.model = net_model.to(self.device)
-        elif torch.cuda.device_count() ==1:
-            self.model = net_model.to(self.device) ## Single GPU
-            #torch.backends.cudnn.benchmark = False
-        '''
+        self.model = GGHL(weight_path=self.weight_path)
+
         self.model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(self.model).to(device)
         self.optimizer = optim.SGD(self.model.parameters(), lr=cfg.TRAIN["LR_INIT"],
                                    momentum=cfg.TRAIN["MOMENTUM"], weight_decay=cfg.TRAIN["WEIGHT_DECAY"])
@@ -145,7 +112,7 @@ class Trainer(object):
                                                            warmup=cfg.TRAIN["WARMUP_EPOCHS"] * len(
                                                                self.train_dataloader))
 
-        self.scaler = amp.GradScaler(enabled=self.cuda)  ####################################
+        self.scaler = amp.GradScaler(enabled=self.cuda)
 
     def synchronize(self):
         """
@@ -177,7 +144,7 @@ class Trainer(object):
             last_weight = os.path.join(os.path.split(weight_path)[0], "last.pt")
             chkpt = torch.load(last_weight, map_location=self.device)
 
-            self.model.load_state_dict(chkpt['model'])  # , False
+            self.model.load_state_dict(chkpt['model'])
             self.start_epoch = chkpt['epoch'] + 1
             if chkpt['optimizer'] is not None:
                 self.optimizer.load_state_dict(chkpt['optimizer'])
@@ -185,7 +152,6 @@ class Trainer(object):
             del chkpt
         else:
             self.model.load_darknet_weights(weight_path)  ## Single GPU
-            # self.model.module.load_darknet_weights(weight_path) ## multi GPUs
 
     def __load_model_weights_Resnet(self, weight_path, resume):
         if resume:
@@ -213,7 +179,6 @@ class Trainer(object):
             torch.save(chkpt['model'], best_weight)
         if epoch > 0 and epoch % 5 == 0:
             torch.save(chkpt, os.path.join(os.path.split(self.weight_path)[0], 'backup_epoch%g.pt' % epoch))
-            #
         del chkpt
 
     def __save_model_weights_best(self, epoch):
@@ -255,8 +220,6 @@ class Trainer(object):
                         loss *= WORLD_SIZE
 
                 self.scaler.scale(loss).backward()
-
-                # Optimize
                 self.scaler.step(self.optimizer)
                 self.scaler.update()
                 self.optimizer.zero_grad()
@@ -280,7 +243,6 @@ class Trainer(object):
                                 self.optimizer.param_groups[0]['lr']
                             ))
 
-                        ''''''
                         writer.add_scalar('loss_fg', mloss[0], len(self.train_dataloader)
                                           * (cfg.TRAIN["BATCH_SIZE"]) * epoch + i)
                         writer.add_scalar('loss_bg', mloss[1], len(self.train_dataloader)
@@ -329,7 +291,6 @@ class Trainer(object):
                 logger.info("Time per epoch: {:.4f}s".format(end - start))
 
         logger.info("Training finished.  Best_mAP: {:.3f}%".format(self.best_mAP))
-
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 if __name__ == "__main__":
