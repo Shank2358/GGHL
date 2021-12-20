@@ -77,6 +77,7 @@ There are still some uncompleted content that is being continuously updated. Tha
 
 * #### 🐟 🐡 11.16 The script for generating datasets in the format required by GGHL is added in ./datasets_tools/DOTA2Train.py
 更新了用于生成GGHL所需格式数据集的工具(./datasets_tools/DOTA2Train.py)
+论文里的Refine Approx.在代码里面有详细的分类讨论。
 
 * #### 👾 11.15 The models for the SKU dataset are available 
 其他数据的权重近期会陆续上传和更新
