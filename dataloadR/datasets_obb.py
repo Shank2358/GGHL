@@ -11,22 +11,27 @@ import dataloadR.augmentations as DataAug
 
 
 class Construct_Dataset(Dataset):
-    def __init__(self, anno_file_name, img_size=int(cfg.TRAIN["TRAIN_IMG_SIZE"])):
+    def __init__(self, anno_file_name, img_size=int(cfg.TRAIN["TRAIN_IMG_SIZE"]), load_RAM=False):
         self.img_size = img_size
         self.num_classes = len(cfg.DATA["CLASSES"])
         self.stride = [8, 16, 32]
         self.IOU_thresh = 0.3
         self.thresh_gh = 0.05
         self.__annotations = self.__load_annotations(anno_file_name)
+        self.img_RAM = [None] * len(self.__annotations)
+        if load_RAM:
+            for i, img_path in enumerate(self.__annotations):
+                self.img_RAM[i] = cv2.imread(img_path[0])
+
     def __len__(self):
         return len(self.__annotations)
 
     def __getitem__(self, item):
-        img_org, bboxes_org = self.__parse_annotation(self.__annotations[item])
+        img_org, bboxes_org = self.__parse_annotation(item)
         img_org = img_org.transpose(2, 0, 1)  # HWC->CHW
 
         item_mix = random.randint(0, len(self.__annotations) - 1)
-        img_mix, bboxes_mix = self.__parse_annotation(self.__annotations[item_mix])
+        img_mix, bboxes_mix = self.__parse_annotation(item_mix)
         img_mix = img_mix.transpose(2, 0, 1)
 
         img, bboxes = DataAug.Mixup()(img_org, bboxes_org, img_mix, bboxes_mix)
@@ -43,15 +48,19 @@ class Construct_Dataset(Dataset):
     def __load_annotations(self, anno_name):
         anno_path = os.path.join(cfg.PROJECT_PATH, 'dataR', anno_name + ".txt")
         with open(anno_path, 'r') as f:
-            annotations = list(filter(lambda x: len(x) > 0, f.readlines()))
+            annotation = filter(lambda x: len(x) > 0, f.readlines())
+            annotations = list(annotation)
         assert len(annotations) > 0, "No images found in {}".format(anno_path)
+        annotations = [x.strip().split(' ') for x in annotations]
         return annotations
 
-    def __parse_annotation(self, annotation):
-        anno = annotation.strip().split(' ')
-        img_path = anno[0]
-        img = cv2.imread(img_path)
-        assert img is not None, 'File Not Found ' + img_path
+    def __parse_annotation(self, index):
+        anno = self.__annotations[index]
+        if self.img_RAM[index] is not None:
+            img = self.img_RAM[index]
+        else:
+            img = cv2.imread(anno[0])
+        assert img is not None, 'File Not Found ' + anno[0]
         bboxes = np.array([list(map(float, box.split(','))) for box in anno[1:]])
         img, bboxes = DataAug.RandomVerticalFilp()(np.copy(img), np.copy(bboxes))
         img, bboxes = DataAug.RandomHorizontalFilp()(np.copy(img), np.copy(bboxes))
