@@ -44,14 +44,16 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑
+* #### 12.17 今天没有更新。感慨一句，对于一个深度学习任务而言，有一个成熟的benchmark是一件幸事也是最大的不幸，当大家乐此不疲于此，这个领域就死掉了。
+
 * #### 12.15 🤪 The trained models for DOTAv1.5 and DOTAv2.0 dataset are available. [Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA)(password: yn04)  
 🐾 🐾 🐾 DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
 😝😝😝 其实每天事儿挺多的，做科研都是见缝插针，github这边就更顾不上了，使用教程和代码注释更新慢还请见谅，过年期间会加油更新。另外，有问题可以在issues里面留言，为什么都喜欢发邮件啊，邮件经常会莫名其妙的跑到垃圾邮件里，因此可能会有延迟，实在抱歉，我打捞出来就会立即回复的。 
  
 * #### 12.13 😭 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
 
-* #### 12.11 😁 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。
-
+* #### 12.11 😁 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。 
+* 
 * #### 12.9 😳 终于收到一审的审稿意见了，感谢审稿人大大。
 
 * #### 11.22 👺 Notice. Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
@@ -75,6 +77,7 @@ There are still some uncompleted content that is being continuously updated. Tha
 
 * #### 🐟 🐡 11.16 The script for generating datasets in the format required by GGHL is added in ./datasets_tools/DOTA2Train.py
 更新了用于生成GGHL所需格式数据集的工具(./datasets_tools/DOTA2Train.py)
+论文里的Refine Approx.在代码里面有详细的分类讨论。
 
 * #### 👾 11.15 The models for the SKU dataset are available 
 其他数据的权重近期会陆续上传和更新
