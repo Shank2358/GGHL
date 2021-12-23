@@ -45,7 +45,7 @@
 
 ## 0.News 🦞 🦀 🦑 
 * #### 🐦🐦 12.23 Centernet and GGHL-CenterNet are online. FCOS will be launched soon. This GitHub repository is still being updated and optimized. Centernet和GGHL-CenterNet上线。FCOS即将上线。,最近会持续更新优化这个仓库。  
-* <p algin="center">
+<p algin="center">
 <img src="https://user-images.githubusercontent.com/33946139/147179756-2e4788d2-48d2-4fc6-bb1c-a35cbb7f377e.png" width="300"><img src="https://user-images.githubusercontent.com/33946139/147185286-69f8eff8-3e71-4b34-86d8-c9b6259d4b1e.png" width="600">
 </p>
 
