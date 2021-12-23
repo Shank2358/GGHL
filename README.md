@@ -42,6 +42,9 @@
 <p algin="center">
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
+<p algin="center">
+<img src="https://user-images.githubusercontent.com/33946139/147258790-8b0ddf42-fbd6-4372-8598-70d67d5de328.png" width="700">
+</p>
 
 ## 0.News 🦞 🦀 🦑 
 * #### 11.24 🏜️🏜️ The label assignment of FCOS-R and GGHL-FCOS are online.
