@@ -189,7 +189,7 @@ class Evaluator(object):
         pred_rotaxy = pred_bbox[:, 4:8]
         pred_r = pred_bbox[:, 8:9]
         zero = np.zeros_like(pred_rotaxy)
-        pred_rotaxy = np.where(pred_r > 0.8, zero, pred_rotaxy)
+        pred_rotaxy = np.where(pred_r > 0.9, zero, pred_rotaxy)
         # (2)将预测的bbox中超出原图的部分裁掉
         pred_coor = np.concatenate([np.maximum(pred_coor[:, :2], [0, 0]), np.minimum(pred_coor[:, 2:], [org_w - 1, org_h - 1])], axis=-1)
         # (3)将无效bbox的coor置为0
@@ -217,7 +217,6 @@ class Evaluator(object):
         cachedir = os.path.join(self.pred_result_path, 'voc', 'cache')
         annopath = os.path.join(self.val_data_path, 'Annotations/{:s}.txt')
         imagesetfile = os.path.join(self.val_data_path, 'ImageSets', cfg.TEST["EVAL_NAME"]+'.txt')
-        #print(annopath)
         APs = {}
         Recalls = {}
         Precisions = {}
