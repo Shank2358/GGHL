@@ -183,6 +183,9 @@ This project is [GNU General Public License v3.0](https://github.com/Shank2358/G
 
 
 ## 🤐 To be continued 
+
+## 🎃 Update Log
+
 * #### 11.21 😸😸 Thanks @trungpham2606 for the suggestions and feedback. 
 
 * #### 11.20 ❤️ 修复了一些bug，谢谢大家的建议。大家有啥问题可以在issues里面详细描述，我会及时回复，你的问题也可能帮助到其他人。
