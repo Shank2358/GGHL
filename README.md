@@ -157,6 +157,9 @@ This project is [GNU General Public License v3.0](https://github.com/Shank2358/G
 
 
 ## 0.News 🦞 🦀 🦑 
+* #### 11.24 FCOS-R and GGHL-FCOS are online.
+<img src="https://user-images.githubusercontent.com/33946139/147256008-467d03f4-876e-4065-99b6-02198a7d7d93.png" width="520">
+
 * #### 🐦🐦 12.23 Centernet and GGHL-CenterNet are online. FCOS will be launched soon. This GitHub repository is still being updated and optimized. Centernet和GGHL-CenterNet上线。FCOS即将上线。,最近会持续更新优化这个仓库。  
 <p algin="center">
 <img src="https://user-images.githubusercontent.com/33946139/147179756-2e4788d2-48d2-4fc6-bb1c-a35cbb7f377e.png" width="260"><img src="https://user-images.githubusercontent.com/33946139/147185286-69f8eff8-3e71-4b34-86d8-c9b6259d4b1e.png" width="520">
