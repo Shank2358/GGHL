@@ -69,46 +69,6 @@
 * #### 11.22 👺 Notice. Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
 不同版本opencv的cv2.minAreaRect()函数不一致且存在一些角度转换的bug (我用的低版本角度是(0,-90]，新版的是[0,90]，所以可能有一些bug，我全部更新统一到新版了现在。还有就是cv2.minAreaRect()函数本身的一些bug，有很多博客介绍过了我就不重复了，由于我的原版为了解决这些bug做的判断函数和新版cv2.minAreaRect()的输出不太一样，这里也有一些问题，我也修改了)，我更新了datasets_obb.py, datasets_obb_pro.py, augmentations.py, DOTA2Train.py文件，全部按长边表示法计算（角度范0,180)），请大家及时更新，opencv版本也请更新到4.5.3及以上。谢谢。
 
-* #### 11.21 😸😸 Thanks @trungpham2606 for the suggestions and feedback. 
-
-* #### 11.20 ❤️ 修复了一些bug，谢谢大家的建议。大家有啥问题可以在issues里面详细描述，我会及时回复，你的问题也可能帮助到其他人。
-
-* #### 11.19 😶 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
-11.19-11.20 更新修复了标签转换脚本的一些bug (对于custom data的顶点顺序可能与DOTA不一致的问题)
-
-<p algin="center">
-<img src="https://user-images.githubusercontent.com/33946139/142638611-39a20148-ce04-49fc-be19-2b6ffff0f9fa.png" width="320">
-</p>
-
-* #### 11.18 😺 Fixed some bugs, please update the codes
-
-* #### 🙏🙏🙏 11.17 Release Notes
-There are still some uncompleted content that is being continuously updated. Thank you for your feedback and suggestions. 
-
-* #### 🐟 🐡 11.16 The script for generating datasets in the format required by GGHL is added in ./datasets_tools/DOTA2Train.py
-更新了用于生成GGHL所需格式数据集的工具(./datasets_tools/DOTA2Train.py)
-论文里的Refine Approx.在代码里面有详细的分类讨论。
-
-* #### 👾 11.15 The models for the SKU dataset are available 
-其他数据的权重近期会陆续上传和更新
-
-* #### 🤖 11.14 更新预告 
-即将更新更多的backbone和模型，以及mosaic数据增强,一周内更完。下周会更新第一版的代码注释和教程，即dataloadR/datasets_obb.py文件，主要是GGHL中最重要的标签分配策略。
-另外GGHLv2.0正在准备和实验中，立个flag今年更新完。
-
-* #### 🎅 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 
-增加了DCNv2的混合精度训练和onnx转换 (推理阶段要记得把offsets改成FP16)
-
-* #### 🐣 🐤 🐥 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
-论文结果对应的模型权重可以下载了（终于发工资把网盘续上了~）
-
-* #### 🐞 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December   
-打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线  
-
-* #### 🦄 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
-1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
-
-
 ## 🌈 1.Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10)   
 CUDA > 11.1, Cudnn > 8.0.4
@@ -223,6 +183,44 @@ This project is [GNU General Public License v3.0](https://github.com/Shank2358/G
 
 
 ## 🤐 To be continued 
+* #### 11.21 😸😸 Thanks @trungpham2606 for the suggestions and feedback. 
+
+* #### 11.20 ❤️ 修复了一些bug，谢谢大家的建议。大家有啥问题可以在issues里面详细描述，我会及时回复，你的问题也可能帮助到其他人。
+
+* #### 11.19 😶 During label conversion, it should be noted that the vertices in the paper are in order (see the paper for details).
+11.19-11.20 更新修复了标签转换脚本的一些bug (对于custom data的顶点顺序可能与DOTA不一致的问题)
+
+<p algin="center">
+<img src="https://user-images.githubusercontent.com/33946139/142638611-39a20148-ce04-49fc-be19-2b6ffff0f9fa.png" width="320">
+</p>
+
+* #### 11.18 😺 Fixed some bugs, please update the codes
+
+* #### 🙏🙏🙏 11.17 Release Notes
+There are still some uncompleted content that is being continuously updated. Thank you for your feedback and suggestions. 
+
+* #### 🐟 🐡 11.16 The script for generating datasets in the format required by GGHL is added in ./datasets_tools/DOTA2Train.py
+更新了用于生成GGHL所需格式数据集的工具(./datasets_tools/DOTA2Train.py)
+论文里的Refine Approx.在代码里面有详细的分类讨论。
+
+* #### 👾 11.15 The models for the SKU dataset are available 
+其他数据的权重近期会陆续上传和更新
+
+* #### 🤖 11.14 更新预告 
+即将更新更多的backbone和模型，以及mosaic数据增强,一周内更完。下周会更新第一版的代码注释和教程，即dataloadR/datasets_obb.py文件，主要是GGHL中最重要的标签分配策略。
+另外GGHLv2.0正在准备和实验中，立个flag今年更新完。
+
+* #### 🎅 11.10 Add DCNv2 for automatic mixed precision (AMP) training. 
+增加了DCNv2的混合精度训练和onnx转换 (推理阶段要记得把offsets改成FP16)
+
+* #### 🐣 🐤 🐥 11.9: The model weight has been released. You can download it and put it in the ./weight folder, and then modify the weight path in test.py to test and get the results reported in the paper. The download link is given in the introduction later.  
+论文结果对应的模型权重可以下载了（终于发工资把网盘续上了~）
+
+* #### 🐞 11.8：I plan to write a tutorial on data preprocessing and explanation of algorithms and codes, which is expected to be launched in December   
+打算写一个数据预处理的教程和算法、代码的讲解，预计12月上线  
+
+* #### 🦄 11.7: All updates of GGHL have been completed. Welcome to use it. If you have any questions, you can leave a message at the issue. Thank you.
+1.0版本全部更新完成了，欢迎使用，有任何问题可以在issue留言，谢谢。接下来会不断更新和完善  
 
 #### 💣 11.6 更新了标签分配和dataload。更新了pytorch1.10版本的支持。预告一下，下周会更新分布式训练的内容。
 （预训练权重的链接在NPMMR-Det和LO-Det的仓库说明里）
