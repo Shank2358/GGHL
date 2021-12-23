@@ -165,11 +165,11 @@ Put them in. /weight folder
 
 3）The trained model for SKU dataset is available from [Google Drive](https://drive.google.com/file/d/19-dlqNaXJyKboJ5bH-UUiXEVJqrdNyAt/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1n7siqE0w49rkOqtTvkZaIA)(password: vdf5)  
 
-4）The pre-trained weights of Darknet53 on ImageNet are available from [Google_Drive](https://drive.google.com/file/d/1vfUDVeI12cBCgSgKMBz39gxkD1Z7kmFd/view?usp=sharing) or [Baidu_Disk](https://pan.baidu.com/s/1DZhooaEClu6rOnC7lE0Aiw)(password:0blv)   
+4）The pre-trained weights of Darknet53 on ImageNet are available from [Google_Drive](https://drive.google.com/file/d/1vfUDVeI12cBCgSgKMBz39gxkD1Z7kmFd/view?usp=sharing) or [Baidu_Disk](https://pan.baidu.com/s/1DZhooaEClu6rOnC7lE0Aiw)(password:0blv)  
 
-5) The trained model for DOTAv1.5 dataset is available from [Google Drive](https://drive.google.com/file/d/1PdRfWPbdT4mY6DYBOkhBGF6dMq4IB8PC/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj)  
+5）The trained model for DOTAv1.5 dataset is available from [Google Drive](https://drive.google.com/file/d/1PdRfWPbdT4mY6DYBOkhBGF6dMq4IB8PC/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1NRDjXeGixUhDm87-2DXBLQ)(password: wxlj)
 
-6) The trained model for DOTAv2.0 dataset is available from [Google Drive](https://drive.google.com/file/d/1Gq0bKYg4DA9RpIE0XxAtMfxnetpb4dV8/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7)  
+6）The trained model for DOTAv2.0 dataset is available from [Google Drive](https://drive.google.com/file/d/1Gq0bKYg4DA9RpIE0XxAtMfxnetpb4dV8/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12io6rkVUGptVaoGfAaI99g)(password: dmu7)  
 
 
 ## 💖💖💖 6.Reference
