@@ -1,4 +1,4 @@
-# GGHL: A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
+# GGHL: A General Gaussian Heatmap Label Assignment for Arbitrary-Oriented Object Detection  
 
   <a href="https://github.com/Shank2358/GGHL/">
     <img alt="Version" src="https://img.shields.io/badge/Version-1.0.12-blue" />
