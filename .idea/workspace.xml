@@ -20,11 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/modelR/CenterNet_R.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modelR/backbones/darknet53_stride4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modelR/head/head_Centernet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modelR/loss/loss_Centernet_R.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modelR/necks/neck_Centernet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evalR/evaluator_CenternetR.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
