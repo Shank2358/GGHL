@@ -1,7 +1,7 @@
 # GGHL: A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection  
 
   <a href="https://github.com/Shank2358/GGHL/">
-    <img alt="Version" src="https://img.shields.io/badge/Version-1.0.0-blue" />
+    <img alt="Version" src="https://img.shields.io/badge/Version-1.0.12-blue" />
   </a>
   
   <a href="https://github.com/Shank2358/GGHL/blob/main/LICENSE">
@@ -43,10 +43,20 @@
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
 </p>
 
-## 0.News 🦞 🦀 🦑
-* #### 12.17 今天没有更新。感慨一句，对于一个深度学习任务而言，有一个成熟的benchmark是一件幸事也是最大的不幸，当大家乐此不疲于此，这个领域就死掉了。
+## 0.News 🦞 🦀 🦑 
+* #### 🐦🐦 12.23 Centernet and GGHL-CenterNet are online. FCOS will be launched soon. This GitHub repository is still being updated and optimized. Centernet和GGHL-CenterNet上线。FCOS即将上线。,最近会持续更新优化这个仓库。  
+<img src="https://user-images.githubusercontent.com/33946139/147179756-2e4788d2-48d2-4fc6-bb1c-a35cbb7f377e.png" width="300">
 
-* #### 12.15 🤪 The trained models for DOTAv1.5 and DOTAv2.0 dataset are available. [Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA)(password: yn04)  
+* #### 🧐 广告：招募可以一起维护更新这个仓库的小伙伴。或者大家fork更新了以后麻烦推上来一下啊，感激不尽。  
+ 
+* #### 😺😺 12.23 因为论文还在审稿阶段的原因，消融实验还差一些代码没有完全更新完，稍安勿躁，持续更新中。  
+有问题真的真的可以在issues里面留言不一定非得邮件，我都会回的，这里可能比邮件还快的。邮件最近又有被放到垃圾箱的情况了，真的非常抱歉。有谁知道怎么关闭邮件拦截，恳请教我一下。另外，请不要做伸手党直接要代码或者让我直接帮忙写代码，这真的让人心情不美丽😩，论文里该有的代码这个仓库里都会有的，其他的我也很乐意和大家一起讨论，不断更新这个仓库让它越来越好。在这里咱们定个约定，如果需要额外的代码和问题解答，请将遇到的问题具体准确的描述清楚，我也会尽己所能去解答和更新，如果只是伸手党要这要那的请恕我不打捞垃圾邮件了。真的求求了，issues里就可以说的问题没必要加微信吧，确实要加也行的吧至少告诉我你们是谁，我怕我对象会吃醋的啊，不然又要跪键盘了。  
+
+* #### 🙉🙉 12.23 我不喜欢过度的评价别人的方法，我觉得每个工作都有它的闪光点和值得学习的地方，我学习论文和审稿也都是这样要求自己的，所以我个人拒绝回答觉得和xxx工作比起来怎么样这种问题，请见谅。GGHL这个工作欢迎任何批评和评价，我都会虚心接受作为激励。  
+ 
+* #### 12.17 🧑‍🚀 今天没有更新。感慨一句，对于一个深度学习任务而言，有一个成熟的benchmark是一件幸事也是最大的不幸，当大家乐此不疲于此，这个领域就死掉了。
+
+* #### 12.15 🤪 The trained models for DOTAv1.5 and DOTAv2.0 dataset are available. [Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA)(password: yn04)  *
 🐾 🐾 🐾 DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
 😝😝😝 其实每天事儿挺多的，做科研都是见缝插针，github这边就更顾不上了，使用教程和代码注释更新慢还请见谅，过年期间会加油更新。另外，有问题可以在issues里面留言，为什么都喜欢发邮件啊，邮件经常会莫名其妙的跑到垃圾邮件里，因此可能会有延迟，实在抱歉，我打捞出来就会立即回复的。 
  
@@ -57,7 +67,7 @@
 * #### 12.9 😳 终于收到一审的审稿意见了，感谢审稿人大大。
 
 * #### 11.22 👺 Notice. Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
-不同版本opencv的cv2.minAreaRect()函数不一致且存在一些角度转换的bug (我用的低版本角度是(0,-90]，新版的是[0,90]，所以可能有一些bug，我全部更新统一到新版了现在。还有就是cv2.minAreaRect()函数本身的一些bug，有很多博客介绍过了我就不重复了，由于我的原版为了解决这些bug做的判断函数和新版cv2.minAreaRect()的输出不太一样，这里也有一些问题，我也修改了)，我更新了datasets_obb.py, datasets_obb_pro.py, augmentations.py, DOTA2Train.py文件，全部按长边表示法计算（角度范围是[0,180)），请大家及时更新，opencv版本也请更新到4.5.3及以上。谢谢。
+不同版本opencv的cv2.minAreaRect()函数不一致且存在一些角度转换的bug (我用的低版本角度是(0,-90]，新版的是[0,90]，所以可能有一些bug，我全部更新统一到新版了现在。还有就是cv2.minAreaRect()函数本身的一些bug，有很多博客介绍过了我就不重复了，由于我的原版为了解决这些bug做的判断函数和新版cv2.minAreaRect()的输出不太一样，这里也有一些问题，我也修改了)，我更新了datasets_obb.py, datasets_obb_pro.py, augmentations.py, DOTA2Train.py文件，全部按长边表示法计算（角度范0,180)），请大家及时更新，opencv版本也请更新到4.5.3及以上。谢谢。
 
 * #### 11.21 😸😸 Thanks @trungpham2606 for the suggestions and feedback. 
 
