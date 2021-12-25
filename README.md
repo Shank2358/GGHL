@@ -47,7 +47,10 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑 
-* #### 11.24 🏜️🏜️ The label assignment of FCOS-R and GGHL-FCOS are online.
+* #### 12.25 🎅🎅🎅 Merry Christmas！
+The latest and improved embedded version of GGHL will be launched soon. 嵌入式端的最新改进版本即将上线。
+
+* #### 12.24 🏜️🏜️ The label assignment of FCOS-R and GGHL-FCOS are online.
 <img src="https://user-images.githubusercontent.com/33946139/147256008-467d03f4-876e-4065-99b6-02198a7d7d93.png" width="520">
 
 * #### 🐦🐦 12.23 Centernet and GGHL-CenterNet are online. FCOS will be launched soon. This GitHub repository is still being updated and optimized. Centernet和GGHL-CenterNet上线。FCOS即将上线。,最近会持续更新优化这个仓库。  
