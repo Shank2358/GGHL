@@ -13,6 +13,7 @@ tensorboardX==2.4
 thop==0.0.31.post2005241907
 timm==0.4.12
 tqdm==4.62.3
+prefetch_generator==1.0.1
 rich
 tensorboard
 nvitop
