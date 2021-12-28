@@ -47,6 +47,9 @@
 </p>
 
 ## 0.News 🦞 🦀 🦑 
+* #### 12.28 I updated the requirements.txt file because the distributed training may prompt that some dependent libraries are missing. 
+* 更新了requirements.txt文件，因为DDP分布式训练时可能提示缺少一些依赖库。如果遇到这种情况，请根据提示pip安装补全相应的库即可。
+
 * #### 12.25 🎅🎅🎅 Merry Christmas！
 The latest and improved embedded version of GGHL will be launched soon. 嵌入式端的最新改进版本即将上线。
 
