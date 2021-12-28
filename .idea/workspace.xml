@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_GGHL.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_GGHL.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,5 +257,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1637328731387" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1640676184257">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1640676184257" />
   </component>
 </project>

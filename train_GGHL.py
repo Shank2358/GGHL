@@ -57,13 +57,8 @@ class Trainer(object):
                                            pin_memory=True)
 
         net_model = GGHL(weight_path=self.weight_path)
-        if torch.cuda.device_count() >1: ## multi GPUs
-            print("Let's use", torch.cuda.device_count(), "GPUs!")
-            net_model = torch.nn.DataParallel(net_model)
-            self.model = net_model.to(self.device)
-        elif torch.cuda.device_count() ==1:
-            self.model = net_model.to(self.device) ## Single GPU
-            #torch.backends.cudnn.benchmark = False
+        self.model = net_model.to(self.device) ## Single GPU
+        #torch.backends.cudnn.benchmark = False
 
 
         #params_decay, params_no_decay  = split_parameters(self.model)
