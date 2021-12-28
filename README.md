@@ -46,40 +46,10 @@
 <img src="https://user-images.githubusercontent.com/33946139/147258790-8b0ddf42-fbd6-4372-8598-70d67d5de328.png" width="700">
 </p>
 
-## 0.News 🦞 🦀 🦑 
-* #### 12.28 I updated the requirements.txt file because the distributed training may prompt that some dependent libraries are missing. 
-* 更新了requirements.txt文件，因为DDP分布式训练时可能提示缺少一些依赖库。如果遇到这种情况，请根据提示pip安装补全相应的库即可。
-
-* #### 12.25 🎅🎅🎅 Merry Christmas！
-The latest and improved embedded version of GGHL will be launched soon. 嵌入式端的最新改进版本即将上线。
-
-* #### 12.24 🏜️🏜️ The label assignment of FCOS-R and GGHL-FCOS are online.
-<img src="https://user-images.githubusercontent.com/33946139/147256008-467d03f4-876e-4065-99b6-02198a7d7d93.png" width="520">
-
-* #### 🐦🐦 12.23 Centernet and GGHL-CenterNet are online. FCOS will be launched soon. This GitHub repository is still being updated and optimized. Centernet和GGHL-CenterNet上线。FCOS即将上线。,最近会持续更新优化这个仓库。  
-<p algin="center">
-<img src="https://user-images.githubusercontent.com/33946139/147179756-2e4788d2-48d2-4fc6-bb1c-a35cbb7f377e.png" width="260"><img src="https://user-images.githubusercontent.com/33946139/147185286-69f8eff8-3e71-4b34-86d8-c9b6259d4b1e.png" width="520">
-</p>
- 
-* #### 😺😺 12.23 因为论文还在审稿阶段的原因，消融实验还差一些代码没有完全更新完，稍安勿躁，持续更新中。  
-有问题真的真的可以在issues里面留言不一定非得邮件，我都会回的，这里可能比邮件还快的。邮件最近又有被放到垃圾箱的情况了，真的非常抱歉。有谁知道怎么关闭邮件拦截，恳请教我一下。另外，请不要做伸手党直接要代码或者让我直接帮忙写代码，这真的让人心情不美丽😩，论文里该有的代码这个仓库里都会有的，其他的我也很乐意和大家一起讨论，不断更新这个仓库让它越来越好。在这里咱们定个约定，如果需要额外的代码和问题解答，请将遇到的问题具体准确的描述清楚，我也会尽己所能去解答和更新，如果只是伸手党要这要那的请恕我不打捞垃圾邮件了。真的求求了，issues里就可以说的问题没必要加微信吧，确实要加也行的吧至少告诉我你们是谁，我怕我对象会吃醋的啊，不然又要跪键盘了。  
-
-* #### 🙉🙉 12.23 我不喜欢过度的评价别人的方法，我觉得每个工作都有它的闪光点和值得学习的地方，我学习论文和审稿也都是这样要求自己的，所以我个人拒绝回答觉得和xxx工作比起来怎么样这种问题，请见谅。GGHL这个工作欢迎任何批评和评价，我都会虚心接受作为激励。  
- 
-* #### 12.17 🧑‍🚀 今天没有更新。感慨一句，对于一个深度学习任务而言，有一个成熟的benchmark是一件幸事也是最大的不幸，当大家乐此不疲于此，这个领域就死掉了。
-
-* #### 12.15 🤪 The trained models for DOTAv1.5 and DOTAv2.0 dataset are available. [Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA)(password: yn04)  *
-🐾 🐾 🐾 DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
-😝😝😝 其实每天事儿挺多的，做科研都是见缝插针，github这边就更顾不上了，使用教程和代码注释更新慢还请见谅，过年期间会加油更新。另外，有问题可以在issues里面留言，为什么都喜欢发邮件啊，邮件经常会莫名其妙的跑到垃圾邮件里，因此可能会有延迟，实在抱歉，我打捞出来就会立即回复的。 
- 
-* #### 12.13 😭 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
-
-* #### 12.11 😁 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。 
-
-* #### 12.9 😳 终于收到一审的审稿意见了，感谢审稿人大大。
-
-* #### 11.22 👺 Notice. Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
-不同版本opencv的cv2.minAreaRect()函数不一致且存在一些角度转换的bug (我用的低版本角度是(0,-90]，新版的是[0,90]，所以可能有一些bug，我全部更新统一到新版了现在。还有就是cv2.minAreaRect()函数本身的一些bug，有很多博客介绍过了我就不重复了，由于我的原版为了解决这些bug做的判断函数和新版cv2.minAreaRect()的输出不太一样，这里也有一些问题，我也修改了)，我更新了datasets_obb.py, datasets_obb_pro.py, augmentations.py, DOTA2Train.py文件，全部按长边表示法计算（角度范0,180)），请大家及时更新，opencv版本也请更新到4.5.3及以上。谢谢。
+## 0. Something Important 🦞 🦀 🦑 
+* #### The OpenCV version needs to be >=4.5.3, the label conversion script is ./datasets_tools/[DOTA2Train.py](https://github.com/Shank2358/GGHL/blob/main/datasets_tools/DOTA2Train.py)
+* #### See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.8.1).
+* #### Thanks [@trungpham2606](https://github.com/trungpham2606) and [@lalalagogogo](https://github.com/lalalagogogochong) for the suggestions and feedback.
 
 ## 🌈 1.Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10)   
@@ -92,8 +62,7 @@ Second, install the dependent libraries in [requirements.txt](https://github.com
 conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
 pip install -r requirements.txt  
 ```
-  
-  
+    
 ## 🌟 2.Installation
 1. git clone this repository    
 2. Install the libraries in the ./lib folder  
@@ -125,7 +94,7 @@ image_path xmin,ymin,xmax,ymax,class_id,x1,y1,x2,y2,x3,y3,x4,y4,area_ratio,angle
 ```  
 The calculation method of angle is explained in [Issues #1](https://github.com/Shank2358/GGHL/issues/1) and our paper.
 
-#### (2) Testing Format
+#### (2) Validation & Testing Format
 The same as the Pascal VOC Format
 
 #### (3) DataSets Files Structure
@@ -168,6 +137,7 @@ python test.py
   
   
 ## ☃️❄️ 5.Weights
+假装有表格...懒得画了  
 1）The trained model for DOTA dataset is available from [Google Drive](https://drive.google.com/file/d/13yrGQTcA3xLf6TPsAA1cVTF0rAUk6Keg/view?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1aZ-bnNUAqJHqfOThK4tm5A) (password: 2dm8)  
 Put them in. /weight folder
 
@@ -196,6 +166,39 @@ This project is [GNU General Public License v3.0](https://github.com/Shank2358/G
 ## 🤐 To be continued 
 
 ## 🎃 Update Log
+* #### 12.28 I updated the requirements.txt file because the distributed training may prompt that some dependent libraries are missing. 
+* 更新了requirements.txt文件，因为DDP分布式训练时可能提示缺少一些依赖库。如果遇到这种情况，请根据提示pip安装补全相应的库即可。
+
+* #### 12.25 🎅🎅🎅 Merry Christmas！
+The latest and improved embedded version of GGHL will be launched soon. 嵌入式端的最新改进版本即将上线。
+
+* #### 12.24 🏜️🏜️ The label assignment of FCOS-R and GGHL-FCOS are online.
+<img src="https://user-images.githubusercontent.com/33946139/147256008-467d03f4-876e-4065-99b6-02198a7d7d93.png" width="520">
+
+* #### 🐦🐦 12.23 Centernet and GGHL-CenterNet are online. FCOS will be launched soon. This GitHub repository is still being updated and optimized. Centernet和GGHL-CenterNet上线。FCOS即将上线。,最近会持续更新优化这个仓库。  
+<p algin="center">
+<img src="https://user-images.githubusercontent.com/33946139/147179756-2e4788d2-48d2-4fc6-bb1c-a35cbb7f377e.png" width="260"><img src="https://user-images.githubusercontent.com/33946139/147185286-69f8eff8-3e71-4b34-86d8-c9b6259d4b1e.png" width="520">
+</p>
+ 
+* #### 😺😺 12.23 因为论文还在审稿阶段的原因，消融实验还差一些代码没有完全更新完，稍安勿躁，持续更新中。  
+有问题真的真的可以在issues里面留言不一定非得邮件，我都会回的，这里可能比邮件还快的。邮件最近又有被放到垃圾箱的情况了，真的非常抱歉。有谁知道怎么关闭邮件拦截，恳请教我一下。另外，请不要做伸手党直接要代码或者让我直接帮忙写代码，这真的让人心情不美丽😩，论文里该有的代码这个仓库里都会有的，其他的我也很乐意和大家一起讨论，不断更新这个仓库让它越来越好。在这里咱们定个约定，如果需要额外的代码和问题解答，请将遇到的问题具体准确的描述清楚，我也会尽己所能去解答和更新，如果只是伸手党要这要那的请恕我不打捞垃圾邮件了。真的求求了，issues里就可以说的问题没必要加微信吧，确实要加也行的吧至少告诉我你们是谁，我怕我对象会吃醋的啊，不然又要跪键盘了。  
+
+* #### 🙉🙉 12.23 我不喜欢过度的评价别人的方法，我觉得每个工作都有它的闪光点和值得学习的地方，我学习论文和审稿也都是这样要求自己的，所以我个人拒绝回答觉得和xxx工作比起来怎么样这种问题，请见谅。GGHL这个工作欢迎任何批评和评价，我都会虚心接受作为激励。  
+ 
+* #### 12.17 🧑‍🚀 今天没有更新。感慨一句，对于一个深度学习任务而言，有一个成熟的benchmark是一件幸事也是最大的不幸，当大家乐此不疲于此，这个领域就死掉了。
+
+* #### 12.15 🤪 The trained models for DOTAv1.5 and DOTAv2.0 dataset are available. [Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA)(password: yn04)  *
+🐾 🐾 🐾 DOTAv1.5和DOTAv2.0的权重可以下载啦。这版本的结果是没调参，没数据增强，没多尺度测试的，后续有空会再精调和加tricks，应该还会涨点。  
+😝😝😝 其实每天事儿挺多的，做科研都是见缝插针，github这边就更顾不上了，使用教程和代码注释更新慢还请见谅，过年期间会加油更新。另外，有问题可以在issues里面留言，为什么都喜欢发邮件啊，邮件经常会莫名其妙的跑到垃圾邮件里，因此可能会有延迟，实在抱歉，我打捞出来就会立即回复的。 
+ 
+* #### 12.13 😭 改论文改的头昏脑胀，补了一堆实验和解释，改论文比写论文难产多了~/(ㄒoㄒ)/~我可以选择剖腹产吗...
+
+* #### 12.11 😁 修复了两个索引的bug。调整了学习率重新训练了，conf_thresh调到0.005，DOTA数据集精度能到79+了。顺便回复一句，总是有人问area normalization那个公式设计怎么来的，我睡觉梦到的。 
+
+* #### 12.9 😳 终于收到一审的审稿意见了，感谢审稿人大大。
+
+* #### 11.22 👺 Notice. Due to a bug in the cv2.minAreaRect() function of different versions of opencv, I updated datasets_obb.py, datasets_obb_pro.py, augmentations.py, and DOTA2Train.py. Opencv supports version 4.5.3 and above. Please note the update. Thank you. Thanks @Fly-dream12 for the feedback.  
+不同版本opencv的cv2.minAreaRect()函数不一致且存在一些角度转换的bug (我用的低版本角度是(0,-90]，新版的是[0,90]，所以可能有一些bug，我全部更新统一到新版了现在。还有就是cv2.minAreaRect()函数本身的一些bug，有很多博客介绍过了我就不重复了，由于我的原版为了解决这些bug做的判断函数和新版cv2.minAreaRect()的输出不太一样，这里也有一些问题，我也修改了)，我更新了datasets_obb.py, datasets_obb_pro.py, augmentations.py, DOTA2Train.py文件，全部按长边表示法计算（角度范0,180)），请大家及时更新，opencv版本也请更新到4.5.3及以上。谢谢。
 
 * #### 🧐 广告：招募可以一起维护更新这个仓库的小伙伴。或者大家fork更新了以后麻烦推上来一下啊，感激不尽。  
 
@@ -248,7 +251,7 @@ There are still some uncompleted content that is being continuously updated. Tha
 
 #### 😸😸 10.24 终于分配AE和审稿人了🐌🐌🐌，不容易啊。这投稿流程可太慢了，担心能不能赶上毕业，真的是瑟瑟发抖😭😭😭  
 
-#### 🙉🙉 关于论文超参数合实验的一些说明。
+#### 🙉🙉 关于论文超参数和实验的一些说明。
 🐛 论文里报道的训练超参数都没有精调，就选的对比方法一样的默认参数，也没有选最好的epoch的结果，直接固定了最大epoch，选择最后五个epoch的平均结果。精调学习率、训练策略合最好轮次还会涨点，最近有空闲的机器我试了一下。但是我觉得像很多论文那样为了state-of-the-art（SOTA）而SOTA没有必要，所以最后没那样做，后续如果审稿意见有这个建议我可能会再修改，如果没有我会把更多的实验结果在github和arxiv上展示出来。反思自己最近的工作，确实比不上各位大佬前辈的创新想法，这点还要继续努力。由于我也是自己一路磕磕绊绊摸索着进入科研领域的，也踩过很多坑，也被各种卷王卷的透不过气，所以我想追求的是想做一些踏实的、简单实用的工作，设计一个皮实、经得起折腾的模型，而不想去卷什么SOTA（😭😭😭 实话是我也卷不过。。。。）。   
 🐰🐰 说一个我对目标检测的理解，请大家批评指正。在我看来，目标检测只是一个更庞大的视觉系统的入口任务而不是最终结果。我觉得大多数检测任务的目标是快速、粗略地在图像/视频中定位到目标候选区域，为后续更精细的比如分割、跟踪等其他任务服务，简化它们的输入。从这个视角来看，检测平均精度差距那么一两个点真的没论文里吹的那么重要，反而检测效率（速度）、模型的复杂度与鲁棒性、易用性（无论是对工程人员还是新入门的研究人员而言）的提升对于社区的贡献会更实际一些。最近几个月我也一直在反思自己，目标检测的初心是什么，目标检测完了然后呢，原来我写论文以为的终点很多时候只是我以为的，原来我想错了。深度学习火了这么些年，很多任务或许也是这样的吧，毕竟论文实验里的SOTA是有标准答案的考试，而它们的开花结果是一个开放性问题。这是接下来的努力方向，我相信哪怕道阻且长，行则将至，而且行而不辍，未来一定可期。
 
