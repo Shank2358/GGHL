@@ -49,7 +49,7 @@
 ## 0. Something Important 🦞 🦀 🦑 
 * #### The OpenCV version needs to be >=4.5.3, the label conversion script is ./datasets_tools/[DOTA2Train.py](https://github.com/Shank2358/GGHL/blob/main/datasets_tools/DOTA2Train.py)
 * #### See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.8.1).
-* #### Thanks [@trungpham2606](https://github.com/trungpham2606) and [lalalagogogo](https://github.com/lalalagogogochong) for the suggestions and feedback.
+* #### Thanks [@trungpham2606](https://github.com/trungpham2606) and [@lalalagogogo](https://github.com/lalalagogogochong) for the suggestions and feedback.
 
 ## 🌈 1.Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10)   
