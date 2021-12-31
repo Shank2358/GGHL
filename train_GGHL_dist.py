@@ -9,7 +9,7 @@ from utils.log import Logger
 import dataloadR.datasets_obb as data
 from modelR.GGHL import GGHL
 from modelR.loss.loss_jol import Loss
-from evalR.evaluatorGGHL import *
+from evalR.evaluatorGGHL_new import *
 from torch.cuda import amp
 import matplotlib.pyplot as plt
 import torch.backends.cudnn as cudnn

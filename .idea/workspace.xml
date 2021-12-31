@@ -20,10 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/evalR/evaluatorGGHL_new.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils_basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_GGHL_dist.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_GGHL_dist.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
