@@ -166,7 +166,8 @@ This project is [GNU General Public License v3.0](https://github.com/Shank2358/G
 ## 🤐 To be continued 
 
 ## 🎃 Update Log
-* #### 12.28 I updated the requirements.txt file because the distributed training may prompt that some dependent libraries are missing. 
+* #### 12.31 I have updated the function of polyiou and polynms. Happy new year!!!  
+* #### 12.28 I have updated the requirements.txt file because the distributed training may prompt that some dependent libraries are missing. 
 * 更新了requirements.txt文件，因为DDP分布式训练时可能提示缺少一些依赖库。如果遇到这种情况，请根据提示pip安装补全相应的库即可。
 
 * #### 12.25 🎅🎅🎅 Merry Christmas！
