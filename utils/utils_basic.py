@@ -523,3 +523,75 @@ def nms_glid(bboxes, score_threshold, iou_threshold, sigma=0.3):
             score_mask = cls_bboxes[:, 8] > score_threshold
             cls_bboxes = cls_bboxes[score_mask]
     return np.array(best_bboxes)
+
+from datasets_tools.DOTA_devkit import polyiou
+
+def py_cpu_nms_poly_fast(dets, scores, thresh):
+    """
+    任意四点poly nms.取出nms后的边框的索引
+    @param dets: shape(detection_num, [poly]) 原始图像中的检测出的目标数量
+    @param scores: shape(detection_num, 1)
+    @param thresh:
+    @return:
+            keep: 经nms后的目标边框的索引
+    """
+    obbs = dets[:, 0:-1]  # (num, [poly])
+    x1 = np.min(obbs[:, 0::2], axis=1)  # (num, 1)
+    y1 = np.min(obbs[:, 1::2], axis=1)  # (num, 1)
+    x2 = np.max(obbs[:, 0::2], axis=1)  # (num, 1)
+    y2 = np.max(obbs[:, 1::2], axis=1)  # (num, 1)
+    areas = (x2 - x1 + 1) * (y2 - y1 + 1)  # (num, 1)
+
+    polys = []
+    for i in range(len(dets)):
+        tm_polygon = polyiou.VectorDouble(
+            [dets[i][0], dets[i][1], dets[i][2], dets[i][3], dets[i][4], dets[i][5], dets[i][6], dets[i][7]]
+        )
+        polys.append(tm_polygon)
+    order = scores.argsort()[::-1]  # argsort将元素小到大排列 返回索引值 [::-1]即从后向前取元素
+
+    keep = []
+    while order.size > 0:
+        ovr = []
+        i = order[0]  # 取出当前剩余置信度最大的目标边框的索引
+        keep.append(i)
+        # if order.size == 0:
+        #     break
+        xx1 = np.maximum(x1[i], x1[order[1:]])
+        yy1 = np.maximum(y1[i], y1[order[1:]])
+        xx2 = np.minimum(x2[i], x2[order[1:]])
+        yy2 = np.minimum(y2[i], y2[order[1:]])
+        # w = np.maximum(0.0, xx2 - xx1 + 1)
+        # h = np.maximum(0.0, yy2 - yy1 + 1)
+        w = np.maximum(0.0, xx2 - xx1)
+        h = np.maximum(0.0, yy2 - yy1)
+        hbb_inter = w * h
+        hbb_ovr = hbb_inter / (areas[i] + areas[order[1:]] - hbb_inter)
+        # h_keep_inds = np.where(hbb_ovr == 0)[0]
+        h_inds = np.where(hbb_ovr > 0)[0]
+        tmp_order = order[h_inds + 1]
+        for j in range(tmp_order.size):
+            iou = polyiou.iou_poly(polys[i], polys[tmp_order[j]])
+            hbb_ovr[h_inds[j]] = iou
+            # ovr.append(iou)
+            # ovr_index.append(tmp_order[j])
+
+        # ovr = np.array(ovr)
+        # ovr_index = np.array(ovr_index)
+        # print('ovr: ', ovr)
+        # print('thresh: ', thresh)
+        try:
+            if math.isnan(ovr[0]):
+                pass
+                # pdb.set_trace()
+        except:
+            pass
+        inds = np.where(hbb_ovr <= thresh)[0]
+
+        # order_obb = ovr_index[inds]
+        # print('inds: ', inds)
+        # order_hbb = order[h_keep_inds + 1]
+        order = order[inds + 1]
+        # pdb.set_trace()
+        # order = np.concatenate((order_obb, order_hbb), axis=0).astype(np.int)
+    return keep
