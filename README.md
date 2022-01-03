@@ -54,7 +54,7 @@
 * #### 🦄 Thanks to my collaborator [@haohaolalahao](https://github.com/haohaolalahao) for his great contribution to this project. The discussion of “Refined approximation of OBBs” in the revised paper was proposed by [@haohaolalahao](https://github.com/haohaolalahao) and I when we participated in a remote sensing object detection competition in 2020.  
 * #### 🤖 Thanks to [@Crescent-Ao](https://github.com/Crescent-Ao) for his suggestions on the revised manuscript and his great contribution to publicizing this work.  
 * #### 😸 I am very grateful for every discussion between [@haohaolalahao](https://github.com/haohaolalahao), [@Crescent-Ao](https://github.com/Crescent-Ao) and me. Thank you for making this work grow. Although it is not mature yet, I believe it will get better and better with our efforts.  
-* #### 中文版的说明可以看知乎上[@Crescent-Ao](https://github.com/Crescent-Ao)写的文章：[Gaussian heatmap label assignment](https://zhuanlan.zhihu.com/p/452595960)和[Oriented-bounding-box representation component (ORC)](https://zhuanlan.zhihu.com/p/448339670)，欢迎点赞、喜欢、收藏三连。
+* #### 中文版的说明可以看知乎上[@Crescent-Ao](https://github.com/Crescent-Ao)写的文章：[Gaussian heatmap label assignment](https://zhuanlan.zhihu.com/p/452595960)和[Oriented-bounding-box representation component (ORC)](https://zhuanlan.zhihu.com/p/448339670)，还在陆续更新中，如果有帮助，请点赞、喜欢、收藏三连。
 
 ## 🌈 1.Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10)   
