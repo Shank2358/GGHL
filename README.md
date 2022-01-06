@@ -47,9 +47,14 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
-* #### The OpenCV version needs to be >=4.5.3, the label conversion script is ./datasets_tools/[DOTA2Train.py](https://github.com/Shank2358/GGHL/blob/main/datasets_tools/DOTA2Train.py)
-* #### See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.8.1).
-* #### Thanks [@trungpham2606](https://github.com/trungpham2606) and [@lalalagogogo](https://github.com/lalalagogogochong) for the suggestions and feedback.
+* #### 🧸 The OpenCV version needs to be >=4.5.3, the label conversion script is ./datasets_tools/[DOTA2Train.py](https://github.com/Shank2358/GGHL/blob/main/datasets_tools/DOTA2Train.py)
+* #### 🚀 See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.8.1).
+* #### 🌟 I have updated the function of polyiou and polynms. The code of latest evaluator is in [./evalR/evaluatorGGHL_new.py](https://github.com/Shank2358/GGHL/blob/main/evalR/evaluatorGGHL_new.py)
+* #### 🥂 Thanks [@trungpham2606](https://github.com/trungpham2606) and [@lalalagogogo](https://github.com/lalalagogogochong) for the suggestions and feedback.  
+* #### 🦄 Thanks to my collaborator [@haohaolalahao](https://github.com/haohaolalahao) for his great contribution to this project. The discussion of “Refined approximation of OBBs” in the revised paper was proposed by [@haohaolalahao](https://github.com/haohaolalahao) and I when we participated in a remote sensing object detection competition in 2020.  
+* #### 🤖 Thanks to [@Crescent-Ao](https://github.com/Crescent-Ao) for his suggestions on the revised manuscript and his great contribution to publicizing this work.  
+* #### 😸 I am very grateful for every discussion between [@haohaolalahao](https://github.com/haohaolalahao), [@Crescent-Ao](https://github.com/Crescent-Ao) and me. Thank you for making this work grow. Although it is not mature yet, I believe it will get better and better with our efforts.  
+* #### 中文版的说明可以看知乎上[@Crescent-Ao](https://github.com/Crescent-Ao)写的文章：[Gaussian heatmap label assignment](https://zhuanlan.zhihu.com/p/452595960)和[Oriented-bounding-box representation component (ORC)](https://zhuanlan.zhihu.com/p/448339670)，还在陆续更新中。欢迎大家点赞、喜欢、收藏三连。
 
 ## 🌈 1.Environments
 Linux (Ubuntu 18.04, GCC>=5.4) & Windows (Win10)   
