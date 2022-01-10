@@ -4,8 +4,12 @@ import cv2
 import random
 import torch
 from torch.utils.data import Dataset
+
 import config.config as cfg
 import dataloadR.augmentations as DataAug
+
+cv2.setNumThreads(0)
+cv2.ocl.setUseOpenCL(False)
 
 class Construct_Dataset(Dataset):
     def __init__(self, anno_file_name, img_size=int(cfg.TRAIN["TRAIN_IMG_SIZE"])):
