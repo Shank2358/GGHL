@@ -25,6 +25,10 @@ from torch.utils.data.distributed import DistributedSampler
 import torch.distributed as dist
 from prefetch_generator import BackgroundGenerator
 
+import cv2
+cv2.setNumThreads(0)
+cv2.ocl.setUseOpenCL(False)
+
 LOCAL_RANK = int(os.getenv('LOCAL_RANK', -1))  # https://pytorch.org/docs/stable/elastic/run.html
 RANK = int(os.getenv('RANK', -1))
 WORLD_SIZE = int(os.getenv('WORLD_SIZE', 1))
