@@ -13,6 +13,10 @@ from evalR.evaluatorGGHL import *
 from torch.cuda import amp
 import torch.backends.cudnn as cudnn
 
+import cv2
+cv2.setNumThreads(0)
+cv2.ocl.setUseOpenCL(False)
+
 def split_parameters(module):
     params_decay = []
     params_no_decay = []
