@@ -251,29 +251,14 @@ class Evaluator(object):
             prediction, conf_thres=0.2, iou_thres=0.45, merge=False, classes=None, multi_label=False, agnostic=False,
             without_iouthres=False
     ):
-        """
-        Performs Rotate-Non-Maximum Suppression (RNMS) on inference results；
-        @param prediction: size=(batch_size, num, [xywh,score,num_classes,num_angles])
-        @param conf_thres: 置信度阈值
-        @param iou_thres:  IoU阈值
-        @param merge: None
-        @param classes: None
-        @param agnostic: 进行nms是否将所有类别框一视同仁，默认False
-        @param without_iouthres : 本次nms不做iou_thres的标志位  默认为False
-        @return:
-                output: 经nms后的旋转框(batch_size, num_conf_nms, [xywhθ,conf,classid]) θ∈[0,179]
-        """
-        # prediction :(batch_size, num_boxes, [xywh,score,num_classes,num_angles])
         nc = prediction[0].shape[1] - 9
-        # class_index = nc + 9
-        # xc: (batch_size, num_boxes) 对应位置为1说明该box超过置信度
         xc = prediction[..., 8] > conf_thres  # candidates
 
         # Settings
         min_wh, max_wh = 2, 4096  # (pixels) minimum and maximum box width and height
         max_det = 500  # maximum number of detections per image
         time_limit = 10.0  # seconds to quit after
-        redundant = True  # require redundant detections 要求冗余检测
+        redundant = True  # require redundant detections
         multi_label &= nc > 1  # multiple labels per box (adds 0.5ms/img)
 
         t = time.time()
@@ -281,7 +266,7 @@ class Evaluator(object):
         output = [torch.zeros((0, 10), device=prediction.device)] * prediction.shape[0]
         for xi, x in enumerate(prediction):  # image index, image inference
             # Apply constraints
-            x = x[xc[xi]]  # 取出数组中索引为True的的值即将置信度符合条件的boxes存入x中   x -> (num_confthres_boxes, no)
+            x = x[xc[xi]]  # x -> (num_confthres_boxes, no)
             # If none remain process next image
             if not x.shape[0]:
                 continue
@@ -289,9 +274,6 @@ class Evaluator(object):
             x[:, 9:] *= x[:, 8:9]  # conf = obj_conf * cls_conf
             box = x[:, :8]
             if multi_label:
-                # nonzero ： 取出每个轴的索引,默认是非0元素的索引（取出括号公式中的为True的元素对应的索引） 将索引号放入i和j中
-                # i：num_boxes该维度中的索引号，表示该索引的box其中有class的conf满足要求  length=x中满足条件的所有坐标数量
-                # j：num_classes该维度中的索引号，表示某个box中是第j+1类物体的conf满足要求  length=x中满足条件的所有坐标数量
                 i, j = (x[:, 9:] > conf_thres).nonzero(as_tuple=False).T
                 # 按列拼接  list x：(num_confthres_boxes, [xywhθ]+[conf]+[classid]) θ∈[0,179]
                 x = torch.cat((box[i], x[i, j + 9, None], j[:, None].float()), 1)
