@@ -106,13 +106,13 @@ class Construct_Dataset(Dataset):
         box_h_s = box_h / s
 
         # The original centernet's heatmap (Gaussian circle)
-        r = self.gaussian_radius([box_w / s, box_h / s])
-        sigma_w = sigma_h = r / 3
+        #r = self.gaussian_radius([box_w / s, box_h / s])
+        #sigma_w = sigma_h = r / 3
 
         #The TTFNet's heatmap (Gaussian ellipse without rotation)
         #ratio = np.sqrt(2)/2*(1-np.sqrt(0.7))
-        #sigma_w = box_w_s / 6 * ratio
-        #sigma_h = box_h_s / 6 * ratio
+        sigma_w = 0.1155 * box_w_s #/ 6 * ratio
+        sigma_h = 0.1155 * box_h_s #/ 6 * ratio
 
         # compute the (x, y, w, h) for the corresponding grid cell
         tx = c_x_s - grid_x
