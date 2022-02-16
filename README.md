@@ -32,6 +32,13 @@
     archiveprefix = {arXiv}  
   }
   ```
+  ```IEEE TIP
+  @ARTICLE{9709203,  author={Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},  
+  journal={IEEE Transactions on Image Processing},   
+  title={A General Gaussian Heatmap Label Assignment for Arbitrary-Oriented Object Detection},   
+  year={2022},  volume={},  number={},  pages={1-1},  doi={10.1109/TIP.2022.3148874}}
+  ```
+
 
 ### Clone不Star,都是耍流氓 🤡🤡🤡
 
