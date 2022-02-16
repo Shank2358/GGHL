@@ -32,6 +32,7 @@
     archiveprefix = {arXiv}  
   }
   ```
+  ## This work has been accapted by IEEE Transactions on Image Processing
   ```IEEE TIP
   @ARTICLE{9709203,  author={Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},  
   journal={IEEE Transactions on Image Processing},   
