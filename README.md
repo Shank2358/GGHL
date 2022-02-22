@@ -21,25 +21,17 @@
 [[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA) (password: yn04)]  
 
   ### Give a ⭐️ if this project helped you. If you use it, please consider citing:
-  ```arxiv
-  article{huang2021general,
-    title = {A General Gaussian Heatmap Labeling for Arbitrary-Oriented Object Detection},  
-    author = {Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},  
-    year = {2021},  
-    journal = {arXiv preprint arXiv:2109.12848},  
-    eprint = {2109.12848},  
-    eprinttype = {arxiv},  
-    archiveprefix = {arXiv}  
-  }
-  ```
-  ## This work has been accapted by IEEE Transactions on Image Processing
   ```IEEE TIP
-  @ARTICLE{9709203,  author={Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},  
-  journal={IEEE Transactions on Image Processing},   
-  title={A General Gaussian Heatmap Label Assignment for Arbitrary-Oriented Object Detection},   
-  year={2022},  volume={},  number={},  pages={1-1},  doi={10.1109/TIP.2022.3148874}}
+  @ARTICLE{9709203,
+  author={Huang, Zhanchao and Li, Wei and Xia, Xiang-Gen and Tao, Ran},
+  journal={IEEE Transactions on Image Processing}, 
+  title={A General Gaussian Heatmap Label Assignment for Arbitrary-Oriented Object Detection}, 
+  year={2022},
+  volume={31},
+  number={},
+  pages={1895-1910},
+  doi={10.1109/TIP.2022.3148874}}
   ```
-
 
 ### Clone不Star,都是耍流氓 🤡🤡🤡
 
