@@ -18,7 +18,9 @@
 </a> 
 
 ## This is the implementation of GGHL 👋👋👋
-[[Arxiv](https://arxiv.org/abs/2109.12848)] [[Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA) (password: yn04)]  
+[[Arxiv](https://arxiv.org/abs/2109.12848)] [IEEE TIP](https://ieeexplore.ieee.org/document/9709203) [[Google Drive](https://drive.google.com/drive/folders/16k7JW-eb3jbga1xzq6B6r60gl2XniXfn?usp=sharing)][[Baidu Disk](https://pan.baidu.com/s/12MD7XAL6iwVUHMHRkEcLWA) (password: yn04)]  
+
+#### IEEE的正式版排版丑死了（不得不吐槽），有的图还显示有问题，还是下载arxiv版本的吧，我已经更新了arxiv，内容和正式版一样。  
 
   ### Give a ⭐️ if this project helped you. If you use it, please consider citing:
   ```IEEE TIP
@@ -32,7 +34,6 @@
   pages={1895-1910},
   doi={10.1109/TIP.2022.3148874}}
   ```
-#### IEEE的正式版排版丑死了（不得不吐槽），有的图还显示有问题，还是下载arxiv版本的吧，我已经更新了arxiv，内容和正式版一样。  
 
 ### Clone不Star,都是耍流氓 🤡🤡🤡
 
