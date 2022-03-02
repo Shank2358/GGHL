@@ -94,7 +94,7 @@ class Loss(nn.Module):
         bbox_loss_scale = self.__scale_factor - (self.__scale_factor - 1.0) \
                           * label_xywh[..., 2:3] * label_xywh[...,3:4] / (img_size * img_size)
 
-        scores_iou = bbox_loss_scale * (1.0 - torch.clamp(xiou,0,1))
+        scores_iou = bbox_loss_scale * (1.0 - xiou) #xiou(-1,1),1-xiou(0,2)
         scores_loc = torch.exp(-1 * (scores_iou))
         scores_cls_loc = torch.sigmoid(p_cls) * scores_loc
         scores_cls_loc = -torch.log((1-scores_cls_loc)/(scores_cls_loc+1e-16)+1e-16)
