@@ -87,7 +87,7 @@ class Loss(nn.Module):
             # print(p_d_xywh.shape, label_xywh.shape)
             xiou = utils_basic.CIOU_xywh_torch(p_d_xywh, label_xywh).unsqueeze(-1)
         bbox_loss_scale = self.__scale_factor - (self.__scale_factor - 1.0) * label_xywh[..., 2:3] * label_xywh[...,3:4] / (img_size * img_size)
-        loss_iou = bbox_loss_scale * (1.0 - xiou) * label_mix * label_mask
+        loss_iou = bbox_loss_scale * (1.0 - xiou) * label_mix * label_mask #(1.0 - xiou) #xiou(-1,1),1-xiou(0,2)
 
         twth_loss_function = nn.SmoothL1Loss(reduction='none')
         txty_loss_function = nn.BCEWithLogitsLoss(reduction='none')  # nn.SmoothL1Loss(reduction='none')
