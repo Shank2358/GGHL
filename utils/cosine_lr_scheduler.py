@@ -33,7 +33,7 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from matplotlib.ticker import FuncFormatter
     import math
-    from modelR.ABGH import ABGH
+    from modelR.GGHL import ABGH
     import torch.optim as optim
     import config.config as cfg
 
