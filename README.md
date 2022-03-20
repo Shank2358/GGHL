@@ -55,7 +55,7 @@
 * #### 🧸 The OpenCV version needs to be >=4.5.3, the label conversion script is ./datasets_tools/[DOTA2Train.py](https://github.com/Shank2358/GGHL/blob/main/datasets_tools/DOTA2Train.py)
 * #### 🚀 See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.8.1).
 * #### 🌟 I have updated the function of polyiou and polynms. The code of latest evaluator is in [./evalR/evaluatorGGHL_new.py](https://github.com/Shank2358/GGHL/blob/main/evalR/evaluatorGGHL_new.py)
-* #### 🥂 Thanks [@trungpham2606](https://github.com/trungpham2606) and [@lalalagogogo](https://github.com/lalalagogogochong) for the suggestions and feedback.  
+* #### 🥂 Thanks [@trungpham2606](https://github.com/trungpham2606), [@lalalagogogo](https://github.com/lalalagogogochong), [@zhuyh1223](https://github.com/zhuyh1223) and [@aiboys](https://github.com/aiboys) for the suggestions and feedback.  
 * #### 🦄 Thanks to my collaborator [@haohaolalahao](https://github.com/haohaolalahao) for his great contribution to this project. The discussion of “Refined approximation of OBBs” in the revised paper was proposed by [@haohaolalahao](https://github.com/haohaolalahao) and I when we participated in a remote sensing object detection competition in 2020.  
 * #### 🤖 Thanks to [@Crescent-Ao](https://github.com/Crescent-Ao) for his suggestions on the revised manuscript and his great contribution to publicizing this work.  
 * #### 😸 I am very grateful for every discussion between [@haohaolalahao](https://github.com/haohaolalahao), [@Crescent-Ao](https://github.com/Crescent-Ao) and me. Thank you for making this work grow. Although it is not mature yet, I believe it will get better and better with our efforts.  
