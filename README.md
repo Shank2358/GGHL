@@ -49,10 +49,13 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
+* #### 最近在学习MMRotate，后续有计划在MMRotate框架下写一版GGHL,先立个FLAG🤖🤖    
+* #### 关于在去年年底前出GGHLv2的FLAG不出所料的倒掉了🤣🤣🤣，我是大鸽子🕊️🕊️🕊️🕊️咕咕咕。写论文对我来说好难啊啊啊啊，重新扶起这个FLAG，两个月后把论文写完吧（...实验早跑完了，现在每天憋出100个字）  
+* #### 谢谢大家的反馈和ISSUES里面的各种意见，非常感谢🥰🥰🥰   
 * #### 🧸 The OpenCV version needs to be >=4.5.3, the label conversion script is ./datasets_tools/[DOTA2Train.py](https://github.com/Shank2358/GGHL/blob/main/datasets_tools/DOTA2Train.py)
 * #### 🚀 See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.8.1).
 * #### 🌟 I have updated the function of polyiou and polynms. The code of latest evaluator is in [./evalR/evaluatorGGHL_new.py](https://github.com/Shank2358/GGHL/blob/main/evalR/evaluatorGGHL_new.py)
-* #### 🥂 Thanks [@trungpham2606](https://github.com/trungpham2606) and [@lalalagogogo](https://github.com/lalalagogogochong) for the suggestions and feedback.  
+* #### 🥂 Thanks [@trungpham2606](https://github.com/trungpham2606), [@lalalagogogo](https://github.com/lalalagogogochong), [@zhuyh1223](https://github.com/zhuyh1223) and [@aiboys](https://github.com/aiboys) for the suggestions and feedback.  
 * #### 🦄 Thanks to my collaborator [@haohaolalahao](https://github.com/haohaolalahao) for his great contribution to this project. The discussion of “Refined approximation of OBBs” in the revised paper was proposed by [@haohaolalahao](https://github.com/haohaolalahao) and I when we participated in a remote sensing object detection competition in 2020.  
 * #### 🤖 Thanks to [@Crescent-Ao](https://github.com/Crescent-Ao) for his suggestions on the revised manuscript and his great contribution to publicizing this work.  
 * #### 😸 I am very grateful for every discussion between [@haohaolalahao](https://github.com/haohaolalahao), [@Crescent-Ao](https://github.com/Crescent-Ao) and me. Thank you for making this work grow. Although it is not mature yet, I believe it will get better and better with our efforts.  
