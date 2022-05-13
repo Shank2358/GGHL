@@ -49,7 +49,7 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
-* #### 🙆‍♂️🙆‍♂️Fixed multi-scale training bugs when torch>=1.7 and using distributed training. Thanks to [@haohaolalahao](https://github.com/haohaolalahao).
+* #### 🙆‍♂️🙆‍♂️Fixed multi-scale training bugs when torch>=1.7 and using distributed training. Please update the pytorch to version1.11. Thanks to [@haohaolalahao](https://github.com/haohaolalahao).
 * #### 最近在学习MMRotate，后续有计划在MMRotate框架下写一版GGHL,先立个FLAG🤖🤖    
 * #### 关于在去年年底前出GGHLv2的FLAG不出所料的倒掉了🤣🤣🤣，我是大鸽子🕊️🕊️🕊️🕊️咕咕咕。写论文对我来说好难啊啊啊啊，重新扶起这个FLAG，两个月后把论文写完吧（...实验早跑完了，现在每天憋出100个字）  
 * #### 谢谢大家的反馈和ISSUES里面的各种意见，非常感谢🥰🥰🥰   
@@ -70,7 +70,7 @@ First, install CUDA, Cudnn, and Pytorch.
 Second, install the dependent libraries in [requirements.txt](https://github.com/Shank2358/GGHL/blob/main/requirements.txt). 
 
 ```python
-conda install pytorch==1.8.1 torchvision==0.9.1 torchaudio==0.8.1 cudatoolkit=11.1 -c pytorch -c conda-forge   
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch 
 pip install -r requirements.txt  
 ```
     
