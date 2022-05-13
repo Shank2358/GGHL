@@ -7,6 +7,7 @@ import utils.gpu as gpu
 from utils import cosine_lr_scheduler
 from utils.log import Logger
 import dataloadR.datasets_obb as data
+from dataloadR.batch_sampler import BatchSampler, RandomSampler
 from modelR.GGHL import GGHL
 from modelR.loss.loss_jol import Loss
 from evalR.evaluatorGGHL import *
@@ -55,9 +56,18 @@ class Trainer(object):
 
         self.train_dataset = data.Construct_Dataset(anno_file_name=cfg.DATASET_NAME, img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
         self.train_dataloader = DataLoader(self.train_dataset,
-                                           batch_size=cfg.TRAIN["BATCH_SIZE"],
+                                           batch_sampler=BatchSampler(RandomSampler(self.train_dataset),
+                                                                      batch_size=cfg.TRAIN["BATCH_SIZE"],
+                                                                      drop_last=True,
+                                                                      multiscale_step=10,
+                                                                      img_sizes=list(
+                                                                          range(
+                                                                              cfg.TRAIN["MULTI_TRAIN_RANGE"][0] * 32,
+                                                                              cfg.TRAIN["MULTI_TRAIN_RANGE"][1] * 32,
+                                                                              cfg.TRAIN["MULTI_TRAIN_RANGE"][2] * 32))
+                                                                      ),
                                            num_workers=cfg.TRAIN["NUMBER_WORKERS"],
-                                           shuffle=True,
+                                           #shuffle=True,
                                            pin_memory=True)
 
         net_model = GGHL(weight_path=self.weight_path)
@@ -196,10 +206,10 @@ class Trainer(object):
                     writer.add_scalar('train_loss', mloss[9], len(self.train_dataloader)
                                       * (cfg.TRAIN["BATCH_SIZE"]) * epoch + i)
 
-                if self.multi_scale_train and (i+1) % 10 == 0:
-                    self.train_dataset.img_size = random.choice(range(
-                        cfg.TRAIN["MULTI_TRAIN_RANGE"][0], cfg.TRAIN["MULTI_TRAIN_RANGE"][1],
-                        cfg.TRAIN["MULTI_TRAIN_RANGE"][2])) * 32
+                # if self.multi_scale_train and (i+1) % 10 == 0:
+                #     self.train_dataset.img_size = random.choice(range(
+                #         cfg.TRAIN["MULTI_TRAIN_RANGE"][0], cfg.TRAIN["MULTI_TRAIN_RANGE"][1],
+                #         cfg.TRAIN["MULTI_TRAIN_RANGE"][2])) * 32
             if epoch >= 50 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
                 logger.info("===== Validate =====".format(epoch, self.epochs))
                 with torch.no_grad():

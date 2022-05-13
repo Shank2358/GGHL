@@ -7,6 +7,7 @@ import utils.gpu as gpu
 from utils import cosine_lr_scheduler
 from utils.log import Logger
 import dataloadR.datasets_obb as data
+from dataloadR.batch_sampler import BatchSampler, RandomSampler
 from modelR.GGHL import GGHL
 from modelR.loss.loss_jol import Loss
 from evalR.evaluatorGGHL_new import *
@@ -37,11 +38,11 @@ class DataLoaderX(DataLoader):
     def __iter__(self):
         return BackgroundGenerator(super().__iter__())
 
-# dist.init_process_group('gloo', init_method='file:///temp/somefile', rank=0, world_size=1)
+
 class InfiniteDataLoader(DataLoaderX):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        object.__setattr__(self, 'batch_sampler', _RepeatSampler(self.batch_sampler))
+        object.__setattr__(self, "batch_sampler", _RepeatSampler(self.batch_sampler))
         self.iterator = super().__iter__()
 
     def __len__(self):
@@ -51,6 +52,7 @@ class InfiniteDataLoader(DataLoaderX):
         for i in range(len(self)):
             yield next(self.iterator)
 
+
 class _RepeatSampler(object):
     def __init__(self, sampler):
         self.sampler = sampler
@@ -58,6 +60,7 @@ class _RepeatSampler(object):
     def __iter__(self):
         while True:
             yield from iter(self.sampler)
+
 
 class Trainer(object):
     def __init__(self, weight_path, resume, gpu_id):
@@ -79,20 +82,45 @@ class Trainer(object):
         self.weight_path = weight_path
         self.multi_scale_train = cfg.TRAIN["MULTI_SCALE_TRAIN"]
         if self.multi_scale_train:
-            print('Using multi scales training')
+            print("Using multi scales training")
+            self.img_lists = list(
+                range(
+                    cfg.TRAIN["MULTI_TRAIN_RANGE"][0] * 32,
+                    cfg.TRAIN["MULTI_TRAIN_RANGE"][1] * 32,
+                    cfg.TRAIN["MULTI_TRAIN_RANGE"][2] * 32,
+                )
+            )
         else:
-            print('train img size is {}'.format(cfg.TRAIN["TRAIN_IMG_SIZE"]))
+            print("train img size is {}".format(cfg.TRAIN["TRAIN_IMG_SIZE"]))
+            self.img_lists = list(cfg.TRAIN['TRAIN_IMG_SIZE'])
 
         self.batch_size = cfg.TRAIN["BATCH_SIZE"] // WORLD_SIZE  # 这一步是因为我传入的参数里batch_size代表所有GPU的batch之和, 所以要除以GPU的数量
         with gpu.torch_distributed_zero_first(LOCAL_RANK):
-            self.train_dataset = data.Construct_Dataset(anno_file_name=cfg.DATASET_NAME,
-                                                        img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
-
-        sampler = torch.utils.data.distributed.DistributedSampler(self.train_dataset) if LOCAL_RANK != -1 else None
-
-        self.train_dataloader = InfiniteDataLoader(self.train_dataset, batch_size=self.batch_size,
-                                                   sampler=sampler, num_workers=cfg.TRAIN["NUMBER_WORKERS"],
-                                                   pin_memory=True, drop_last=True)
+            self.train_dataset = data.Construct_Dataset(
+                anno_file_name=cfg.DATASET_NAME, img_size=cfg.TRAIN["TRAIN_IMG_SIZE"]
+            )
+        sampler = (
+            torch.utils.data.distributed.DistributedSampler(self.train_dataset)
+            if LOCAL_RANK != -1
+            else None
+        )
+        self.train_dataloader = DataLoader(
+            self.train_dataset,
+            batch_sampler=BatchSampler(
+                sampler,
+                batch_size=self.batch_size,
+                drop_last=True,
+                multiscale_step=10,
+                img_sizes=self.img_lists
+            ),
+            # batch_size=self.batch_size,
+            # sampler=sampler,
+            num_workers=cfg.TRAIN["NUMBER_WORKERS"],
+            pin_memory=True,
+            # drop_last=True,
+            persistent_workers=True,
+            prefetch_factor=2,
+        )
 
         self.model = GGHL(weight_path=self.weight_path)
 

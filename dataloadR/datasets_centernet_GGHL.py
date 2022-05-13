@@ -22,6 +22,11 @@ class Construct_Dataset(Dataset):
         return len(self.__annotations)
 
     def __getitem__(self, item):
+        if type(item) == list or type(item) == tuple:
+            item, self.img_size = item
+        else:
+            item, self.img_size = item, self.img_size
+
         img_org, bboxes_org = self.__parse_annotation(self.__annotations[item])
         img_org = img_org.transpose(2, 0, 1)  # HWC->CHW
 
