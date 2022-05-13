@@ -49,6 +49,7 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
+* #### 🙆‍♂️🙆‍♂️Fixed multi-scale training bugs when torch>=1.7 and using distributed training. Thanks to [@haohaolalahao](https://github.com/haohaolalahao).
 * #### 最近在学习MMRotate，后续有计划在MMRotate框架下写一版GGHL,先立个FLAG🤖🤖    
 * #### 关于在去年年底前出GGHLv2的FLAG不出所料的倒掉了🤣🤣🤣，我是大鸽子🕊️🕊️🕊️🕊️咕咕咕。写论文对我来说好难啊啊啊啊，重新扶起这个FLAG，两个月后把论文写完吧（...实验早跑完了，现在每天憋出100个字）  
 * #### 谢谢大家的反馈和ISSUES里面的各种意见，非常感谢🥰🥰🥰   
