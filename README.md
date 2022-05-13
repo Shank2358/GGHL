@@ -49,7 +49,7 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
-* #### 👹👹 搞了个动图，这样更好理解ORC和Gaussian的关系（外边是凸四边形的滑动，里面是高斯椭圆），很遗憾论文没能把完整的几何证明给出，后续版本会更新。 
+* #### 👹👹 找了个动图，这样更好理解ORC和Gaussian的关系（外边是凸四边形的滑动，里面是高斯椭圆），很遗憾论文没能把完整的几何证明给出，后续版本会更新。 
 ![img1](https://user-images.githubusercontent.com/33946139/168231673-578b1fc6-3d92-4dcb-9313-b0b054ce17a0.gif)
 
 * #### 🙆‍♂️🙆‍♂️Fixed multi-scale training bugs when torch>=1.7 and using distributed training. Please update the pytorch to version1.11. Thanks to [@haohaolalahao](https://github.com/haohaolalahao).
