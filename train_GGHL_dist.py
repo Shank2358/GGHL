@@ -125,8 +125,7 @@ class Trainer(object):
         self.model = GGHL(weight_path=self.weight_path)
 
         self.model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(self.model).to(device)
-        self.optimizer = optim.SGD(self.model.parameters(), lr=cfg.TRAIN["LR_INIT"],
-                                   momentum=cfg.TRAIN["MOMENTUM"], weight_decay=cfg.TRAIN["WEIGHT_DECAY"])
+
 
         # self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=cfg.TRAIN["LR_INIT"], betas=(0.9, 0.999),
         #                                    eps=1e-08, weight_decay=0.05, amsgrad=False)
@@ -134,6 +133,11 @@ class Trainer(object):
             self.__load_model_weights(weight_path, resume)
         if RANK != -1:
             self.model = DDP(self.model, device_ids=[LOCAL_RANK], output_device=LOCAL_RANK)
+
+
+        self.optimizer = optim.SGD(self.model.parameters(), lr=cfg.TRAIN["LR_INIT"],
+                                   momentum=cfg.TRAIN["MOMENTUM"], weight_decay=cfg.TRAIN["WEIGHT_DECAY"])
+        self.__load_optimizer_weights(weight_path, resume)
 
         self.criterion = Loss()
 
@@ -173,17 +177,27 @@ class Trainer(object):
 
     def __load_model_weights(self, weight_path, resume):
         if resume:
-            last_weight = os.path.join(os.path.split(weight_path)[0], "last.pt")
+            last_weight = os.path.join(
+                os.path.split(weight_path)[0], "last.pt"
+            )  # backup_epoch30
             chkpt = torch.load(last_weight, map_location=self.device)
-
-            self.model.load_state_dict(chkpt['model'])
-            self.start_epoch = chkpt['epoch'] + 1
-            if chkpt['optimizer'] is not None:
-                self.optimizer.load_state_dict(chkpt['optimizer'])
-                self.best_mAP = chkpt['best_mAP']
+            self.model.load_state_dict(chkpt["model"])  # , False
+            self.start_epoch = chkpt["epoch"] + 1
             del chkpt
         else:
-            self.model.load_darknet_weights(weight_path)  ## Single GPU
+            self.model.load_darknet_weights(weight_path)
+
+    def __load_optimizer_weights(self, weight_path, resume):
+        if resume:
+            last_weight = os.path.join(
+                os.path.split(weight_path)[0], "last.pt"
+            )  # backup_epoch30
+            chkpt = torch.load(last_weight, map_location=self.device)
+            self.start_epoch = chkpt["epoch"] + 1
+            if chkpt["optimizer"] is not None:
+                self.optimizer.load_state_dict(chkpt["optimizer"])
+                self.best_mAP = chkpt["best_mAP"]
+            del chkpt
 
     def __load_model_weights_Resnet(self, weight_path, resume):
         if resume:
