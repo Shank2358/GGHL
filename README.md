@@ -1,7 +1,7 @@
 # GGHL: A General Gaussian Heatmap Label Assignment for Arbitrary-Oriented Object Detection  
 
   <a href="https://github.com/Shank2358/GGHL/">
-    <img alt="Version" src="https://img.shields.io/badge/Version-1.2.0-blue" />
+    <img alt="Version" src="https://img.shields.io/badge/Version-1.3.0-blue" />
   </a>
   
   <a href="https://github.com/Shank2358/GGHL/blob/main/LICENSE">
@@ -49,12 +49,15 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
+* #### 👹👹 找了个动图，这样更好理解ORC和Gaussian的关系（外边是凸四边形的滑动，里面是高斯椭圆），很遗憾论文没能把完整的几何证明给出，后续版本会更新。 
+![img1](https://user-images.githubusercontent.com/33946139/168231673-578b1fc6-3d92-4dcb-9313-b0b054ce17a0.gif)
+
 * #### 🙆‍♂️🙆‍♂️Fixed multi-scale training bugs when torch>=1.7 and using distributed training. Please update the pytorch to version1.11. Thanks to [@haohaolalahao](https://github.com/haohaolalahao).
 * #### 最近在学习MMRotate，后续有计划在MMRotate框架下写一版GGHL,先立个FLAG🤖🤖    
 * #### 关于在去年年底前出GGHLv2的FLAG不出所料的倒掉了🤣🤣🤣，我是大鸽子🕊️🕊️🕊️🕊️咕咕咕。写论文对我来说好难啊啊啊啊，重新扶起这个FLAG，两个月后把论文写完吧（...实验早跑完了，现在每天憋出100个字）  
 * #### 谢谢大家的反馈和ISSUES里面的各种意见，非常感谢🥰🥰🥰   
 * #### 🧸 The OpenCV version needs to be >=4.5.3, the label conversion script is ./datasets_tools/[DOTA2Train.py](https://github.com/Shank2358/GGHL/blob/main/datasets_tools/DOTA2Train.py)
-* #### 🚀 See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.8.1).
+* #### 🚀 See [issues #4](https://github.com/Shank2358/GGHL/issues/4) for distributed training (pytorch==1.11).
 * #### 🌟 I have updated the function of polyiou and polynms. The code of latest evaluator is in [./evalR/evaluatorGGHL_new.py](https://github.com/Shank2358/GGHL/blob/main/evalR/evaluatorGGHL_new.py)
 * #### 🥂 Thanks [@trungpham2606](https://github.com/trungpham2606), [@lalalagogogo](https://github.com/lalalagogogochong), [@zhuyh1223](https://github.com/zhuyh1223) and [@aiboys](https://github.com/aiboys) for the suggestions and feedback.  
 * #### 🦄 Thanks to my collaborator [@haohaolalahao](https://github.com/haohaolalahao) for his great contribution to this project. The discussion of “Refined approximation of OBBs” in the revised paper was proposed by [@haohaolalahao](https://github.com/haohaolalahao) and I when we participated in a remote sensing object detection competition in 2020.  
