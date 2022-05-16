@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_GGHL_dist.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_GGHL_dist.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +45,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../PyProjects/DOTA_devkit-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -228,41 +227,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="175" width="1092" height="740" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1637330568084">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1652665423753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" width="1092" height="740" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1637330568084" />
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1636427351600">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1636427351600" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1640936523296">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1640936523296" />
-    <state width="1899" height="241" key="GridCell.Tab.0.bottom" timestamp="1639658000138">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1639658000138" />
-    <state width="1899" height="241" key="GridCell.Tab.0.center" timestamp="1639658000137">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1639658000137" />
-    <state width="1899" height="241" key="GridCell.Tab.0.left" timestamp="1639658000137">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1639658000137" />
-    <state width="1899" height="241" key="GridCell.Tab.0.right" timestamp="1639658000138">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="241" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1639658000138" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1637328731387">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1637328731387" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1640936948901">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1640936948901" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1652665423753" />
   </component>
 </project>
