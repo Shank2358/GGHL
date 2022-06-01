@@ -36,8 +36,6 @@
   ```
 
 ### Clone不Star,都是耍流氓 🤡🤡🤡
-
-  ### 👹 
   
 <p algin="center">
 <img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL_results.png" width="380"><img src="https://github.com/Shank2358/GGHL/blob/main/readme_imgs/GGHL.png" width="430">
