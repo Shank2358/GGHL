@@ -50,13 +50,6 @@
 
 ## 0. Something Important 🦞 🦀 🦑 
 
-* #### 👻👻 最近大家提问和反馈比较多的是论文里对ORC做refined approximaation（RA） 的问题，这里额外解释一下。  
-ORC和Gliding Vertex有很多相似之处，对于Gliding Vertex，当凸四边形OBB的四个顶点不全部落在外接HBB上时是无法表示的，因此Gliding Vertex是先利用cv2.minRect函数将DOTA标注的凸四边形OBB转换为旋转矩形，然后在利用在HBB上的滑动顶点进行表示以保证OBB所有四个顶点都落在HBB上，具体见他们仓库的issue https://github.com/MingtaoFu/gliding_vertex/issues/21#issuecomment-647935655. 在此基础上有了Oriented R-CNN的进一步简化用delta alpha和delta beta表示（因为内接OBB都已经近似成矩形了，两边是轴对称的，只需要预测在内接矩形相邻两条边的滑动距离即可）。但是这样的近似实际预测的还是旋转矩形而不是任意凸四边形，近似本身就会在GT上带来更多误差，误差更大的GT作为学习目标自然会影响预测准确性。因此，GGHL的RA只对那些该表示无法处理的凸四边形（即顶点不全落在HBB上的四边形）进行近似，而其他凸四边形都可以直接用ORC表示无需再近似成最小矩形，论文中也提到根据统计“only 4.79% of the OBBs need to be approximated”，这样可以保证ORC表示法在生成GT时引入的误差可以最小，论文表5的实验也证明了其有效性。更具体地，这些4.79%无法用ORC直接表示的凸四边形我们也不是全部用cv2.minRect做近似，而是精细地把他们分成16种情况进行讨论和分别处理，这样做目的是尽可能地减小因为近似带来的误差。大家也可以把上述近似和cv2.minRect近似的四边形画出来对比一下它们俩的误差。具体方案见论文图7和代码。
-
-* #### 👹👹 找了个动图，这样更好理解ORC和Gaussian的关系（外边是凸四边形的滑动，里面是高斯椭圆），很遗憾论文没能把完整的几何证明给出，后续版本会更新。 
-![img1](https://user-images.githubusercontent.com/33946139/168231673-578b1fc6-3d92-4dcb-9313-b0b054ce17a0.gif)  
-顺便再解释一下这个，这个动图是为了解释自适应调整高斯分布的，高斯根据ORC的顶点滑动（或者说凸四边形的变化）改变。根据OBB生成高斯通常是将OBB视为矩形，然后根据矩形的中心点坐标和长宽来得到高斯椭圆，但是如上RA问题的解释所述，GGHL的OBB不一定是矩形，而是任意凸四边形（有一部分对ORC无效的做了上述近似），那么要如何生成高斯？一种做法是仍然将凸四边形近为旋转举行计算高斯，另外一种就是我们给出的动图这样的做法。在我们最新的工作中会对这个进行更详细的讨论，快出来了（😒😒已经鸽了一年了），敬请期待。篇幅所限在GGHL论文中没地方写了，原文因为投稿TIP已经一再压缩😢😢，很多细节和几何证明放不下了，连作者照片都没放全🤣🤣🤣，我只能说我真是尽力且费劲心思把放不下的东西尽量在原文中留下一些线索了，有兴趣的可以慢慢去发现，我很乐意随时交流讨论。
-
 * #### 🙆‍♂️🙆‍♂️Fixed multi-scale training bugs when torch>=1.7 and using distributed training. Please update the pytorch to version1.11. Thanks to [@haohaolalahao](https://github.com/haohaolalahao).
 * #### 最近在学习MMRotate，后续有计划在MMRotate框架下写一版GGHL,先立个FLAG🤖🤖    
 * #### 关于在去年年底前出GGHLv2的FLAG不出所料的倒掉了🤣🤣🤣，我是大鸽子🕊️🕊️🕊️🕊️咕咕咕。写论文对我来说好难啊啊啊啊，重新扶起这个FLAG，两个月后把论文写完吧（...实验早跑完了，现在每天憋出100个字）  
@@ -185,6 +178,13 @@ This project is [GNU General Public License v3.0](https://github.com/Shank2358/G
 ## 🤐 To be continued 
 
 ## 🎃 Update Log
+* #### 👻👻 最近大家提问和反馈比较多的是论文里对ORC做refined approximaation（RA） 的问题，这里额外解释一下。  
+ORC和Gliding Vertex有很多相似之处，对于Gliding Vertex，当凸四边形OBB的四个顶点不全部落在外接HBB上时是无法表示的，因此Gliding Vertex是先利用cv2.minRect函数将DOTA标注的凸四边形OBB转换为旋转矩形，然后在利用在HBB上的滑动顶点进行表示以保证OBB所有四个顶点都落在HBB上，具体见他们仓库的issue https://github.com/MingtaoFu/gliding_vertex/issues/21#issuecomment-647935655. 在此基础上有了Oriented R-CNN的进一步简化用delta alpha和delta beta表示（因为内接OBB都已经近似成矩形了，两边是轴对称的，只需要预测在内接矩形相邻两条边的滑动距离即可）。但是这样的近似实际预测的还是旋转矩形而不是任意凸四边形，近似本身就会在GT上带来更多误差，误差更大的GT作为学习目标自然会影响预测准确性。因此，GGHL的RA只对那些该表示无法处理的凸四边形（即顶点不全落在HBB上的四边形）进行近似，而其他凸四边形都可以直接用ORC表示无需再近似成最小矩形，论文中也提到根据统计“only 4.79% of the OBBs need to be approximated”，这样可以保证ORC表示法在生成GT时引入的误差可以最小，论文表5的实验也证明了其有效性。更具体地，这些4.79%无法用ORC直接表示的凸四边形我们也不是全部用cv2.minRect做近似，而是精细地把他们分成16种情况进行讨论和分别处理，这样做目的是尽可能地减小因为近似带来的误差。大家也可以把上述近似和cv2.minRect近似的四边形画出来对比一下它们俩的误差。具体方案见论文图7和代码。
+
+* #### 👹👹 找了个动图，这样更好理解ORC和Gaussian的关系（外边是凸四边形的滑动，里面是高斯椭圆），很遗憾论文没能把完整的几何证明给出，后续版本会更新。 
+![img1](https://user-images.githubusercontent.com/33946139/168231673-578b1fc6-3d92-4dcb-9313-b0b054ce17a0.gif)  
+顺便再解释一下这个，这个动图是为了解释自适应调整高斯分布的，高斯根据ORC的顶点滑动（或者说凸四边形的变化）改变。根据OBB生成高斯通常是将OBB视为矩形，然后根据矩形的中心点坐标和长宽来得到高斯椭圆，但是如上RA问题的解释所述，GGHL的OBB不一定是矩形，而是任意凸四边形（有一部分对ORC无效的做了上述近似），那么要如何生成高斯？一种做法是仍然将凸四边形近为旋转举行计算高斯，另外一种就是我们给出的动图这样的做法。在我们最新的工作中会对这个进行更详细的讨论，快出来了（😒😒已经鸽了一年了），敬请期待。篇幅所限在GGHL论文中没地方写了，原文因为投稿TIP已经一再压缩😢😢，很多细节和几何证明放不下了，连作者照片都没放全🤣🤣🤣，我只能说我真是尽力且费劲心思把放不下的东西尽量在原文中留下一些线索了，有兴趣的可以慢慢去发现，我很乐意随时交流讨论。
+
 * #### 12.31 I have updated the function of polyiou and polynms. Happy new year!!!  
 * #### 12.28 I have updated the requirements.txt file because the distributed training may prompt that some dependent libraries are missing. 
 * 更新了requirements.txt文件，因为DDP分布式训练时可能提示缺少一些依赖库。如果遇到这种情况，请根据提示pip安装补全相应的库即可。
