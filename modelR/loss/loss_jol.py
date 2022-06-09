@@ -108,7 +108,8 @@ class Loss(nn.Module):
         loss_fg = label_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix * ((gh_mask)+offset0)/2
         loss_bg = label_noobj_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix
 
-        loss_pos = (label_cls != 0).float() * label_mask * BCE(input=scores_cls_loc, target=label_cls_smooth) * label_mix * area_weight
+        loss_pos = (label_cls != 0).float() * label_mask * BCE(input=p_cls, target=label_cls_smooth * torch.max(scores_loc.detach(), dim=-1, keepdim=True)[0]) * label_mix * area_weight
+        #loss_pos = (label_cls != 0).float() * label_mask * BCE(input=scores_cls_loc, target=label_cls_smooth, dim=-1, keepdim=True)[0]) * label_mix * area_weight
         loss_neg = (1 - (label_cls != 0).float()) * label_mask * BCE(input=p_cls, target=label_cls_smooth) * label_mix * area_weight
 
         N = (torch.sum(label_mask.view(batch_size, -1), dim=-1) + 1e-16)
@@ -133,5 +134,5 @@ class Loss(nn.Module):
         loss_r = 16 * (torch.sum(loss_r / N)) / batch_size
         loss_l = 0.2 * (torch.sum(loss_l / N)) / batch_size
 
-        loss = loss_fg + loss_bg + loss_pos + loss_neg + loss_iou + (loss_s + loss_r) + loss_l + loss_cls #可以加上原版的BCE分类loss，前期收敛会更快，不加也行结果差不多，都会比单独用BCE效果好
+        loss = loss_fg + loss_bg + loss_pos + loss_neg + loss_iou + (loss_s + loss_r) + loss_l #+ loss_cls #可以加上原版的BCE分类loss，前期收敛会更快，不加也行结果差不多，都会比单独用BCE效果好
         return loss, loss_fg, loss_bg, loss_pos, loss_neg, loss_iou, loss_cls, loss_s, loss_r, loss_l
