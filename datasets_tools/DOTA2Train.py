@@ -90,7 +90,13 @@ for label in label_list:
             corners_y_min = corners[np.argmin(corners[:, 1])][1]
             corners_fixed = corners_sorted
 
-            if corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
+            if corners_x_max == corners_sorted[1, 0] and corners_x_min == corners_sorted[
+                3, 0] and corners_y_max == corners_sorted[2, 1] and corners_y_min == corners_sorted[0, 1]:
+                # 0度 正矩形
+                pass
+                # corners_fixed = corners_fixed[[1, 2, 3, 0]]
+
+            elif corners_x_max == corners_sorted[2, 0] and corners_x_min == corners_sorted[
                 0, 0] and corners_y_max == corners_sorted[3, 1] and corners_y_min == corners_sorted[1, 1]:
 
                 corners_fixed = corners_fixed[[1, 2, 3, 0]]

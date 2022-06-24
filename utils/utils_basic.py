@@ -524,7 +524,7 @@ def nms_glid(bboxes, score_threshold, iou_threshold, sigma=0.3):
             cls_bboxes = cls_bboxes[score_mask]
     return np.array(best_bboxes)
 
-from datasets_tools.DOTA_devkit import polyiou
+from DOTA_devkit import polyiou
 
 def py_cpu_nms_poly_fast(dets, scores, thresh):
     """

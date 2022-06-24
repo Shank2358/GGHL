@@ -685,4 +685,12 @@
 [2022-03-04 22:28:46,344]-[train_GGHL_dist.py line:351]:Save weights Done
 [2022-03-04 22:28:46,345]-[train_GGHL_dist.py line:352]:mAP: 0.000
 [2022-03-04 22:28:46,346]-[train_GGHL_dist.py line:353]:Time per epoch: 607.3745s
-[2022-03-04 22:28:46,347]-[train_GGHL_dist.py line:355]:Training finished.  Best_mAP: 0.000%
+[2022-03-04 22:28:46,347]-[train_GGHL_dist.py line:355]:Training finished.  Best_mAP: 0.000%[2022-06-24 18:43:41,757]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 18:44:17,887]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 18:44:38,393]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 18:48:11,668]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 18:50:10,261]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 18:50:29,582]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 18:51:40,306]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 19:05:17,805]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-06-24 19:05:48,692]-[test.py line:39]:***********Start Evaluation**************** 

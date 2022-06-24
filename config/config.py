@@ -1,6 +1,6 @@
 # coding=utf-8
-DATA_PATH = "/opt/datasets/DOTA/"
-PROJECT_PATH = "./GGHL/"
+DATA_PATH = "/opt/datasets/DOTA/"#"F:/Datasets/DOTAx/test/"#
+PROJECT_PATH = "./"
 
 DATA = {"CLASSES": ['plane',
                     'baseball-diamond',
@@ -38,7 +38,7 @@ TRAIN = {
     "LR_INIT": 1e-4,
     "LR_END": 1e-6,
     "WARMUP_EPOCHS": 5,
-    "IOU_TYPE": 'CIOU'  # ['GIOU','CIOU']
+    "IOU_TYPE": 'GIOU'  # ['GIOU','CIOU']
 }
 
 TEST = {
@@ -49,7 +49,7 @@ TEST = {
     "TEST_IMG_SIZE": 800,
     "BATCH_SIZE": 4,
     "NUMBER_WORKERS": 24,
-    "CONF_THRESH": 0.1,
+    "CONF_THRESH": 0.2,
     "NMS_THRESH": 0.45,
     "IOU_THRESHOLD": 0.5,
     "NMS_METHODS": 'NMS',
