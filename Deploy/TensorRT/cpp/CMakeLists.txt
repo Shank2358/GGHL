@@ -14,12 +14,12 @@ set(OpenCV_DIR /home/crescent/build)
 
 
 include(CPack)
-include_directories(/home/crescent/GGHL/deploy/TensorRT/common)
-link_directories(/home/crescent/GGHL/deploy/TensorRT/common)
+include_directories(/home/crescent/GGHL/Deploy/TensorRT/common)
+link_directories(/home/crescent/GGHL/Deploy/TensorRT/common)
 # onnx2tensorrt
 include_directories(/home/crescent/onnx-tensorrt)
 # cuda
-include_directories(/home/crescent/GGHL/deploy/TensorRT/)
+include_directories(/home/crescent/GGHL/Deploy/TensorRT/)
 include_directories(/usr/local/cuda/include)
 link_directories(/usr/local/cuda/cuda/lib64)
 # cudnn
