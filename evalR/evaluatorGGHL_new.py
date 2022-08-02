@@ -62,8 +62,8 @@ class Evaluator(object):
                 f.write(str_result)
         self.inference_time = 1.0 * self.inference_time / len(img_inds)
         APs, r, p = self.__calc_APs(iou_thresh=self.iouthresh_test)
-        return APs, r, p, self.inference_time
-        # return self.__calc_APs(), self.inference_time
+        #return APs, r, p, self.inference_time
+        return APs, self.inference_time
 
     def APs_voc_Single(self, img_ind):
         img_path = os.path.join(self.val_data_path, 'JPEGImages', img_ind + '.png')  # 路径+JPEG+文件名############png
