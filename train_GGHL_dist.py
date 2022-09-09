@@ -1,21 +1,15 @@
 import logging
 import argparse
-import random
-from numpy import False_
-from sklearn.utils import shuffle
-import cv2
 import torch
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from torch.cuda import amp
 import torch.distributed.launch
-import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
-from torch.utils.data.distributed import DistributedSampler
 import torch.distributed as dist
 from prefetch_generator import BackgroundGenerator
 from tensorboardX import SummaryWriter
-
+from torch.backends import cudnn
 from utils import cosine_lr_scheduler
 from utils.log import Logger
 import utils.gpu as gpu

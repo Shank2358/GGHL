@@ -13,10 +13,10 @@ PROJECT_PATH = "./"
 #                     'storage-tank', 'soccer-ball-field', 'roundabout', 'harbor', 'swimming-pool', 'helicopter'],#,'container-crane', 'airport', 'helipad','container-crane', 'airport', 'helipad'
 #         "NUM": 15}
 
-DATA = {"CLASSES": ['car', 'truck', 'bus', 'van', 'freight car'],
-        "NUM": 5}
+DATA = {"CLASSES": ['ship'],
+        "NUM": 1}
 
-DATASET_NAME = "trainIR" #"train_DOTAx" 
+DATASET_NAME = "train_HRSC2016" #"train_DOTAx"
 MODEL = {"ANCHORS":[[(2.80340246, 2.87380792), (4.23121697, 6.44043634), (7.38428433, 3.82613533)],
         [(4.2460819, 4.349495965), (4.42917327, 10.59395029), (8.24772929, 6.224761455)],
         [(6.02687863, 5.92446062), (7.178407523, 10.86361071), (15.30253702, 12.62863728)]] ,
@@ -35,9 +35,9 @@ TRAIN = {
     "AUGMENT": True,
     "MULTI_SCALE_TRAIN": True,
     "MULTI_TRAIN_RANGE": [23, 28, 1],
-    "BATCH_SIZE": 36,
+    "BATCH_SIZE": 18,
     "IOU_THRESHOLD_LOSS": 0.5,
-    "EPOCHS": 100,
+    "EPOCHS": 150,
     "NUMBER_WORKERS": 8,
     "MOMENTUM": 0.9,
     "WEIGHT_DECAY": 0.0005,
