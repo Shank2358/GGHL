@@ -69,4 +69,5 @@ def select_device_v5(device='', batch_size=None):
             p = torch.cuda.get_device_properties(i)
     else:
         pass
+    
     return torch.device('cuda:0' if cuda else 'cpu')

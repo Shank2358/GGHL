@@ -3,8 +3,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from ..layers.multiscale_fusion_blocks import SPP
 from ..layers.convolutions import Convolutional
-from ..layers.msr_blocks import MSR_L, MSR_M, MSR_S
-from ..layers.np_attention_blocks import NPAttention1
 import config.config as cfg
 from dropblock import DropBlock2D, LinearScheduler
 class Upsample(nn.Module):
