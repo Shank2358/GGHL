@@ -2,6 +2,7 @@ import torch.nn as nn
 import torch
 import torch.nn.functional as F
 from lib.DCNv2.DCN import DCNv2
+#from modelR.layers.deform_conv_v2 import DeformConv2d, DeformConv2d_offset
 
 class hsigmoid(nn.Module):
     def forward(self, x):
@@ -14,15 +15,20 @@ class MTR_Head1(nn.Module):
         self.fo_class = fo_class
         self.temp = temp
 
-        self.__conv_conf = nn.Conv2d(in_channels=filters_in, out_channels=2, kernel_size=1, stride=1,padding=0)
+        self.__conv_conf = nn.Conv2d(in_channels=filters_in, out_channels=2, kernel_size=1, stride=1,padding=0)###############conf 和 r
+
+        # self.__conv_offset_mask1 = Convolutional(filters_in, self.anchor_num*4, kernel_size=1, stride=1, pad=0)
         self.__conv_offset_mask = nn.Conv2d(in_channels=filters_in, out_channels=3 * 9, kernel_size=1, stride=1,padding=0, bias=True)
 
-        self.__dconv_loc = DCNv2(filters_in, filters_in, kernel_size=3, stride=1, padding=1)
+        self.__dconv_loc = DCNv2(filters_in, filters_in, kernel_size=3, stride=1, padding=1)#DeformConv2d_offset(inc=filters_in, outc=filters_in, kernel_size=3, padding=1, stride=1, bias=None)
+        #DCNv2(filters_in, filters_in, kernel_size=3, stride=1, padding=1)
+
         self.__bnloc = nn.BatchNorm2d(filters_in)
         self.__reluloc = nn.LeakyReLU(inplace=True)
         self.__dconv_locx = nn.Conv2d(filters_in, 8, kernel_size=1, stride=1, padding=0)
 
-        self.__dconv_cla = DCNv2(filters_in, filters_in, kernel_size=3, stride=1, padding=1)
+        self.__dconv_cla = DCNv2(filters_in, filters_in, kernel_size=3, stride=1, padding=1)#DeformConv2d_offset(inc=filters_in, outc=filters_in, kernel_size=3, padding=1, stride=1, bias=None)
+        #DCNv2(filters_in, filters_in, kernel_size=3, stride=1, padding=1)
         self.__bncla = nn.BatchNorm2d(filters_in)
         self.__relucla = nn.LeakyReLU(inplace=True)
         self.__dconv_clax = nn.Conv2d(filters_in, self.fo_class, kernel_size=1, stride=1, padding=0)
@@ -41,6 +47,11 @@ class MTR_Head1(nn.Module):
         offset = torch.cat((o1, o2), dim=1)
         mask = torch.sigmoid(mask)
 
+        # print(offset.shape)
+        # if self.temp == True:
+        # mask = torch.sigmoid(mask*edge)
+        # else:
+        #print(offset.shape, mask.shape)
         out_loc = self.__dconv_locx(self.__reluloc(self.__bnloc(self.__dconv_loc(x, offset, mask))))
         out_cla = self.__dconv_clax(self.__relucla(self.__bncla(self.__dconv_cla(x, offset, mask))))
 
@@ -58,6 +69,7 @@ class MTR_Head2(nn.Module):
 
     def forward(self, p):
         p = p.permute(0, 2, 3, 1)
+        #print(p.shape)
         p_de = self.__decode(p.clone())
         return (p, p_de)
     def __decode(self, p):
@@ -85,6 +97,7 @@ class MTR_Head2(nn.Module):
         pred_x = (pred_xmax + pred_xmin) / 2
         pred_y = (pred_ymax + pred_ymin) / 2
         pred_xywh = torch.cat([pred_x, pred_y, pred_w, pred_h], dim=-1)
+        # pred_a = F.relu6(conv_raw_a + 3, inplace=True) / 6
         pred_s = (torch.clamp(torch.sigmoid(conv_raw_s), 0.01, 1) - 0.01) / (1 - 0.01)
         pred_r = F.relu6(conv_raw_r + 3, inplace=True) / 6
         maskr = pred_r
@@ -97,6 +110,24 @@ class MTR_Head2(nn.Module):
         pred_s[:, :, :, 3:4] = pred_s[:, :, :, 3:4] * maskr
         pred_conf = torch.sigmoid(conv_raw_conf)
         pred_prob = torch.sigmoid(conv_raw_prob)
+
+        '''
+        import matplotlib
+        matplotlib.use('TkAgg')
+        import matplotlib.pyplot as plt
+        plt.figure("Image4")  # 图像窗口名称
+        prob = torch.max(pred_prob, dim=-1)[0].squeeze(0).detach().cpu()
+        plt.imshow(prob)
+
+        plt.figure("Image5")  # 图像窗口名称
+        conf = pred_conf.squeeze(0).squeeze(-1).detach().cpu()
+        plt.imshow(conf)
+
+        plt.figure("Image6")  # 图像窗口名称
+        co = prob*conf
+        plt.imshow(co)
+
+        plt.show()'''
 
         pred_bbox = torch.cat([pred_xywh, pred_s, pred_r, pred_l1234, pred_conf, pred_prob], dim=-1)
         out = pred_bbox.view(-1, 4 + 5 + 4 + self.__nC + 1) if not self.training else pred_bbox

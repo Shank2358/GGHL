@@ -33,11 +33,11 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from matplotlib.ticker import FuncFormatter
     import math
-    from modelR.GGHL import ABGH
+    from modelR.GGHL import GGHL
     import torch.optim as optim
     import config.config as cfg
 
-    net = ABGH()
+    net = GGHL()
 
     optimizer = optim.SGD(net.parameters(), cfg.TRAIN["LR_INIT"], cfg.TRAIN["MOMENTUM"], weight_decay=cfg.TRAIN["WEIGHT_DECAY"])
     #optimizer = optim.Adam(net.parameters(), lr = cfg.TRAIN["LR_INIT"])
