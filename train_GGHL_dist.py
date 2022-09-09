@@ -9,8 +9,8 @@ from utils.log import Logger
 import dataloadR.datasets_obb as data
 from dataloadR.batch_sampler import BatchSampler, RandomSampler
 from modelR.GGHL import GGHL
-from modelR.loss.loss_jol import Loss
-from evalR.evaluatorGGHL_new import *
+from modelR.loss.loss import Loss
+from evalR.evaluatorGGHL import *
 from torch.cuda import amp
 import matplotlib.pyplot as plt
 import torch.backends.cudnn as cudnn

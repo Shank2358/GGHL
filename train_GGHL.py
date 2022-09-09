@@ -9,7 +9,7 @@ from utils.log import Logger
 import dataloadR.datasets_obb as data
 from dataloadR.batch_sampler import BatchSampler, RandomSampler
 from modelR.GGHL import GGHL
-from modelR.loss.loss_jol import Loss
+from modelR.loss.loss import Loss
 from evalR.evaluatorGGHL import *
 from torch.cuda import amp
 import torch.backends.cudnn as cudnn
@@ -36,7 +36,6 @@ def split_parameters(module):
             params_no_decay.extend([*m.parameters()])
         elif len(list(m.children())) == 0:
             params_decay.extend([*m.parameters()])
-    #print("aaa", len(params_decay), len(params_no_decay))
     assert len(list(module.parameters())) == len(params_decay) + len(params_no_decay)
     return params_decay, params_no_decay
 
@@ -67,13 +66,10 @@ class Trainer(object):
                                                                               cfg.TRAIN["MULTI_TRAIN_RANGE"][2] * 32))
                                                                       ),
                                            num_workers=cfg.TRAIN["NUMBER_WORKERS"],
-                                           #shuffle=True,
                                            pin_memory=True)
 
         net_model = GGHL(weight_path=self.weight_path)
         self.model = net_model.to(self.device)
-        #torch.backends.cudnn.benchmark = False
-
 
         # Optimizer
         g0, g1, g2 = [], [], []  # optimizer parameter groups
@@ -85,9 +81,6 @@ class Trainer(object):
             elif hasattr(v, 'weight') and isinstance(v.weight, torch.nn.Parameter):  # weight (with decay)
                 g1.append(v.weight)
 
-        # if opt.adam:
-        #     self.optimizer = optim.Adam(g0, lr=cfg.TRAIN["LR_INIT"], betas=(cfg.TRAIN["MOMENTUM"], 0.999))  # adjust beta1 to momentum
-        # else:
         self.optimizer = optim.SGD(g0, lr=cfg.TRAIN["LR_INIT"], momentum=cfg.TRAIN["MOMENTUM"], nesterov=True)
 
         self.optimizer.add_param_group({'params': g1, 'weight_decay': cfg.TRAIN["WEIGHT_DECAY"]})  # add g1 with weight_decay
@@ -110,12 +103,10 @@ class Trainer(object):
         if resume:
             last_weight = os.path.join(
                 os.path.split(weight_path)[0], "last.pt"
-            )  # backup_epoch30
+            )
             chkpt = torch.load(last_weight, map_location=self.device)
-            #self.start_epoch = 0#chkpt["epoch"] + 1
             if chkpt["optimizer"] is not None:
                 self.optimizer.load_state_dict(chkpt["optimizer"])
-                #print(chkpt["optimizer"])
                 self.best_mAP = chkpt["best_mAP"]
             del chkpt
 
@@ -161,7 +152,6 @@ class Trainer(object):
 
     def train(self):
         global writer
-        #logger.info(self.model)
         logger.info(" Training start!  Img size:{:d},  Batchsize:{:d},  Number of workers:{:d}".format(
             cfg.TRAIN["TRAIN_IMG_SIZE"], cfg.TRAIN["BATCH_SIZE"], cfg.TRAIN["NUMBER_WORKERS"]))
         logger.info(" Train datasets number is : {}".format(len(self.train_dataset)))
@@ -221,11 +211,6 @@ class Trainer(object):
                                       * (cfg.TRAIN["BATCH_SIZE"]) * epoch + i)
                     writer.add_scalar('train_loss', mloss[9], len(self.train_dataloader)
                                       * (cfg.TRAIN["BATCH_SIZE"]) * epoch + i)
-
-                # if self.multi_scale_train and (i+1) % 10 == 0:
-                #     self.train_dataset.img_size = random.choice(range(
-                #         cfg.TRAIN["MULTI_TRAIN_RANGE"][0], cfg.TRAIN["MULTI_TRAIN_RANGE"][1],
-                #         cfg.TRAIN["MULTI_TRAIN_RANGE"][2])) * 32
             if epoch >= 50 and epoch % 5 == 0 and cfg.TRAIN["EVAL_TYPE"] == 'VOC':
                 logger.info("===== Validate =====".format(epoch, self.epochs))
                 with torch.no_grad():
@@ -250,7 +235,7 @@ if __name__ == "__main__":
     global logger, writer
     parser = argparse.ArgumentParser()
     parser.add_argument('--weight_path', type=str, default='weight/darknet53_448.weights', help='weight file path')
-    parser.add_argument('--resume', action='store_true', default=True, help='resume training flag')
+    parser.add_argument('--resume', action='store_true', default=False, help='resume training flag')
     parser.add_argument('--gpu_id', type=int, default=0, help='gpu id')
     parser.add_argument('--log_path', type=str, default='log/', help='log path')
     opt = parser.parse_args()

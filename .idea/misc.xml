@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/modelR/loss/loss_jol.py" />
+  </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (torch)" project-jdk-type="Python SDK" />
 </project>

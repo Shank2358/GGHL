@@ -1,7 +1,7 @@
 import utils.gpu as gpu
 from modelR.GGHL import GGHL
 from tensorboardX import SummaryWriter
-from evalR.evaluatorGGHL_new import Evaluator
+from evalR.evaluatorGGHL import Evaluator
 import argparse
 import os
 import config.config as cfg
