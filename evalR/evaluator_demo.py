@@ -100,7 +100,7 @@ class Evaluator(object):
         self.model.eval()
         with torch.no_grad():
             start_time = current_milli_time()
-            _, _, _, p_d = self.model(img)
+            _, p_d = self.model(img)
             self.inference_time += (current_milli_time() - start_time)
 
         pred_bbox = p_d.squeeze()
@@ -218,3 +218,4 @@ class Evaluator(object):
             if (time.time() - t) > time_limit:
                 break  # time limit exceeded
         return output
+

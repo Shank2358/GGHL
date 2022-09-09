@@ -43,7 +43,7 @@ class Tester(object):
         if self.__eval and cfg.TEST["EVAL_TYPE"] == 'VOC':
             with torch.no_grad():
                 start = time.time()
-                APs, r, p, inference_time = Evaluator(self.__model).APs_voc()
+                APs, inference_time = Evaluator(self.__model).APs_voc()
                 end = time.time()
                 logger.info("Test cost time:{:.4f}s".format(end - start))
                 for i in APs:
@@ -53,24 +53,12 @@ class Tester(object):
                 logger.info('mAP:{}'.format(mAP))
                 logger.info("inference time: {:.2f} ms".format(inference_time))
                 writer.add_scalar('test/VOCmAP', mAP)
-                for i in r:
-                    print("{} --> Recall : {}".format(i, np.mean(r[i])))
-                    mRecall += np.mean(r[i])
-                mRecall = mRecall / self.__num_class
-                logger.info('mRecall:{}'.format(mRecall))
-                writer.add_scalar('test/VOCmRecall',mRecall)
-                for i in p:
-                    print("{} --> Recall : {}".format(i, np.mean(p[i])))
-                    mPrecision += np.mean(p[i])
-                mPrecision = mPrecision / self.__num_class
-                logger.info('mPrecision:{}'.format(mPrecision))
-                writer.add_scalar('test/VOCmPrecision',mPrecision)
 
 
 if __name__ == "__main__":
     global logger
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weight_path', type=str, default='weight/GGHL_darknet53_fpn3_DOTA_76.95.pt', help='weight file path')
+    parser.add_argument('--weight_path', type=str, default='weight/best.pt', help='weight file path')
     parser.add_argument('--log_val_path', type=str, default='log/', help='weight file path')
     parser.add_argument('--visiual', type=str, default=None, help='test data path or None')
     parser.add_argument('--eval', action='store_true', default=True, help='eval flag')

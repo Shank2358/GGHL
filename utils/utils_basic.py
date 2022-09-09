@@ -7,6 +7,7 @@ import numpy as np
 import random
 import torch
 import config.config as cfg
+from shapely.geometry import Polygon, MultiPoint  # 多边形
 
 def init_seeds(seed=0):
     random.seed(seed)
@@ -101,6 +102,117 @@ def diou_xyxy_numpy(boxes1, boxes2):
 
     DIOU = IOU - 1.0 * p2 / enclose_c2
     return DIOU
+
+def polygen_iou_xy4_numpy(boxes1, boxes2):
+    #print(boxes2.shape)
+    num = boxes2.shape[0]
+    if num == 0:
+        iou_out = []
+    else:
+        boxes1 = boxes1.reshape(-1, 4, 2)
+        boxes2 = boxes2.reshape(-1, 4, 2)
+        #print(boxes1.shape, boxes2.shape)
+        iou = np.zeros(num)
+        for i in range(0, num):
+            #print("num",num,i)
+            poly1 = Polygon(boxes1[0,:,:]).convex_hull
+            #print("uuuuuuu,",boxes2.shape)
+            poly2 = Polygon(boxes2[i,:,:]).convex_hull
+            union_poly = np.concatenate((boxes1[0,:,:], boxes2[i,:,:]),axis=0)
+            if poly1.intersects(poly2):  # 如果两四边形相交
+                inter_area = poly1.intersection(poly2).area  # 相交面积
+                union_area = MultiPoint(union_poly).convex_hull.area
+                iou[i] = float(inter_area) / union_area
+        iou_out = iou
+    return np.array(iou_out)
+
+def polygen_iou_xy4_numpy_eval(boxes1, boxes2):
+    boxes1 = boxes1.reshape(4, 2)
+    boxes2 = boxes2.reshape(4, 2)
+    poly1 = Polygon(boxes1).convex_hull
+    poly2 = Polygon(boxes2).convex_hull
+    union_poly = np.concatenate((boxes1, boxes2),axis=0)
+    iou=0
+    if poly1.intersects(poly2):  # 如果两四边形相交
+        inter_area = poly1.intersection(poly2).area  # 相交面积
+        union_area = MultiPoint(union_poly).convex_hull.area
+        iou = float(inter_area) / union_area
+    return iou
+
+def polygen_iou_xy4_numpy1(boxes1, boxes2):############loss
+    size1 = boxes1.shape
+    num = size1[0]*size1[1]*size1[2]*size1[3]
+    boxes1 = boxes1.cpu().detach().numpy()
+    boxes2 = boxes2.cpu().detach().numpy()
+    boxes1 = boxes1.reshape(-1, 4, 2)
+    boxes2 = boxes2.reshape(-1, 4, 2)
+    iou = np.zeros(num)
+    for i in range(0, num):
+        poly1 = Polygon(boxes1[i,:,:]).convex_hull
+        poly2 = Polygon(boxes2[i,:,:]).convex_hull
+        union_poly = np.concatenate((boxes1[i,:,:], boxes2[i,:,:]))
+        if poly1.intersects(poly2):  # 如果两四边形相交
+            inter_area = poly1.intersection(poly2).area  # 相交面积
+            union_area = MultiPoint(union_poly).convex_hull.area
+            iou[i] = float(inter_area) / union_area
+    iou_out = iou.reshape((size1[0],size1[1],size1[2],size1[3]))
+    return torch.tensor(iou_out)
+
+def polygen_iou_xy4_torch(boxes1, boxes2):
+    size1 = boxes1.shape
+    num = size1[0]*size1[1]*size1[2]*size1[3]
+    #boxes1 = boxes1.cpu().detach().numpy()
+    #boxes2 = boxes2.cpu().detach().numpy()
+    boxes1 = boxes1.view(-1, 4, 2)
+    print(boxes1.shape)
+    boxes2 = boxes2.view(-1, 4, 2)
+    iou = torch.zeros(num)
+    for i in range(0, num):
+        poly1 = Polygon(boxes1[i,:,:]).convex_hull
+        poly2 = Polygon(boxes2[i,:,:]).convex_hull
+        union_poly = torch.cat((boxes1[i,:,:], boxes2[i,:,:]))
+        if poly1.intersects(poly2):  # 如果两四边形不相交
+            inter_area = poly1.intersection(poly2).area  # 相交面积
+            union_area = MultiPoint(union_poly).convex_hull.area
+            iou[i] = float(inter_area) / union_area
+    iou_out = iou.view(size1[0],size1[1],size1[2],size1[3])
+    return iou_out
+
+def polygen_iou_xy4_torch1(boxes1, boxes2):
+    import cv2
+
+    size1 = boxes1.shape
+    num = size1[0]*size1[1]*size1[2]*size1[3]
+    #boxes1 = boxes1.cpu().detach().numpy()
+    #boxes2 = boxes2.cpu().detach().numpy()
+    boxes1 = boxes1.view(-1, 4, 2).unsqueeze(1)
+    boxes2 = boxes2.view(-1, 4, 2).unsqueeze(1)
+
+    im = torch.zeros(num, 10, 10)
+    im1 = torch.zeros(num, 10, 10)
+
+    original_grasp_mask = cv2.fillPoly(im, boxes2, 255)
+    print(original_grasp_mask.shape)
+    prediction_grasp_mask = cv2.fillPoly(im1, boxes2, 255)
+    masked_and = cv2.bitwise_and(original_grasp_mask, prediction_grasp_mask, mask=im)
+    masked_or = cv2.bitwise_or(original_grasp_mask, prediction_grasp_mask)
+
+    or_area = torch.sum(torch.float32(torch.gt(masked_or, 0)))
+    and_area = torch.sum(torch.float32(torch.gt(masked_and, 0)))
+    IOU = and_area / or_area
+
+    iou = torch.zeros(num)
+    for i in range(0, num):
+        poly1 = Polygon(boxes1[i,:,:]).convex_hull
+        poly2 = Polygon(boxes2[i,:,:]).convex_hull
+        union_poly = torch.cat((boxes1[i,:,:], boxes2[i,:,:]))
+        if poly1.intersects(poly2):  # 如果两四边形不相交
+            inter_area = poly1.intersection(poly2).area  # 相交面积
+            union_area = MultiPoint(union_poly).convex_hull.area
+            iou[i] = float(inter_area) / union_area
+    iou_out = iou.view(size1[0],size1[1],size1[2],size1[3])
+    return iou_out
+
 
 def iou_xyxy_torch(boxes1, boxes2):
     """
@@ -227,6 +339,13 @@ def CIOU_xywh_torch1(boxes1, boxes2):
     return CIOU
 
 def CIOU_xywh_torch(boxes1,boxes2):
+    
+    #cal CIOU of two boxes or batch boxes
+    #:param boxes1:[xmin,ymin,xmax,ymax] or[[xmin,ymin,xmax,ymax],[xmin,ymin,xmax,ymax],...]
+    #:param boxes2:[xmin,ymin,xmax,ymax]
+    #:return:
+    
+    # xywh->xyxy
     boxes1 = torch.cat([boxes1[..., :2] - boxes1[..., 2:] * 0.5,
                         boxes1[..., :2] + boxes1[..., 2:] * 0.5], dim=-1)
     boxes2 = torch.cat([boxes2[..., :2] - boxes2[..., 2:] * 0.5,
@@ -276,8 +395,17 @@ def CIOU_xywh_torch(boxes1,boxes2):
 
 
 def nms(bboxes, score_threshold, iou_threshold, sigma=0.3):
+    """
+    :param bboxes:
+    假设有N个bbox的score大于score_threshold，那么bboxes的shape为(N, 6)，存储格式为(xmin, ymin, xmax, ymax, score, class)
+    其中(xmin, ymin, xmax, ymax)的大小都是相对于输入原图的，score = conf * prob，class是bbox所属类别的索引号
+    :return: best_bboxes
+github    假设NMS后剩下N个bbox，那么best_bboxes的shape为(N, 6)，存储格式为(xmin, ymin, xmax, ymax, score, class)
+    其中(xmin, ymin, xmax, ymax)的大小都是相对于输入原图的，score = conf * prob，class是bbox所属类别的索引号
+    """
     classes_in_img = list(set(bboxes[:, 5].astype(np.int32)))
     best_bboxes = []
+    scale_factor = cfg.SCALE_FACTOR
     for cls in classes_in_img:
         cls_mask = (bboxes[:, 5].astype(np.int32) == cls)
         cls_bboxes = bboxes[cls_mask]
@@ -286,24 +414,184 @@ def nms(bboxes, score_threshold, iou_threshold, sigma=0.3):
             best_bbox = cls_bboxes[max_ind]
             best_bboxes.append(best_bbox)
             cls_bboxes = np.concatenate([cls_bboxes[: max_ind], cls_bboxes[max_ind + 1:]])
+            #####################################
             iou = iou_xyxy_numpy(best_bbox[np.newaxis, :4], cls_bboxes[:, :4])
+            ####################################
+            #scale_factor = 1.0 * best_bbox[..., 2:3] * best_bbox[..., 3:4] / (cfg.TEST["TEST_IMG_SIZE"] ** 2)
+
             method = cfg.TEST["NMS_METHODS"]
             weight = np.ones((len(iou),), dtype=np.float32)
-            iou_mask = iou > iou_threshold
-            weight[iou_mask] = 0.0
+            if method == 'NMS':
+                iou_mask = iou > iou_threshold
+                weight[iou_mask] = 0.0
+            elif method == 'SOFT_NMS':
+                weight = np.exp(-(1.0 * iou ** 2 / sigma))
+            elif method == 'NMS_DIOU':
+                diou = diou_xyxy_numpy(best_bbox[np.newaxis, :4], cls_bboxes[:, :4])
+                iou_mask = diou > iou_threshold
+                weight[iou_mask] = 0.0
+            #elif method == 'NMS_DIOU_SCALE':
+                #iou_mask = scale_factor-(scale_factor-1.0)*diou > iou_threshold
+                #weight[iou_mask] = 0.0
+
             cls_bboxes[:, 4] = cls_bboxes[:, 4] * weight
             score_mask = cls_bboxes[:, 4] > score_threshold
             cls_bboxes = cls_bboxes[score_mask]
     return np.array(best_bboxes)
 
-def GIOU_l_torch(boxes1, boxes2):#boxes1_pd, boxes2_gt: [..., (l1,l2,l3,l4)]. The size is for original image.
-    area_pd = (boxes1[..., 0:1] + boxes1[..., 2:3]) * (boxes1[..., 1:2] + boxes1[..., 3:4])
-    area_gt = (boxes2[..., 0:1] + boxes2[..., 2:3]) * (boxes2[..., 1:2] + boxes2[..., 3:4])
-    area_overlap = (torch.min(boxes1[..., 0:1], boxes2[..., 0:1]) + torch.min(boxes1[..., 2:3], boxes2[..., 2:3])) \
-        * (torch.min(boxes1[..., 1:2], boxes2[..., 1:2]) + torch.min(boxes1[..., 3:4], boxes2[..., 3:4]))
-    area_circ = (torch.max(boxes1[..., 0:1], boxes2[..., 0:1]) + torch.max(boxes1[..., 2:3], boxes2[..., 2:3])) \
-        * (torch.max(boxes1[..., 1:2], boxes2[..., 1:2]) + torch.max(boxes1[..., 3:4], boxes2[..., 3:4]))
-    area_union = area_pd + area_gt - area_overlap
-    iou = area_overlap / (area_union + 1e-16)
-    giou = iou - ((area_circ - area_union) / (area_circ + 1e-16))
-    return giou
+
+def nms_glid(bboxes, score_threshold, iou_threshold, sigma=0.3):
+    """
+    :param bboxes:
+    假设有N个bbox的score大于score_threshold，那么bboxes的shape为(N, 6)，存储格式为(xmin, ymin, xmax, ymax, score, class)
+    其中(xmin, ymin, xmax, ymax)的大小都是相对于输入原图的，score = conf * prob，class是bbox所属类别的索引号
+    :return: best_bboxes
+    假设NMS后剩下N个bbox，那么best_bboxes的shape为(N, 6)，存储格式为(xmin, ymin, xmax, ymax, score, class)
+    其中(xmin, ymin, xmax, ymax)的大小都是相对于输入原图的，score = conf * prob，class是bbox所属类别的索引号
+    """
+    ######[coors(0:4), coors_rota(4:8), scores[:, np.newaxis](12), classes[:, np.newaxis]](13)
+    classes_in_img = list(set(bboxes[:, 9].astype(np.int32)))
+    best_bboxes = []
+    scale_factor = cfg.SCALE_FACTOR
+    for cls in classes_in_img:
+        cls_mask = (bboxes[:, 9].astype(np.int32) == cls)
+        cls_bboxes = bboxes[cls_mask]
+
+        while len(cls_bboxes) > 0:
+            max_ind = np.argmax(cls_bboxes[:, 8])#取分数最大的
+            best_bbox = cls_bboxes[max_ind]
+            best_bboxes.append(best_bbox)
+            cls_bboxes = np.concatenate([cls_bboxes[: max_ind], cls_bboxes[max_ind + 1:]])
+
+            xmin = best_bbox[np.newaxis, 0:1]
+            ymin = best_bbox[np.newaxis, 1:2]
+            xmax = best_bbox[np.newaxis, 2:3]
+            ymax = best_bbox[np.newaxis, 3:4]
+            a1 = best_bbox[np.newaxis, 4:5]
+            a2 = best_bbox[np.newaxis, 5:6]
+            a3 = best_bbox[np.newaxis, 5:6]
+            a4 = best_bbox[np.newaxis, 6:7]
+            x1 = a1*(xmax-xmin)+xmin
+            y1 = ymin
+            x2 = a2*(ymax-ymin)+ymin
+            y2 = xmax
+            x3 = xmax-a3*(xmax-xmin)
+            y3 = ymax
+            x4 = xmin
+            y4 = ymax-a4*(ymax-ymin)
+            best_bbox_r = np.concatenate((x1,y1,x2,y2,x3,y3,x4,y4),axis=-1)
+
+            xminl = cls_bboxes[:, 0:1]
+            yminl = cls_bboxes[:, 1:2]
+            xmaxl = cls_bboxes[:, 2:3]
+            ymaxl = cls_bboxes[:, 3:4]
+            a1l = cls_bboxes[:, 4:5]
+            a2l = cls_bboxes[:, 5:6]
+            a3l = cls_bboxes[:, 5:6]
+            a4l = cls_bboxes[:, 6:7]
+            x1l = a1l*(xmaxl-xminl)+xminl
+            y1l = yminl
+            x2l = a2l*(ymaxl-yminl)+yminl
+            y2l = xmaxl
+            x3l = xmaxl-a3l*(xmaxl-xminl)
+            y3l = ymaxl
+            x4l = xminl
+            y4l = ymaxl-a4l*(ymaxl-yminl)
+            cls_bboxes_r = np.concatenate((x1l,y1l,x2l,y2l,x3l,y3l,x4l,y4l),axis=-1)
+            #print(cls_bboxes_r.shape)
+            iou = polygen_iou_xy4_numpy(best_bbox_r[np.newaxis, :8], cls_bboxes_r[:, :8])
+            #print(np.maximum(iou,0.7))
+            #iou = iou_xyxy_numpy(best_bbox[np.newaxis, :4], cls_bboxes[:, :4])
+            ####################################
+            #scale_factor = 1.0 * best_bbox[..., 2:3] * best_bbox[..., 3:4] / (cfg.TEST["TEST_IMG_SIZE"] ** 2)
+            method = cfg.TEST["NMS_METHODS"]
+            weight = np.ones((len(iou),), dtype=np.float32)
+            if method == 'NMS':
+                iou_mask = iou > iou_threshold
+                weight[iou_mask] = 0.0
+            elif method == 'SOFT_NMS':
+                weight = np.exp(-(1.0 * iou ** 2 / sigma))
+            elif method == 'NMS_DIOU':
+                diou = diou_xyxy_numpy(best_bbox[np.newaxis, :4], cls_bboxes[:, :4])
+                iou_mask = diou > iou_threshold
+                weight[iou_mask] = 0.0
+            #elif method == 'NMS_DIOU_SCALE':
+                #iou_mask = scale_factor-(scale_factor-1.0)*diou > iou_threshold
+                #weight[iou_mask] = 0.0
+
+            cls_bboxes[:, 8] = cls_bboxes[:, 8] * weight
+            score_mask = cls_bboxes[:, 8] > score_threshold
+            cls_bboxes = cls_bboxes[score_mask]
+    return np.array(best_bboxes)
+
+from DOTA_devkit import polyiou
+
+def py_cpu_nms_poly_fast(dets, scores, thresh):
+    """
+    任意四点poly nms.取出nms后的边框的索引
+    @param dets: shape(detection_num, [poly]) 原始图像中的检测出的目标数量
+    @param scores: shape(detection_num, 1)
+    @param thresh:
+    @return:
+            keep: 经nms后的目标边框的索引
+    """
+    obbs = dets[:, 0:-1]  # (num, [poly])
+    x1 = np.min(obbs[:, 0::2], axis=1)  # (num, 1)
+    y1 = np.min(obbs[:, 1::2], axis=1)  # (num, 1)
+    x2 = np.max(obbs[:, 0::2], axis=1)  # (num, 1)
+    y2 = np.max(obbs[:, 1::2], axis=1)  # (num, 1)
+    areas = (x2 - x1 + 1) * (y2 - y1 + 1)  # (num, 1)
+
+    polys = []
+    for i in range(len(dets)):
+        tm_polygon = polyiou.VectorDouble(
+            [dets[i][0], dets[i][1], dets[i][2], dets[i][3], dets[i][4], dets[i][5], dets[i][6], dets[i][7]]
+        )
+        polys.append(tm_polygon)
+    order = scores.argsort()[::-1]  # argsort将元素小到大排列 返回索引值 [::-1]即从后向前取元素
+
+    keep = []
+    while order.size > 0:
+        ovr = []
+        i = order[0]  # 取出当前剩余置信度最大的目标边框的索引
+        keep.append(i)
+        # if order.size == 0:
+        #     break
+        xx1 = np.maximum(x1[i], x1[order[1:]])
+        yy1 = np.maximum(y1[i], y1[order[1:]])
+        xx2 = np.minimum(x2[i], x2[order[1:]])
+        yy2 = np.minimum(y2[i], y2[order[1:]])
+        # w = np.maximum(0.0, xx2 - xx1 + 1)
+        # h = np.maximum(0.0, yy2 - yy1 + 1)
+        w = np.maximum(0.0, xx2 - xx1)
+        h = np.maximum(0.0, yy2 - yy1)
+        hbb_inter = w * h
+        hbb_ovr = hbb_inter / (areas[i] + areas[order[1:]] - hbb_inter)
+        # h_keep_inds = np.where(hbb_ovr == 0)[0]
+        h_inds = np.where(hbb_ovr > 0)[0]
+        tmp_order = order[h_inds + 1]
+        for j in range(tmp_order.size):
+            iou = polyiou.iou_poly(polys[i], polys[tmp_order[j]])
+            hbb_ovr[h_inds[j]] = iou
+            # ovr.append(iou)
+            # ovr_index.append(tmp_order[j])
+
+        # ovr = np.array(ovr)
+        # ovr_index = np.array(ovr_index)
+        # print('ovr: ', ovr)
+        # print('thresh: ', thresh)
+        try:
+            if math.isnan(ovr[0]):
+                pass
+                # pdb.set_trace()
+        except:
+            pass
+        inds = np.where(hbb_ovr <= thresh)[0]
+
+        # order_obb = ovr_index[inds]
+        # print('inds: ', inds)
+        # order_hbb = order[h_keep_inds + 1]
+        order = order[inds + 1]
+        # pdb.set_trace()
+        # order = np.concatenate((order_obb, order_hbb), axis=0).astype(np.int)
+    return keep
