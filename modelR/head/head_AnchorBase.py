@@ -42,7 +42,7 @@ class Head(nn.Module):
         grid_xy = grid_xy.unsqueeze(0).unsqueeze(3).repeat(batch_size, 1, 1, cfg.MODEL["ANCHORS_PER_SCLAE"], 1).float().to(device)
         # pred_xy = (torch.sigmoid(conv_raw_dxdy) + grid_xy) * stride
         pred_xy = (torch.sigmoid(conv_raw_dxdy) * 1.05 - ((1.05 - 1) / 2) + grid_xy) * stride
-        pred_wh = (torch.exp(conv_raw_dwdh) * anchors ) * stride #* wh_new
+        pred_wh = (torch.exp(conv_raw_dwdh) * anchors ) * stride #* self.fact
         pred_xywh = torch.cat([pred_xy, pred_wh], dim=-1)
         # pred_a = torch.sigmoid(conv_raw_a)
         # pred_r = torch.sigmoid(conv_raw_r)
