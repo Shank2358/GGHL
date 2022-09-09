@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_GGHL.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_GGHL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_GGHL_dist.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_GGHL_dist.py" afterDir="false" />
-    </list>
+    <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,13 +47,13 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Github\GGHL\log\event" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Github\GGHL\modelR\backbones" />
       <recent name="D:\Github\GGHL\readme_imgs" />
       <recent name="D:\Github\GGHL" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\GGHL\log\event" />
     </key>
   </component>
   <component name="RunManager" selected="Python.train_GGHL">
@@ -189,11 +184,11 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.convert_coco_gghl" />
       <item itemvalue="Python.datasets_obb" />
       <item itemvalue="Python.datasets_obb_pro" />
       <item itemvalue="Python.datasets_show" />
+      <item itemvalue="Python.test" />
       <item itemvalue="Python.train_GGHL" />
     </list>
     <recent_temporary>
