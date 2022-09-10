@@ -150,13 +150,13 @@ class Construct_Dataset(Dataset):
             if len_w < len_h:
                 len_w, len_h = len_h, len_w
             length = max(box_w, box_h)
-            if max(box_w, box_h) > 10 or (box_w*box_w) > 80:
-                if length <= layer_thresh[0] * 1.25:
+            if max(box_w, box_h) > 4 or (box_w*box_w) > 80:
+                if length <= layer_thresh[0] * 1.2:
                     self.generate_label(0, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
                                         ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,
                                         gt_label, class_id)
 
-                if length > layer_thresh[0] and length <= layer_thresh[1] * 1.25:
+                if length > layer_thresh[0] and length <= layer_thresh[1] * 1.2:
 
                     self.generate_label(1, self.gt_tensor, c_x_r, c_y_r, len_w, len_h, box_w, box_h, angle,
                                         ymin, xmax, ymax, xmin, c_x, c_y, a1, a2, a3, a4,

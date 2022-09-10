@@ -720,3 +720,8 @@
 [2022-09-09 21:22:36,604]-[test.py line:48]:Test cost time:18.9570s 
 [2022-09-09 21:22:36,604]-[test.py line:53]:mAP:0.001391498835157608 
 [2022-09-09 21:22:36,604]-[test.py line:54]:inference time: 181.72 ms 
+[2022-09-10 00:19:20,448]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-09-10 00:20:46,535]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-09-10 00:21:07,009]-[test.py line:48]:Test cost time:20.4742s 
+[2022-09-10 00:21:24,725]-[test.py line:39]:***********Start Evaluation**************** 
+[2022-09-10 00:22:49,986]-[test.py line:48]:Test cost time:85.2607s 

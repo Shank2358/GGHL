@@ -235,7 +235,7 @@ if __name__ == "__main__":
     global logger, writer
     parser = argparse.ArgumentParser()
     parser.add_argument('--weight_path', type=str, default='weight/darknet53_448.weights', help='weight file path')
-    parser.add_argument('--resume', action='store_true', default=False, help='resume training flag')
+    parser.add_argument('--resume', action='store_true', default=True, help='resume training flag')
     parser.add_argument('--gpu_id', type=int, default=0, help='gpu id')
     parser.add_argument('--log_path', type=str, default='log/', help='log path')
     opt = parser.parse_args()

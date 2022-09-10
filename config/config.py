@@ -39,13 +39,13 @@ TRAIN = {
     "MULTI_TRAIN_RANGE": [23, 28, 1],
     "BATCH_SIZE": 18,
     "IOU_THRESHOLD_LOSS": 0.6,
-    "EPOCHS": 51,
+    "EPOCHS": 151,
     "NUMBER_WORKERS": 8,
     "MOMENTUM": 0.9,
     "WEIGHT_DECAY": 0.0005,
     "LR_INIT": 2e-4,
     "LR_END": 1e-6,
-    "WARMUP_EPOCHS": 3,
+    "WARMUP_EPOCHS": 5,
     "IOU_TYPE": 'GIOU'
 }
 
