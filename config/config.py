@@ -1,6 +1,6 @@
 # coding=utf-8
-DATA_PATH = "F:/Datasets/HRSC2016/test/"
-#DATA_PATH = "F:/Datasets/DOTAx/test/"#
+#DATA_PATH = "F:/Datasets/HRSC2016/test/"
+DATA_PATH = "F:/Datasets/DOTAx/test/"#
 #DATA_PATH = 'F:/Datasets/DroneVehicle/test/'
 #DATA_PATH = "/opt/datasets/DOTA/"
 PROJECT_PATH = "./"
@@ -8,19 +8,19 @@ PROJECT_PATH = "./"
 # DATA = {"CLASSES": ['car', 'truck', 'bus', 'van', 'freight car'],
 #         "NUM": 5}
 
-# DATA = {"CLASSES": ['plane',
-#                     'baseball-diamond',
-#                     'bridge',
-#                     'ground-track-field',
-#                     'small-vehicle',
-#                     'large-vehicle',
-#                     'ship',
-#                     'tennis-court',
-#                     'basketball-court',
-#                     'storage-tank', 'soccer-ball-field', 'roundabout', 'harbor', 'swimming-pool', 'helicopter'],
-#         "NUM": 15}
+DATA = {"CLASSES": ['plane',
+                    'baseball-diamond',
+                    'bridge',
+                    'ground-track-field',
+                    'small-vehicle',
+                    'large-vehicle',
+                    'ship',
+                    'tennis-court',
+                    'basketball-court',
+                    'storage-tank', 'soccer-ball-field', 'roundabout', 'harbor', 'swimming-pool', 'helicopter'],
+        "NUM": 15}
 
-DATA = {"CLASSES": ['ship'], "NUM": 1}
+# DATA = {"CLASSES": ['ship'], "NUM": 1}
 
 DATASET_NAME = "train_HRSC2016"
 MODEL = {"STRIDES":[8, 16, 32]}
@@ -57,7 +57,7 @@ TEST = {
     "TEST_IMG_SIZE": 800,
     "BATCH_SIZE": 4,
     "NUMBER_WORKERS": 8,
-    "CONF_THRESH": 0.05,
+    "CONF_THRESH": 0.2,
     "NMS_THRESH": 0.45,
     "IOU_THRESHOLD": 0.5,
     "NMS_METHODS": 'NMS',

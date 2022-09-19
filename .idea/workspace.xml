@@ -21,6 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c4ed7995-53f4-4ef6-9fb8-b9a76cf38a0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evalR/evaluatorGGHL.py" beforeDir="false" afterPath="$PROJECT_DIR$/evalR/evaluatorGGHL.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/log_coco_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log/log_coco_test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictionR/voc/ship.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +50,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo..py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -58,7 +63,7 @@
       <recent name="D:\Github\GGHL" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.demo">
+  <component name="RunManager" selected="Python.test">
     <configuration name="convert_coco_gghl" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GGHL" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -261,22 +266,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="300" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1663035436012" />
-    <state width="1921" height="371" key="GridCell.Tab.0.bottom" timestamp="1663036154083">
+    <state width="1921" height="371" key="GridCell.Tab.0.bottom" timestamp="1663552415465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1663036154083" />
-    <state width="1921" height="371" key="GridCell.Tab.0.center" timestamp="1663036154083">
+    <state width="1921" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1663552415465" />
+    <state width="1921" height="371" key="GridCell.Tab.0.center" timestamp="1663552415465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="371" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1663036154083" />
-    <state width="1921" height="371" key="GridCell.Tab.0.left" timestamp="1663036154083">
+    <state width="1921" height="371" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1663552415465" />
+    <state width="1921" height="371" key="GridCell.Tab.0.left" timestamp="1663552415464">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="371" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1663036154083" />
-    <state width="1921" height="371" key="GridCell.Tab.0.right" timestamp="1663036154083">
+    <state width="1921" height="371" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1663552415464" />
+    <state width="1921" height="371" key="GridCell.Tab.0.right" timestamp="1663552415465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1921" height="371" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1663036154083" />
+    <state width="1921" height="371" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1663552415465" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1656067891873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

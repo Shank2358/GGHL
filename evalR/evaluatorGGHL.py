@@ -59,8 +59,6 @@ class Evaluator(object):
             with open(os.path.join(self.pred_result_path, 'voc', class_name + '.txt'), 'a') as f:
                 str_result = ''.join(self.final_result[class_name])
                 f.write(str_result)
-        self.inference_time = 1.0 * self.inference_time / len(img_inds)
-        print("Speed: ", self.inference_time)
         APs, r, p = self.__calc_APs(iou_thresh=self.iouthresh_test)
         #return APs, r, p, self.inference_time
         return APs, self.inference_time
