@@ -108,8 +108,7 @@ class Loss(nn.Module):
         loss_fg = label_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix * ((gh_mask)+offset0)/2
         loss_bg = label_noobj_mask * Focal(input=p_conf, target=label_conf_smooth) * label_mix
 
-        #loss_pos = (label_cls != 0).float() * label_mask * BCE(input=p_cls, target=label_cls_smooth * torch.max(scores_loc.detach(), dim=-1, keepdim=True)[0]) * label_mix * area_weight
-        loss_pos = (label_cls != 0).float() * label_mask * BCE(input=scores_cls_loc, target=torch.max(label_cls_smooth, dim=-1, keepdim=True)[0]) * label_mix * area_weight
+        loss_pos = (label_cls != 0).float() * label_mask * BCE(input=scores_cls_loc, target= label_cls_smooth) * label_mix * area_weight
         loss_neg = (1 - (label_cls != 0).float()) * label_mask * BCE(input=p_cls, target=label_cls_smooth) * label_mix * area_weight
 
         N = (torch.sum(label_mask.view(batch_size, -1), dim=-1) + 1e-16)
