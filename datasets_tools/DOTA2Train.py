@@ -215,6 +215,9 @@ for label in label_list:
                            str(corners_fixed[1][1]) + ' ' + str(corners_fixed[2][0]) + ' ' + \
                            str(corners_fixed[2][1]) + ' ' + str(corners_fixed[3][0]) + ' ' + \
                            str(corners_fixed[3][1]) + '\n'
+                
+                with open(store_path, 'a') as file1:
+                    file1.writelines(str(labelout))
 
         each_boxes = ("/opt/datasets/DOTA/JPEGImages/" + label.split('.')[0] + '.'
                       + label.split('.')[1] + '.png' + " " + " ".join(new_boxes) + "\n")
