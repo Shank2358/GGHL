@@ -22,7 +22,7 @@
 
 #### IEEE的正式版排版丑死了（不得不吐槽），有的图还显示有问题，还是下载arxiv版本的吧，我已经更新了arxiv，内容和正式版一样。  
 
-###  [TensorRT C++部署版本教程](https://zhuanlan.zhihu.com/p/551057399)和[Nvidia Jetson嵌入式部署版本教程](https://zhuanlan.zhihu.com/p/558747842)看这里！！！  感谢最最亲爱的师弟[Crescent-Ao](https://github.com/Crescent-Ao)和[haohaoolalahao](https://github.com/haohaoolalahao)
+####  [TensorRT C++部署版本教程](https://zhuanlan.zhihu.com/p/551057399)和[Nvidia Jetson嵌入式部署版本教程](https://zhuanlan.zhihu.com/p/558747842)看这里！！！  感谢最最亲爱的师弟[Crescent-Ao](https://github.com/Crescent-Ao)和[haohaoolalahao](https://github.com/haohaoolalahao)
 
 ####  GGHL基础上改进的标签分配写到了新论文[TS-Conv](https://arxiv.org/abs/2209.02200)里，[TS-Conv的代码](https://github.com/Shank2358/TS-Conv)放出来了在这里（还在更新完善中）  
 
