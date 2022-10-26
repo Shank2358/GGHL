@@ -45,7 +45,7 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
-* #### 💖💖💖 Thanks to [Crescent-Ao](https://github. com/Crescent-Ao) and [haohaoolalahao](https://github.com/haohaoolalahao) for contributions to the GGHL repository, thanks to [Crescent-Ao](https://github.com/Crescent-Ao) for the GGHL deployment Version. Relevant warehouses will continue to be updated, so stay tuned.  
+* #### 💖💖💖 Thanks to [Crescent-Ao](https://github.com/Crescent-Ao) and [haohaoolalahao](https://github.com/haohaoolalahao) for contributions to the GGHL repository, thanks to [Crescent-Ao](https://github.com/Crescent-Ao) for the GGHL deployment Version. Relevant warehouses will continue to be updated, so stay tuned.  
     #### 打个广告，GGHL部署版本[GGHL-Deployment](https://github.com/Crescent-Ao/GGHL-Deployment)已经上线，欢迎大家使用~~ 感谢我最亲爱的师弟[Crescent-Ao](https://github.com/Crescent-Ao)和[haohaolalahao](https://github.com/haohaolalahao)对GGHL仓库的贡献，感谢[Crescent-Ao](https://github.com/Crescent-Ao)完成的GGHL部署版本。相关仓库还会持续更新中，敬请期待。
 
 * #### 😺😺😺 Welcome everyone to pay attention to the MGAR completed by [haohaoolalahao](https://github.com/haohaoolalahao) in cooperation with me, which has been accepted by [IEEE TGRS](https://ieeexplore.ieee.org/document/9912396).  
