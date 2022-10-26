@@ -26,7 +26,7 @@
 
 ####  GGHL基础上改进的标签分配写到了新论文[TS-Conv](https://arxiv.org/abs/2209.02200)里，[TS-Conv的代码](https://github.com/Shank2358/TS-Conv)放出来了在这里（还在更新完善中）  
 
-#### GGHL做知识蒸馏的一些尝试的论文[DKED](https://ieeexplore.ieee.org/document/9747798)在这里，这个等年底有空了扩写和更新代码  
+#### GGHL做知识蒸馏的一些尝试的论文[DKED](https://ieeexplore.ieee.org/document/9747798)在这里（用来Social和旅游的会议），这个等年底有空了扩写和更新代码  
 
   ### Give a ⭐️ if this project helped you. If you use it, please consider citing:
   ```IEEE TIP
