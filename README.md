@@ -22,6 +22,12 @@
 
 #### IEEE的正式版排版丑死了（不得不吐槽），有的图还显示有问题，还是下载arxiv版本的吧，我已经更新了arxiv，内容和正式版一样。  
 
+####  [TensorRT C++部署版本教程](https://zhuanlan.zhihu.com/p/551057399)和[Nvidia Jetson嵌入式部署版本教程](https://zhuanlan.zhihu.com/p/558747842)看这里！！！  感谢最最亲爱的师弟[Crescent-Ao](https://github.com/Crescent-Ao)和[haohaoolalahao](https://github.com/haohaoolalahao)
+
+####  GGHL基础上改进的标签分配写到了新论文[TS-Conv](https://arxiv.org/abs/2209.02200)里，[TS-Conv的代码](https://github.com/Shank2358/TS-Conv)放出来了在这里（还在更新完善中）  
+
+#### GGHL做知识蒸馏的一些尝试的论文[DKED](https://ieeexplore.ieee.org/document/9747798)在这里（用来Social和旅游的会议），这个等年底有空了扩写和更新代码  
+
   ### Give a ⭐️ if this project helped you. If you use it, please consider citing:
   ```IEEE TIP
   @ARTICLE{9709203,
@@ -45,7 +51,22 @@
 </p>
 
 ## 0. Something Important 🦞 🦀 🦑 
-* #### Please refer to this repository [GGHL-Deployment](https://github.com/Crescent-Ao/GGHL-Deployment) for the deployment version of GGHL.  
+* #### 💖💖💖 Thanks to [Crescent-Ao](https://github.com/Crescent-Ao) and [haohaoolalahao](https://github.com/haohaoolalahao) for contributions to the GGHL repository, thanks to [Crescent-Ao](https://github.com/Crescent-Ao) for the GGHL deployment Version. Relevant warehouses will continue to be updated, so stay tuned.  
+    #### 打个广告，GGHL部署版本[GGHL-Deployment](https://github.com/Crescent-Ao/GGHL-Deployment)已经上线，欢迎大家使用~~ 感谢我最亲爱的师弟[Crescent-Ao](https://github.com/Crescent-Ao)和[haohaolalahao](https://github.com/haohaolalahao)对GGHL仓库的贡献，感谢[Crescent-Ao](https://github.com/Crescent-Ao)完成的GGHL部署版本。相关仓库还会持续更新中，敬请期待。
+
+* #### 😺😺😺 Welcome everyone to pay attention to the MGAR completed by [haohaoolalahao](https://github.com/haohaoolalahao) in cooperation with me, which has been accepted by [IEEE TGRS](https://ieeexplore.ieee.org/document/9912396).  
+    #### 再打个广告，欢迎大家关注[haohaolalahao](https://github.com/haohaolalahao)与我合作完成的遥感图像目标检测工作 MGAR: Multi-Grained Angle Representation for Remote Sensing Object Detection，论文已经正式接收[IEEE TGRS](https://ieeexplore.ieee.org/document/9912396) [Arxiv](https://arxiv.org/abs/2209.02884), 感谢大家引用：
+  ```IEEE TGRS
+    @ARTICLE{9912396,
+      author={Wang, Hao and Huang, Zhanchao and Chen, Zhengchao and Song, Ying and Li, Wei},
+      journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+      title={Multi-Grained Angle Representation for Remote Sensing Object Detection}, 
+      year={2022},
+      volume={},
+      number={},
+      pages={1-1},
+      doi={10.1109/TGRS.2022.3212592}}
+  ```  
 * #### 🙆‍♂️🙆‍♂️Fixed multi-scale training bugs when torch>=1.7 and using distributed training. Please update the pytorch to version1.11. Thanks to [@haohaolalahao](https://github.com/haohaolalahao).
 * #### 最近在学习MMRotate，后续有计划在MMRotate框架下写一版GGHL,先立个FLAG🤖🤖    
 * #### 关于在去年年底前出GGHLv2的FLAG不出所料的倒掉了🤣🤣🤣，我是大鸽子🕊️🕊️🕊️🕊️咕咕咕。写论文对我来说好难啊啊啊啊，重新扶起这个FLAG，两个月后把论文写完吧（...实验早跑完了，现在每天憋出100个字）  
