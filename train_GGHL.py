@@ -56,15 +56,15 @@ class Trainer(object):
         self.train_dataset = data.Construct_Dataset(anno_file_name=cfg.DATASET_NAME, img_size=cfg.TRAIN["TRAIN_IMG_SIZE"])
         self.train_dataloader = DataLoader(self.train_dataset,
                                            batch_sampler=BatchSampler(RandomSampler(self.train_dataset),
-                                                                      batch_size=cfg.TRAIN["BATCH_SIZE"],
-                                                                      drop_last=True,
-                                                                      multiscale_step=10,
-                                                                      img_sizes=list(
-                                                                          range(
-                                                                              cfg.TRAIN["MULTI_TRAIN_RANGE"][0] * 32,
-                                                                              cfg.TRAIN["MULTI_TRAIN_RANGE"][1] * 32,
-                                                                              cfg.TRAIN["MULTI_TRAIN_RANGE"][2] * 32))
-                                                                      ),
+                                              batch_size=cfg.TRAIN["BATCH_SIZE"],
+                                              drop_last=True,
+                                              multiscale_step=10,
+                                              img_sizes=list(
+                                                  range(
+                                                      cfg.TRAIN["MULTI_TRAIN_RANGE"][0] * 32,
+                                                      cfg.TRAIN["MULTI_TRAIN_RANGE"][1] * 32,
+                                                      cfg.TRAIN["MULTI_TRAIN_RANGE"][2] * 32))
+                                              ),
                                            num_workers=cfg.TRAIN["NUMBER_WORKERS"],
                                            pin_memory=True)
 
