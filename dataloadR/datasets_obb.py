@@ -123,7 +123,8 @@ class Construct_Dataset(Dataset):
         self.gt_tensor = [np.zeros((int(self.img_size // self.stride[i]), int(self.img_size // self.stride[i]),
                                self.num_classes + 16)) for i in range(3)]
         ratio = (1 - self.IOU_thresh)
-        layer_thresh = [3*(self.stride[0]*2)/ratio, 3*(self.stride[2]*2)/ratio]
+        scale_ratio = self.img_size / 800
+        layer_thresh = [3*(self.stride[0]*2)/ratio * scale_ratio, 3*(self.stride[2]*2)/ratio * scale_ratio]
         for gt_label in label_lists:
             bbox_xyxy = gt_label[:4]
             bbox_obb = gt_label[5:13]
