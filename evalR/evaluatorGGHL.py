@@ -341,6 +341,8 @@ class Evaluator(object):
             c = x[:, 9:] * (0 if agnostic else max_wh)  # classes
             boxes_4points, scores = x[:, :8] + c, x[:, 8]
             i = np.array(py_cpu_nms_poly_fast(np.double(boxes_4points.cpu().numpy()), scores.cpu().numpy(), iou_thres))
+            if i.size(0) > 1:
+                i = i.squeeze(axis=-1)
             if i.shape[0] > max_det:  # limit detections
                 i = i[:max_det]
             temp = x[i].clone()
