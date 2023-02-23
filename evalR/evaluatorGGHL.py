@@ -442,7 +442,8 @@ class Evaluator(object):
             i = cv2.dnn.NMSBoxesRotated(boxes_for_cv2_nms, scores_for_cv2_nms, conf_thres, iou_thres)
             i = torch.from_numpy(i).type(torch.LongTensor)
             i = i.squeeze(axis=-1)
-
+            if i.size(0) > 1:
+                i = i.squeeze(axis=-1)
             if i.shape[0] > max_det:  # limit detections
                 i = i[:max_det]
 
